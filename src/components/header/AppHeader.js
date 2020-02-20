@@ -30,7 +30,7 @@ export default function AppHeader() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Scanner
+                        Equipment Scanner
                     </Typography>
                 </Toolbar>
             </AppBar>

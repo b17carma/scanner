@@ -1,5 +1,5 @@
 import React from 'react';
-import AppHeader from "../appbar/AppHeader";
+import AppHeader from "../header/AppHeader";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
         <div className="App">
             <CssBaseline/>
             <AppHeader/>
+            <p>Hello</p>
         </div>
     );
 }
