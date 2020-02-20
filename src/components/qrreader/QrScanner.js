@@ -21,7 +21,6 @@ export default function QrScanner() {
     return (
         <div>
             <QrReader
-                delay={300}
                 onError={handleError}
                 onScan={handleScan}
                 style={previewStyle}
