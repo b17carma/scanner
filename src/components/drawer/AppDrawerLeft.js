@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
     fullList: {
-        width: 'auto',
+        width: 250,
     },
 });
 
