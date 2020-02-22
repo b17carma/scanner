@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import List from "@material-ui/core/List";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -17,27 +17,31 @@ export default function Home() {
 
     const classes = useStyles();
 
+    const [equipment, setEquipment] = useState([{}]);
+
+    async function fetchData() {
+        const res = await fetch("http://jsonplaceholder.typicode.com/users");
+
+        res.json().then((res) => {
+            setEquipment(res)
+        }).catch(console.log)
+    }
+
+    useEffect(() => {
+        fetchData();
+    });
+
     return (
         <div className={classes.root}>
             <List>
-                <ListItem button divider>
-                    <ListItemIcon>
-                        <SendIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Lorem ipsum" />
-                </ListItem>
-                <ListItem button divider>
-                    <ListItemIcon>
-                        <SendIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Lorem ipsum" />
-                </ListItem>
-                <ListItem button>
-                    <ListItemIcon>
-                        <SendIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Lorem ipsum" />
-                </ListItem>
+                {equipment.map((equipment, i) => (
+                    <ListItem button divider key={i}>
+                        <ListItemIcon>
+                            <SendIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary={equipment.name}/>
+                    </ListItem>
+                ))};
             </List>
         </div>
 
