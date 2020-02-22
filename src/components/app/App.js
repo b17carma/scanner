@@ -3,7 +3,6 @@ import AppBarTop from "../appbar/AppBarTop";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from "../home/Home";
-import AppDrawerLeft from "../drawer/AppDrawerLeft";
 
 function App() {
     return (
