@@ -6,9 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import {Assessment as AssessmentIcon, Scanner as ScannerIcon} from "@material-ui/icons";
+import {Assessment as AssessmentIcon, Scanner as ScannerIcon, House as HouseIcon} from "@material-ui/icons";
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -32,12 +30,19 @@ export default function AppDrawerLeft(props) {
             onKeyDown={toggleDrawer(false)}
         >
             <List>
-                {['Scanner', 'Analytics'].map((text, index) => (
-                    <ListItem button key={text} component={Link} to={index % 2 === 0 ? "/scan" : "analytics"}>
-                        <ListItemIcon>{index % 2 === 0 ? <ScannerIcon /> : <AssessmentIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListItem button key="Home" component={Link} to="/">
+                    <ListItemIcon><HouseIcon /></ListItemIcon>
+                    <ListItemText primary="Home" />
+                </ListItem>
+                <ListItem button key="Scanner" component={Link} to="/scan">
+                    <ListItemIcon><ScannerIcon /></ListItemIcon>
+                    <ListItemText primary="Scanner" />
+                </ListItem>
+                <ListItem button key="Analytics" component={Link} to="/analytics">
+                    <ListItemIcon><AssessmentIcon /></ListItemIcon>
+                    <ListItemText primary="Analytics" />
+                </ListItem>
+
             </List>
             <Divider />
         </div>

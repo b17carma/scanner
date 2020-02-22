@@ -4,6 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Scanner from "../locations/scanner/Scanner";
 import Analytics from "../locations/analytics/Analytics";
+import Home from "../locations/home/Home";
 
 function App() {
     return (
@@ -11,7 +12,7 @@ function App() {
             <CssBaseline/>
             <AppBarTop/>
             <Switch>
-                <Route exact path="/" component={Scanner}/>
+                <Route exact path="/" component={Home}/>
                 <Route exact path="/scan" component={Scanner}/>
                 <Route exact path="/analytics" component={Analytics}/>
             </Switch>
