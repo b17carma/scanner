@@ -12,9 +12,6 @@ import {Assessment as AssessmentIcon, Scanner as ScannerIcon} from "@material-ui
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
-    list: {
-        width: 250,
-    },
     fullList: {
         width: 'auto',
     },
