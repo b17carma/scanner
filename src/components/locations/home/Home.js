@@ -20,7 +20,7 @@ export default function Home() {
     const [equipment, setEquipment] = useState([{}]);
 
     async function fetchData() {
-        const res = await fetch("http://jsonplaceholder.typicode.com/users");
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
 
         res.json().then((res) => {
             setEquipment(res)
