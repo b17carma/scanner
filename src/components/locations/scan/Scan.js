@@ -13,18 +13,16 @@ export default function Scan(props) {
 
     const [parts, setParts] = React.useState({});
 
-    async function fetchData() {
-        const res = await fetch("https://jsonplaceholder.typicode.com/todos/" + props.match.params.id);
-        console.log(props.match.params.id)
-
-        res.json().then((res) => {
-            setParts(res)
-        }).catch(console.log)
-    }
-
     useEffect(() => {
+        async function fetchData() {
+            const res = await fetch("https://jsonplaceholder.typicode.com/todos/" + props.match.params.id);
+            const data = await res.json();
+            setParts(data);
+        }
+
         fetchData();
-    }, []);
+        console.log("Fetched scan data");
+    }, [props.match.params.id]);
 
     const classes = useStyles();
 

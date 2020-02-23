@@ -1,10 +1,6 @@
 import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import List from "@material-ui/core/List";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItem from "@material-ui/core/ListItem";
-import {Send as SendIcon} from "@material-ui/icons"
-import ListItemText from "@material-ui/core/ListItemText";
 import {Link} from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -16,9 +12,8 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        width: '100%',
-        backgroundColor: theme.palette.background.paper,
-    },
+        margin: theme.spacing(0.5)
+    }
 }));
 
 export default function Home() {
@@ -26,15 +21,15 @@ export default function Home() {
     const classes = useStyles();
     const [equipment, setEquipment] = useState([{}]);
 
-    async function fetchData() {
-        const res = await fetch("https://jsonplaceholder.typicode.com/users");
-
-        res.json().then((res) => {
-            setEquipment(res)
-        }).catch(console.log)
-    }
-
     useEffect(() => {
+        async function fetchData() {
+            const res = await fetch("https://jsonplaceholder.typicode.com/users");
+
+            res.json().then((res) => {
+                setEquipment(res)
+            }).catch(console.log)
+        }
+
         fetchData();
         console.log("Fetched data")
     }, []);
