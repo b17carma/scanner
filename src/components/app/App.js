@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBarTop from "../appbar/AppBarTop";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Scan from "../locations/scan/Scan";
 import Routes from "../routing/Routes";
 
