@@ -6,7 +6,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import SampleImage from "../../../images/contemplative-reptile.jpg"
+import SampleImage from "../../../images/contemplative-reptile.webp"
 import Container from "@material-ui/core/Container";
 import EquipmentCardSkeleton from "../../skeleton/EquipmentCardSkeleton";
 
