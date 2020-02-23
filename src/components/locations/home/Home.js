@@ -8,10 +8,11 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import SampleImage from "../../../images/contemplative-reptile.jpg"
+import Container from "@material-ui/core/Container";
+import EquipmentCardSkeleton from "../../skeleton/EquipmentCardSkeleton";
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        margin: theme.spacing(0.5),
+    card: {
         marginBottom: theme.spacing(1),
     },
     media: {
@@ -20,16 +21,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Home() {
-
     const classes = useStyles();
+
     const [equipment, setEquipment] = useState([{}]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             const res = await fetch("https://jsonplaceholder.typicode.com/users");
 
             res.json().then((res) => {
-                setEquipment(res)
+                setEquipment(res);
+                setLoading(false)
             }).catch(console.log)
         }
 
@@ -38,10 +41,12 @@ export default function Home() {
     }, []);
 
     return (
-        <div className={classes.root}>
+        <Container>
             <List>
-                {equipment.map((equipment, i) => (
-                    <Card className={classes.root} key={i}>
+                {loading ? [...new Array(10)].map((item, index) => (
+                    <EquipmentCardSkeleton key={'skeleton-' + index}/>
+                    )) : equipment.map((equipment, i) => (
+                    <Card className={classes.card} key={i}>
                         <CardActionArea component={Link} to={"/scan/" + equipment.id}>
                             <CardMedia
                                 className={classes.media}
@@ -61,7 +66,6 @@ export default function Home() {
                     </Card>
                 ))}
             </List>
-        </div>
-
+        </Container>
     )
 }

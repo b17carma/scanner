@@ -1,6 +1,6 @@
 import {Assessment as AssessmentIcon, Scanner as ScannerIcon, House as HouseIcon} from "@material-ui/icons";
 import Home from "../locations/home/Home";
-import Scanner from "../locations/scanner/Scanner";
+import FreeScan from "../locations/freescan/FreeScan";
 import Analytics from "../locations/analytics/Analytics";
 
 const Routes = [
@@ -12,9 +12,9 @@ const Routes = [
     },
     {
         path: '/scan',
-        sideBarName: 'Scan',
+        sideBarName: 'Freescan',
         icon: ScannerIcon,
-        component: Scanner
+        component: FreeScan
     },
     {
         path: '/analytics',

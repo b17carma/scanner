@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {Link, withRouter} from "react-router-dom";
-import routes from "./Routes"
+import routes from "../routing/Routes"
 import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = () => ({

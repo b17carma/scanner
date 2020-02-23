@@ -1,11 +1,11 @@
 import React, {useEffect} from "react";
 import Paper from "@material-ui/core/Paper";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(1),
-        padding: theme.spacing(1)
     },
 }));
 
@@ -27,9 +27,10 @@ export default function Scan(props) {
     const classes = useStyles();
 
     return (
-
-        <Paper className={classes.root}>
-            {parts.title}
-        </Paper>
+        <Container>
+            <Paper className={classes.root}>
+                {parts.title}
+            </Paper>
+        </Container>
     )
 }
