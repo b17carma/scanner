@@ -1,14 +1,14 @@
-import {Assessment as AssessmentIcon, Scanner as ScannerIcon, House as HouseIcon} from "@material-ui/icons";
-import Home from "../locations/home/Home";
+import {Assessment as AssessmentIcon, Scanner as ScannerIcon, Build as BuildIcon} from "@material-ui/icons";
+import Equipment from "../locations/home/Equipment";
 import FreeScan from "../locations/freescan/FreeScan";
 import Analytics from "../locations/analytics/Analytics";
 
 const Routes = [
     {
         path: '/',
-        sideBarName: 'Home',
-        icon: HouseIcon,
-        component: Home
+        sideBarName: 'Equipment',
+        icon: BuildIcon,
+        component: Equipment
     },
     {
         path: '/scan',
