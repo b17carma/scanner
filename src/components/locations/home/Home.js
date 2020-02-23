@@ -7,13 +7,12 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
 import SampleImage from "../../../images/contemplative-reptile.jpg"
 
 const useStyles = makeStyles(theme => ({
     root: {
-        margin: theme.spacing(0.5)
+        margin: theme.spacing(0.5),
+        marginBottom: theme.spacing(1),
     },
     media: {
         height: 120,
@@ -42,7 +41,7 @@ export default function Home() {
         <div className={classes.root}>
             <List>
                 {equipment.map((equipment, i) => (
-                    <Card variant="outlined" className={classes.root} key={i}>
+                    <Card className={classes.root} key={i}>
                         <CardActionArea component={Link} to={"/scan/" + equipment.id}>
                             <CardMedia
                                 className={classes.media}
@@ -58,14 +57,7 @@ export default function Home() {
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
-                        <CardActions>
-                            <Button size="small" color="primary">
-                                Share
-                            </Button>
-                            <Button size="small" color="primary">
-                                Learn More
-                            </Button>
-                        </CardActions>
+
                     </Card>
                 ))}
             </List>
