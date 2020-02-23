@@ -9,10 +9,14 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
+import SampleImage from "../../../images/logo.svg"
 
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(0.5)
+    },
+    media: {
+        height: 140,
     }
 }));
 
@@ -42,8 +46,8 @@ export default function Home() {
                         <CardActionArea component={Link} to={"/scan/" + equipment.id}>
                             <CardMedia
                                 className={classes.media}
-                                image="/static/images/cards/contemplative-reptile.jpg"
-                                title="Contemplative Reptile"
+                                image={SampleImage}
+                                title="Equipment Preview"
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
