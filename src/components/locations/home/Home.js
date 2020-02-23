@@ -12,6 +12,9 @@ import Container from "@material-ui/core/Container";
 import EquipmentCardSkeleton from "../../skeleton/EquipmentCardSkeleton";
 
 const useStyles = makeStyles(theme => ({
+    root: {
+      marginTop: theme.spacing(1)
+    },
     card: {
         marginBottom: theme.spacing(1),
     },
@@ -41,31 +44,29 @@ export default function Home() {
     }, []);
 
     return (
-        <Container>
-            <List>
-                {loading ? [...new Array(10)].map((item, index) => (
-                    <EquipmentCardSkeleton key={'skeleton-' + index}/>
-                    )) : equipment.map((equipment, i) => (
-                    <Card className={classes.card} key={i}>
-                        <CardActionArea component={Link} to={"/scan/" + equipment.id}>
-                            <CardMedia
-                                className={classes.media}
-                                image={SampleImage}
-                                title="Equipment Preview"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {equipment.name}
-                                </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {equipment.username}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
+        <Container className={classes.root}>
+            {loading ? [...new Array(10)].map((item, index) => (
+                <EquipmentCardSkeleton key={'skeleton-' + index}/>
+            )) : equipment.map((equipment, i) => (
+                <Card className={classes.card} key={i}>
+                    <CardActionArea component={Link} to={"/scan/" + equipment.id}>
+                        <CardMedia
+                            className={classes.media}
+                            image={SampleImage}
+                            title="Equipment Preview"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="h2">
+                                {equipment.name}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {equipment.username}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
 
-                    </Card>
-                ))}
-            </List>
+                </Card>
+            ))}
         </Container>
     )
 }

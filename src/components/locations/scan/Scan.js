@@ -6,8 +6,11 @@ import Skeleton from '@material-ui/lab/Skeleton';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        margin: theme.spacing(1),
+        marginTop: theme.spacing(1),
     },
+    paper: {
+        padding: theme.spacing(1)
+    }
 }));
 
 export default function Scan(props) {
@@ -30,11 +33,11 @@ export default function Scan(props) {
     const classes = useStyles();
 
     return (
-        <Container>
+        <Container className={classes.root}>
             {loading ? [...new Array(4)].map((item, index) => (
                 <Skeleton variant="text" key={"skeleton-" + index}/>
             )) : (
-                <Paper className={classes.root}>
+                <Paper className={classes.paper}>
                     {parts.title}
                 </Paper>
             )}
