@@ -32,7 +32,7 @@ export default function Scan(props) {
     return (
         <Container>
             {loading ? [...new Array(4)].map((item, index) => (
-                <Skeleton variant="text"/>
+                <Skeleton variant="text" key={"skeleton-" + index}/>
             )) : (
                 <Paper className={classes.root}>
                     {parts.title}

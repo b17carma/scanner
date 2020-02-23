@@ -12,7 +12,7 @@ const Routes = [
     },
     {
         path: '/scan',
-        sideBarName: 'Freescan',
+        sideBarName: 'Custom scan',
         icon: ScannerIcon,
         component: FreeScan
     },

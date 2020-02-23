@@ -13,7 +13,7 @@ function App() {
             <Switch>
                 {Routes.map((prop, key) => {
                     return (
-                        <Route exact path={prop.path} component={prop.component}/>
+                        <Route exact path={prop.path} component={prop.component} key={key}/>
                     )
                 })}
 
