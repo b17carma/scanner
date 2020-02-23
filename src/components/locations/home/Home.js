@@ -9,14 +9,14 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
-import SampleImage from "../../../images/logo.svg"
+import SampleImage from "../../../images/contemplative-reptile.jpg"
 
 const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(0.5)
     },
     media: {
-        height: 140,
+        height: 120,
     }
 }));
 
