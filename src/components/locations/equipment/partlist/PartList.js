@@ -43,7 +43,7 @@ export default function PartList(props) {
                     <Skeleton variant="text" width={100}/>
                 </ListItem>
             )) : (parts.map((part, i) => (
-                <ListItem key={i} button component={Link} to={"/parts/" + props.match.params.equipmentId + "/" + part._id}>
+                <ListItem key={i} button component={Link} to={"/equipment/" + props.match.params.equipmentId + "/" + part._id}>
                     <ListItemAvatar>
                         <Avatar
                             alt="Part image"

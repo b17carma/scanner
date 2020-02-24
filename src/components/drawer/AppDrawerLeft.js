@@ -55,4 +55,4 @@ class AppDrawerLeft extends React.Component {
     }
 }
 
-export default withStyles(styles)(withRouter(AppDrawerLeft));
+export default (withRouter(withStyles(styles)(AppDrawerLeft)));

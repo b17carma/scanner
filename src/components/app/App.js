@@ -2,9 +2,10 @@ import React from 'react';
 import AppBarTop from "../appbar/AppBarTop";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import PartList from "../locations/partlist/PartList";
+import PartList from "../locations/equipment/partlist/PartList";
 import Routes from "../routing/Routes";
-import PartInfo from "../locations/partinfo/PartInfo";
+import PartInfo from "../locations/equipment/partinfo/PartInfo";
+import Scan from "../locations/equipment/scan/Scan";
 
 function App() {
     return (
@@ -18,8 +19,9 @@ function App() {
                     )
                 })}
 
-                <Route exact path="/parts/:equipmentId" component={PartList}/>
-                <Route exact path="/parts/:equipmentId/:partId" component={PartInfo}/>
+                <Route exact path="/equipment/:equipmentId" component={PartList}/>
+                <Route exact path="/equipment/:equipmentId/:partId" component={PartInfo}/>
+                <Route exact path="/scan/:equipmentId/:partId" component={Scan()}/>
             </Switch>
         </BrowserRouter>
     );

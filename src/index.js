@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/app/App';
 import * as serviceWorker from './serviceWorker';
 import 'typeface-roboto';
+import 'react-calendar-heatmap/dist/styles.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
