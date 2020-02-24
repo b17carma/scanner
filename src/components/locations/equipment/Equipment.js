@@ -30,7 +30,7 @@ export default function Equipment() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("https://jsonplaceholder.typicode.com/users");
+            const res = await fetch("http://localhost:3001/equipment");
 
             res.json().then((res) => {
                 setEquipment(res);
@@ -44,11 +44,11 @@ export default function Equipment() {
 
     return (
         <Container className={classes.root}>
-            {loading ? [...new Array(10)].map((item, index) => (
+            {loading ? [...new Array(5)].map((item, index) => (
                 <EquipmentCardSkeleton key={'skeleton-' + index}/>
             )) : equipment.map((equipment, i) => (
                 <Card className={classes.card} key={i}>
-                    <CardActionArea component={Link} to={"/scan/" + equipment.id}>
+                    <CardActionArea component={Link} to={"/scan/" + equipment._id}>
                         <CardMedia
                             className={classes.media}
                             image={SampleImage}
@@ -56,10 +56,10 @@ export default function Equipment() {
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {equipment.name}
+                                {equipment.identifier}
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                {equipment.username}
+                                {equipment._id}
                             </Typography>
                         </CardContent>
                     </CardActionArea>

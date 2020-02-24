@@ -15,12 +15,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Scan(props) {
 
-    const [parts, setParts] = React.useState({});
+    const [parts, setParts] = React.useState([{}]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("https://jsonplaceholder.typicode.com/todos/" + props.match.params.id);
+            const res = await fetch("http://localhost:3001/parts/" + props.match.params.id);
             const data = await res.json();
             setParts(data);
             setLoading(false);
@@ -36,11 +36,11 @@ export default function Scan(props) {
         <Container className={classes.root}>
             {loading ? [...new Array(4)].map((item, index) => (
                 <Skeleton variant="text" key={"skeleton-" + index}/>
-            )) : (
-                <Paper className={classes.paper}>
-                    {parts.title}
+            )) : (parts.map((part, i) => (
+                <Paper className={classes.paper} key={i}>
+                    {part.identifier}
                 </Paper>
-            )}
+            )))}
         </Container>
     )
 }
