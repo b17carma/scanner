@@ -1,5 +1,5 @@
 import {Assessment as AssessmentIcon, Scanner as ScannerIcon, Build as BuildIcon} from "@material-ui/icons";
-import Equipment from "../locations/home/Equipment";
+import Equipment from "../locations/equipment/Equipment";
 import FreeScan from "../locations/freescan/FreeScan";
 import Analytics from "../locations/analytics/Analytics";
 
