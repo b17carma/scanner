@@ -48,7 +48,7 @@ export default function Equipment() {
                 <EquipmentCardSkeleton key={'skeleton-' + index}/>
             )) : equipment.map((equipment, i) => (
                 <Card className={classes.card} key={i}>
-                    <CardActionArea component={Link} to={"/scan/" + equipment._id}>
+                    <CardActionArea component={Link} to={"/parts/" + equipment._id}>
                         <CardMedia
                             className={classes.media}
                             image={SampleImage}
