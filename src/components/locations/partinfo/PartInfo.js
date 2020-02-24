@@ -29,7 +29,7 @@ export default function PartInfo(props) {
 
         fetchData();
         console.log("Fetched scan data");
-    }, [props.match.params.equipmentId]);
+    }, [props.match.params.equipmentId, props.match.params.partId]);
 
     const classes = useStyles();
 
