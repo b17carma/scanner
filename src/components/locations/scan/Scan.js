@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(1),
     },
     paper: {
-        padding: theme.spacing(1)
+        padding: theme.spacing(1),
+        marginBottom: theme.spacing(1)
     }
 }));
 
@@ -38,7 +39,7 @@ export default function Scan(props) {
                 <Skeleton variant="text" key={"skeleton-" + index}/>
             )) : (parts.map((part, i) => (
                 <Paper className={classes.paper} key={i}>
-                    {part.identifier}
+                    {part.identifier}, {part.image}, {part.order}
                 </Paper>
             )))}
         </Container>
