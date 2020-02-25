@@ -5,7 +5,7 @@ import routes from "../../routing/Routes";
 import {Link, withRouter} from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = () => ({
+const styles = (theme) => ({
     root: {
         width: '100%',
         position: 'fixed',
@@ -16,17 +16,22 @@ const styles = () => ({
 
 class BottomNav extends React.Component {
 
+    handleChange(newValue) {
+        this.props.history.push(newValue)
+    }
+
     render() {
         const {classes} = this.props;
 
         return (
-            <BottomNavigation value={this.props.location.pathname} className={classes.root}>
+            <BottomNavigation value={this.props.location.pathname} className={classes.root}
+                              onChange={(event, newValue) => {
+                                  this.handleChange(newValue);
+                              }}>
 
                 {routes.map((prop, key) => {
                     return (
-                        <BottomNavigationAction component={Link} label={prop.sideBarName} value={prop.path}
-                                                to={prop.path}
-                                                icon={<prop.icon/>}/>
+                        <BottomNavigationAction label={prop.sideBarName} value={prop.path} icon={<prop.icon/>}/>
                     )
                 })}
             </BottomNavigation>
