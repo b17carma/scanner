@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
-import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import {Container} from "@material-ui/core";
 import List from "@material-ui/core/List";
