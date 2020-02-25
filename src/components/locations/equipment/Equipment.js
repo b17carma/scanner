@@ -42,30 +42,36 @@ export default function Equipment() {
         console.log("Fetched data")
     }, []);
 
-    return (
-        <Container className={classes.root}>
-            {loading ? [...new Array(5)].map((item, index) => (
-                <EquipmentCardSkeleton key={index}/>
-            )) : equipment.map((equipment, i) => (
-                <Card className={classes.card} key={i}>
-                    <CardActionArea component={Link} to={"/equipment/" + equipment._id}>
-                        <CardMedia
-                            className={classes.media}
-                            image={"img/" + equipment.image}
-                            title="Equipment Preview"
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {equipment.identifier}
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {equipment._id}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
+    if (loading) {
+        return (
+            [...new Array(5)].map((item, index) => (
+                    <EquipmentCardSkeleton key={index}/>
+                )
+            ))
+    } else {
+        return (
+            <Container className={classes.root}>
+                {equipment.map((equipment, i) => (
+                    <Card className={classes.card} key={i}>
+                        <CardActionArea component={Link} to={"/equipment/" + equipment._id}>
+                            <CardMedia
+                                className={classes.media}
+                                image={"img/" + equipment.image}
+                                title="Equipment Preview"
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {equipment.identifier}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    {equipment._id}
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
 
-                </Card>
-            ))}
-        </Container>
-    )
+                    </Card>
+                ))}
+            </Container>
+        )
+    }
 }
