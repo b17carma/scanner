@@ -12,7 +12,8 @@ import EquipmentCardSkeleton from "../../skeleton/EquipmentCardSkeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
-      marginTop: theme.spacing(1)
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(8)
     },
     card: {
         marginBottom: theme.spacing(1),
@@ -30,7 +31,7 @@ export default function Equipment() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("http://localhost:3001/equipment");
+            const res = await fetch("http://192.168.1.64:3001/equipment");
 
             res.json().then((res) => {
                 setEquipment(res);

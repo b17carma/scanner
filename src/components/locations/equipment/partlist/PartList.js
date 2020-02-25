@@ -17,9 +17,6 @@ const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
         margin: 0
-    },
-    box: {
-        margin: "auto"
     }
 }));
 
@@ -29,7 +26,7 @@ export default function PartList(props) {
 
     useEffect(() => {
         async function fetchEquipmentInfo() {
-            const res = await fetch("http://localhost:3001/equipment/" + props.match.params.equipmentId);
+            const res = await fetch("http://192.168.1.64:3001/equipment/" + props.match.params.equipmentId);
             const data = await res.json();
 
             setEquipment(data);

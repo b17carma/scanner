@@ -4,14 +4,14 @@ import Paper from "@material-ui/core/Paper";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
 import {Pie, PieChart} from "recharts";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 import CalendarHeatmap from "react-calendar-heatmap";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        marginTop: theme.spacing(1)
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(8)
     },
     paper: {
         padding: theme.spacing(1),

@@ -13,7 +13,6 @@ function App() {
     return (
         <BrowserRouter>
             <CssBaseline/>
-            <AppBarTop/>
             <Switch>
                 {Routes.map((prop, key) => {
                     return (
