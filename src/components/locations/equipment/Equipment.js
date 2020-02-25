@@ -6,7 +6,6 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import SampleImage from "../../../images/machine.jpg"
 import Container from "@material-ui/core/Container";
 import EquipmentCardSkeleton from "../../skeleton/EquipmentCardSkeleton";
 
@@ -31,7 +30,7 @@ export default function Equipment() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("https://23.101.79.57:3001/equipment");
+            const res = await fetch("https://api.carlmaier.se/equipment");
 
             res.json().then((res) => {
                 setEquipment(res);
@@ -46,7 +45,7 @@ export default function Equipment() {
     return (
         <Container className={classes.root}>
             {loading ? [...new Array(5)].map((item, index) => (
-                <EquipmentCardSkeleton key={'skeleton-' + index}/>
+                <EquipmentCardSkeleton key={index}/>
             )) : equipment.map((equipment, i) => (
                 <Card className={classes.card} key={i}>
                     <CardActionArea component={Link} to={"/equipment/" + equipment._id}>

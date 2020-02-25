@@ -20,6 +20,12 @@ class BottomNav extends React.Component {
         this.props.history.push(newValue)
     }
 
+    filteredRoutes(routes) {
+        return routes.filter(function (route) {
+            return route.display === true
+        })
+    }
+
     render() {
         const {classes} = this.props;
 
@@ -29,9 +35,10 @@ class BottomNav extends React.Component {
                                   this.handleChange(newValue);
                               }}>
 
-                {routes.map((prop, key) => {
+                {this.filteredRoutes(routes).map((prop, key) => {
                     return (
-                        <BottomNavigationAction label={prop.sideBarName} value={prop.path} icon={<prop.icon/>}/>
+                        <BottomNavigationAction label={prop.sideBarName} value={prop.path} key={key}
+                                                icon={<prop.icon/>}/>
                     )
                 })}
             </BottomNavigation>
