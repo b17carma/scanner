@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import PartList from "../locations/equipment/partlist/PartList";
 import Routes from "../routing/Routes";
 import PartInfo from "../locations/equipment/partinfo/PartInfo";
-import Scan from "../locations/equipment/scan/Scan";
+import ScanResult from "../locations/scan/ScanResult";
 import BottomNav from "../navigation/bottomnav/BottomNav";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
 
                 <Route exact path="/equipment/:equipmentId" component={PartList}/>
                 <Route exact path="/equipment/:equipmentId/:partId" component={PartInfo}/>
-                <Route exact path="/scan/:equipmentId/:partId" component={Scan}/>
+                <Route exact path="/scan/:equipmentId/:partId" component={ScanResult}/>
             </Switch>
             <BottomNav/>
         </BrowserRouter>

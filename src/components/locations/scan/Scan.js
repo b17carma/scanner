@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function FreeScan() {
+export default function Scan() {
     const classes = useStyles();
 
     return (

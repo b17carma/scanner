@@ -14,6 +14,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -35,14 +36,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PartInfo(props) {
-    const [part, setParts] = React.useState([{}]);
+    const [part, setPart] = React.useState([{}]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
         async function fetchData() {
             const res = await fetch("http://192.168.1.64:3001/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
             const data = await res.json();
-            setParts(data);
+            setPart(data);
             setLoading(false);
         }
 
@@ -67,7 +68,7 @@ export default function PartInfo(props) {
                     <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
                         {part.description}
                     </Typography>
-                    <Button variant="contained">Scan now</Button>
+                    <Button component={Link} to={"/scan"} variant="contained">Scan now</Button>
                 </CardContent>
             </Paper>
             <Paper>
