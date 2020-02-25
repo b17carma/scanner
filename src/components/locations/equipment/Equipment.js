@@ -52,7 +52,7 @@ export default function Equipment() {
                     <CardActionArea component={Link} to={"/equipment/" + equipment._id}>
                         <CardMedia
                             className={classes.media}
-                            image={SampleImage}
+                            image={"img/" + equipment.image}
                             title="Equipment Preview"
                         />
                         <CardContent>

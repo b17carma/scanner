@@ -12,11 +12,17 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import {Box} from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
 
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
         margin: 0
+    },
+    media: {
+        height: "200px"
     }
 }));
 
@@ -41,10 +47,19 @@ export default function PartList(props) {
     const classes = useStyles();
 
     return (
-        <div>
-            <Container>
-
-            </Container>
+        <Box>
+            <Card>
+                <CardMedia
+                    className={classes.media}
+                    image={"/img/" + equipment.image}
+                    title="Equipment Overview"
+                />
+                <CardContent>
+                    <Typography variant="h5" component="h2">
+                        {equipment.identifier}
+                    </Typography>
+                </CardContent>
+            </Card>
             <List className={classes.root}>
                 {loading ? [...new Array(3)].map((item, index) => (
                     <ListItem key={index} button>
@@ -66,6 +81,6 @@ export default function PartList(props) {
                     </ListItem>
                 )))}
             </List>
-        </div>
+        </Box>
     )
 }

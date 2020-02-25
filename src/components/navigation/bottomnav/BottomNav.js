@@ -2,10 +2,10 @@ import React from "react";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import routes from "../../routing/Routes";
-import {Link, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-const styles = (theme) => ({
+const styles = () => ({
     root: {
         width: '100%',
         position: 'fixed',
@@ -39,4 +39,4 @@ class BottomNav extends React.Component {
     }
 }
 
-export default (withRouter(withStyles(styles)(BottomNav)));
+export default withRouter(withStyles(styles)(BottomNav));
