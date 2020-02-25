@@ -18,7 +18,7 @@ const Routes = [
         component: Equipment
     },
     {
-        path: '/scan',
+        path: '/infoscan',
         sideBarName: 'Info scan',
         icon: ScannerIcon,
         component: FreeScan
