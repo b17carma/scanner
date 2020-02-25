@@ -32,7 +32,7 @@ export default function PartList(props) {
 
     useEffect(() => {
         async function fetchEquipmentInfo() {
-            const res = await fetch("http://192.168.1.64:3001/equipment/" + props.match.params.equipmentId);
+            const res = await fetch("https://23.101.79.57:3001/equipment/" + props.match.params.equipmentId);
             const data = await res.json();
 
             setEquipment(data);

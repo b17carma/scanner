@@ -41,7 +41,7 @@ export default function PartInfo(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("http://192.168.1.64:3001/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
+            const res = await fetch("https://23.101.79.57:3001/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
             const data = await res.json();
             setPart(data);
             setLoading(false);

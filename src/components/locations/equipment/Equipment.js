@@ -31,7 +31,7 @@ export default function Equipment() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("http://192.168.1.64:3001/equipment");
+            const res = await fetch("https://23.101.79.57:3001/equipment");
 
             res.json().then((res) => {
                 setEquipment(res);
