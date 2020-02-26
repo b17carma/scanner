@@ -9,7 +9,7 @@ export default function ScanResult(props) {
     const history = useHistory();
 
     function sendResults(status) {
-        fetch(process.env.REACT_APP_API_LOCATION + + '/scan', {
+        fetch(process.env.REACT_APP_API_LOCATION + '/scan', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
