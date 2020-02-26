@@ -65,7 +65,7 @@ export default function PartInfo(props) {
     function scanList() {
         if (scans.length > 0) {
             return (
-                scans.map((scan, i) => (
+                scans.slice(0, 5).map((scan, i) => (
                     <ListItem key={i}>
                         <ListItemIcon>
                             {scan.status ? <CheckIcon style={{color: green[500]}}/> : <WarningIcon style={{color: red[500]}}/>}
@@ -108,7 +108,7 @@ export default function PartInfo(props) {
                 <Paper>
                     <Container>
                         <Typography variant="h6" component="h1">
-                            Past scans
+                            Recent scans
                         </Typography>
                     </Container>
                     <List className={classes.list}>

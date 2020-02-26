@@ -1,11 +1,12 @@
 import React, {useEffect} from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
 import {useHistory} from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Paper from "@material-ui/core/Paper";
 import {Box, Container} from "@material-ui/core";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
 
 export default function ScanResult(props) {
 
@@ -13,7 +14,9 @@ export default function ScanResult(props) {
 
     const useStyles = makeStyles(theme => ({
         root: {
-            padding: theme.spacing(1)
+            padding: theme.spacing(1),
+            height: "100%",
+            backgroundColor: theme.palette.background.paper
         },
         button: {
             marginRight: theme.spacing(1)
@@ -53,14 +56,12 @@ export default function ScanResult(props) {
     const classes = useStyles();
 
     return (
-        <Box>
+        <Box className={classes.root}>
             <img src={"/img/" + part.image} alt="Part Preview" height="200px" width="100%"/>
-            <Box className={classes.root}>
+            <Box>
                 <Typography variant="h5" gutterBottom>
-                    Is the part functioning normally?
+                    Is this part functioning normally?
                 </Typography>
-            </Box>
-            <Box className={classes.root}>
                 <Button className={classes.button} variant="contained" onClick={() => sendResults(true)}>Yes</Button>
                 <Button className={classes.button} variant="contained" onClick={() => sendResults(false)}>No</Button>
                 <Button className={classes.button} variant="contained" onClick={() => history.push("/")}>Cancel</Button>

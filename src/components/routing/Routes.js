@@ -11,28 +11,28 @@ const Routes = [
     {
         display: true,
         path: '/',
-        sideBarName: 'Home',
+        barName: 'Home',
         icon: HomeIcon,
         component: Home
     },
     {
         display: true,
         path: '/equipment',
-        sideBarName: 'Equipment',
+        barName: 'Equipment',
         icon: BuildIcon,
         component: Equipment
     },
     {
         display: true,
         path: '/scan',
-        sideBarName: 'Scan',
+        barName: 'Scan',
         icon: ScannerIcon,
         component: Scan
     },
     {
         display: true,
         path: '/analytics',
-        sideBarName: 'Analytics',
+        barName: 'Analytics',
         icon: AssessmentIcon,
         component: Analytics
     },

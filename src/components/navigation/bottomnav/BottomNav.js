@@ -27,14 +27,14 @@ class BottomNav extends React.Component {
     }
 
     activeValue() {
-        return this.props.location.pathname.split("/")[1];
+        return "/" + this.props.location.pathname.split("/")[1];
     }
 
     render() {
         const {classes} = this.props;
 
         return (
-            <BottomNavigation value={"/" + this.activeValue()} className={classes.root}
+            <BottomNavigation value={this.activeValue()} className={classes.root}
                               onChange={(event, newValue) => {
                                   this.handleChange(newValue);
                               }}>
