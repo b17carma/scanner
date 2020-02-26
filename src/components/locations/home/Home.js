@@ -48,18 +48,6 @@ export default function Home() {
                     </ResponsiveContainer>
                 </div>
             </Paper>
-            <Paper className={classes.paper}>
-                <CalendarHeatmap
-                    startDate={new Date('2020-01-01')}
-                    endDate={new Date('2020-02-01')}
-                    values={[
-                        { date: '2020-01-01' },
-                        { date: '2020-01-22' },
-                        { date: '2020-01-30' },
-                        // ...and so on
-                    ]}
-                />
-            </Paper>
         </Container>
     )
 }

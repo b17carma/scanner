@@ -14,19 +14,19 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {Link} from "react-router-dom";
-import { format } from 'date-fns'
+import {format} from 'date-fns'
 import {green, red} from "@material-ui/core/colors";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        backgroundColor: theme.palette.background.paper,
+        marginBottom: theme.spacing(8)
     },
     media: {
         height: "200px"
     },
     paper: {
-      marginBottom: theme.spacing(1)
+        marginBottom: theme.spacing(1)
     },
     list: {
         backgroundColor: theme.palette.background.paper,
@@ -64,19 +64,17 @@ export default function PartInfo(props) {
     }, [props.match.params.equipmentId, props.match.params.partId]);
 
     function scanList() {
-        if (scans.length > 0) {
-            return (
-                scans.slice(0, 5).map((scan, i) => (
-                    <ListItem key={i}>
-                        <ListItemIcon>
-                            {scan.status ? <CheckIcon style={{color: green[500]}}/> : <WarningIcon style={{color: red[500]}}/>}
-                        </ListItemIcon>
-                        <ListItemText id={i} primary={format(new Date(scan.time), 'dd/MM/yyyy HH:mm:ss')}/>
-                    </ListItem>
-                ))
-            )
-        }
-        return String.empty;
+        return (
+            scans.slice(0, 5).map((scan, i) => (
+                <ListItem key={i}>
+                    <ListItemIcon>
+                        {scan.status ? <CheckIcon style={{color: green[500]}}/> :
+                            <WarningIcon style={{color: red[500]}}/>}
+                    </ListItemIcon>
+                    <ListItemText id={i} primary={format(new Date(scan.time), 'dd/MM/yyyy HH:mm:ss')}/>
+                </ListItem>
+            ))
+        )
     }
 
     const classes = useStyles();
@@ -84,12 +82,17 @@ export default function PartInfo(props) {
     if (loading) {
         return (
             <div>
-                <Skeleton variant="rect" width="100%" height={400} />
+                <Skeleton variant="rect" width="100%" height={200}/>
+                <Container>
+                    <Skeleton variant="text" width={200} height={50}/>
+                    <Skeleton variant="text" width={300}/>
+                    <Skeleton variant="text" width={300}/>
+                </Container>
             </div>
         )
     } else {
         return (
-            <Box>
+            <Box className={classes.root}>
                 <Paper className={classes.paper}>
                     <CardMedia
                         className={classes.media}

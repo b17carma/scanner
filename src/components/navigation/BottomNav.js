@@ -22,7 +22,7 @@ class BottomNav extends React.Component {
 
     filteredRoutes(routes) {
         return routes.filter(function (route) {
-            return route.display === true
+            return route.display === true;
         })
     }
 

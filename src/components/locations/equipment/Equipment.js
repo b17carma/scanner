@@ -44,8 +44,8 @@ export default function Equipment() {
 
     if (loading) {
         return (
-            [...new Array(5)].map((item, index) => (
-                    <EquipmentCardSkeleton key={index}/>
+            [...new Array(3)].map((item, index) => (
+                    <EquipmentCardSkeleton classes={classes} key={index}/>
                 )
             ))
     } else {
