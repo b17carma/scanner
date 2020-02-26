@@ -43,7 +43,7 @@ const Routes = [
     },
     {
         display: false,
-        path: '/equipment/:equipmentId/:partId"',
+        path: '/equipment/:equipmentId/:partId',
         component: PartInfo
     },
     {
