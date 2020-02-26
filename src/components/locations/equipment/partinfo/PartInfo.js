@@ -14,6 +14,8 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {Link} from "react-router-dom";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -36,67 +38,75 @@ const useStyles = makeStyles(theme => ({
 
 export default function PartInfo(props) {
     const [part, setPart] = React.useState([{}]);
+    const [scans, setScans] = React.useState([{}]);
+
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchPartData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
             const data = await res.json();
             setPart(data);
             setLoading(false);
         }
 
-        fetchData();
-        console.log("Fetched scan data");
+        async function fetchScanData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.match.params.equipmentId + "/" + props.match.params.partId);
+            const data = await res.json();
+            setScans(data);
+        }
+
+        fetchPartData();
+        fetchScanData();
+
+        console.log("Fetched part & scan data");
     }, [props.match.params.equipmentId, props.match.params.partId]);
 
     const classes = useStyles();
 
-    return (
-        <Box>
-            <Paper className={classes.paper}>
-                <CardMedia
-                    className={classes.media}
-                    image={"/img/" + part.image}
-                    title="Part Overview"
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {part.identifier}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
-                        {part.description}
-                    </Typography>
-                    <Button component={Link} to={"/scan"} variant="contained">Scan now</Button>
-                </CardContent>
-            </Paper>
-            <Paper>
-                <Container>
-                    <Typography variant="h6" component="h1">
-                        Past scans
-                    </Typography>
-                </Container>
-                <List className={classes.list}>
-                    <ListItem>
-                        <ListItemIcon>
-                            <CheckIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="25/02/2020"/>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon>
-                            <CheckIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="24/02/2020"/>
-                    </ListItem>
-                    <ListItem>
-                        <ListItemIcon>
-                            <ClearIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary="23/02/2020"/>
-                    </ListItem>
-                </List>
-            </Paper>
-        </Box>
-    )
+    if (loading) {
+        return (
+            <div>
+                TODO
+            </div>
+        )
+    } else {
+        return (
+            <Box>
+                <Paper className={classes.paper}>
+                    <CardMedia
+                        className={classes.media}
+                        image={"/img/" + part.image}
+                        title="Part Overview"
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {part.identifier}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p" gutterBottom>
+                            {part.description}
+                        </Typography>
+                        <Button component={Link} to={"/scan"} variant="contained">Scan now</Button>
+                    </CardContent>
+                </Paper>
+                <Paper>
+                    <Container>
+                        <Typography variant="h6" component="h1">
+                            Past scans
+                        </Typography>
+                    </Container>
+                    <List className={classes.list}>
+                        {scans.map((scan, i) => (
+                            <ListItem key={i}>
+                                <ListItemIcon>
+                                    {scan.status ? <CheckIcon/> : <ClearIcon/>}
+                                </ListItemIcon>
+                                <ListItemText id={i} primary={scan.time}/>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Paper>
+            </Box>
+        )
+    }
 }
