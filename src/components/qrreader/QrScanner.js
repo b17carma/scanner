@@ -26,8 +26,6 @@ export default function QrScanner() {
     return (
         <div>
             <QrReader
-                legacyMode={process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT'}
-                onImageLoad={() => handleScan}
                 onError={() => handleError}
                 onScan={() => handleScan}
                 style={previewStyle}
