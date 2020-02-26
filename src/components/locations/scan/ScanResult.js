@@ -36,7 +36,7 @@ export default function ScanResult(props) {
                 status: status
             })
         }).then(() => {
-            history.push("/equipment/" + props.match.params.equipmentId + "/" + props.match.params.partId)
+            history.push("/equipment/" + props.match.params.equipmentId)
         })
     }
 
