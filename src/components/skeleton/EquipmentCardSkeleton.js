@@ -10,10 +10,10 @@ export default function EquipmentCardSkeleton(props) {
         <Container>
             <Card className={props.classes.card}>
                 <CardActionArea>
-                    <Skeleton animation="wave" variant="rect" height={120} />
+                    <Skeleton variant="rect" height={120} />
                     <CardContent>
-                        <Skeleton animation="wave" variant="text" width={250} height={53}/>
-                        <Skeleton animation="wave" variant="text" width={250}/>
+                        <Skeleton variant="text" width={250} height={53}/>
+                        <Skeleton variant="text" width={250}/>
                     </CardContent>
                 </CardActionArea>
             </Card>
