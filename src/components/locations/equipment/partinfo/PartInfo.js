@@ -8,13 +8,14 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckIcon from '@material-ui/icons/Check';
-import ClearIcon from '@material-ui/icons/Clear';
+import WarningIcon from '@material-ui/icons/Warning';
 import ListItemText from "@material-ui/core/ListItemText";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {Link} from "react-router-dom";
 import { format } from 'date-fns'
+import {green, red} from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -67,7 +68,7 @@ export default function PartInfo(props) {
                 scans.map((scan, i) => (
                     <ListItem key={i}>
                         <ListItemIcon>
-                            {scan.status ? <CheckIcon/> : <ClearIcon/>}
+                            {scan.status ? <CheckIcon style={{color: green[500]}}/> : <WarningIcon style={{color: red[500]}}/>}
                         </ListItemIcon>
                         <ListItemText id={i} primary={format(new Date(scan.time), 'dd/MM/yyyy HH:mm:ss')}/>
                     </ListItem>
