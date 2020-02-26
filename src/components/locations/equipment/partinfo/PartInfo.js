@@ -17,9 +17,11 @@ import {Link} from "react-router-dom";
 import {format} from 'date-fns'
 import {green, red} from "@material-ui/core/colors";
 import Skeleton from "@material-ui/lab/Skeleton";
+import Card from "@material-ui/core/Card";
 
 const useStyles = makeStyles(theme => ({
     root: {
+        marginTop: theme.spacing(1),
         marginBottom: theme.spacing(8)
     },
     media: {
@@ -93,7 +95,7 @@ export default function PartInfo(props) {
     } else {
         return (
             <Box className={classes.root}>
-                <Paper className={classes.paper}>
+                <Card className={classes.paper} variant="outlined">
                     <CardMedia
                         className={classes.media}
                         image={"/img/" + part.image}
@@ -108,7 +110,7 @@ export default function PartInfo(props) {
                         </Typography>
                         <Button component={Link} to={"/scan"} variant="contained">Scan now</Button>
                     </CardContent>
-                </Paper>
+                </Card>
                 <Paper>
                     <Container>
                         <Typography variant="h6" component="h1">

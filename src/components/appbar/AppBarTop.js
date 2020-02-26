@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -27,34 +27,33 @@ class AppBarTop extends React.Component {
         return routes.find(route => route.path === ("/" + this.props.location.pathname.split("/")[1]));
     }
 
-    RenderBackIcon(classes) {
-        if (this.props.location.pathname.split("/").length > 2) {
-            return (
-                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => this.props.history.goBack()}>
-                    <BackIcon />
-                </IconButton>
-            )
-        } else {
-            return String.empty;
-        }
-    }
-
     render() {
         const {classes} = this.props;
         const activeRoute = this.activeRoute();
 
+        const RenderBackIcon = () => {
+            if (this.props.location.pathname.split("/").length > 2) {
+                return (
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
+                                onClick={() => this.props.history.goBack()}>
+                        <BackIcon/>
+                    </IconButton>
+                )
+            } else {
+                return null
+            }
+        };
+
         return (
-            <div>
-                <div className={classes.root}>
-                    <AppBar position="static">
-                        <Toolbar>
-                            {this.RenderBackIcon(classes)}
-                            <Typography variant="h6" className={classes.title}>
-                                {activeRoute.barName}
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
-                </div>
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <RenderBackIcon/>
+                        <Typography variant="h6" className={classes.title}>
+                            {activeRoute.barName}
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
             </div>
         );
     }
