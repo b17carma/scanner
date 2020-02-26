@@ -14,8 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {Link} from "react-router-dom";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
+import { format } from 'date-fns'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -101,7 +100,7 @@ export default function PartInfo(props) {
                                 <ListItemIcon>
                                     {scan.status ? <CheckIcon/> : <ClearIcon/>}
                                 </ListItemIcon>
-                                <ListItemText id={i} primary={scan.time}/>
+                                <ListItemText id={i} primary={format(new Date(scan.time), 'dd/MM/yyyy HH:mm:ss')}/>
                             </ListItem>
                         ))}
                     </List>
