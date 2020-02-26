@@ -7,18 +7,14 @@ export default function QrScanner() {
     const history = useHistory();
     const [value, setValue] = useState("No Result");
 
-    const handleScan = data => {
-
+    function handleScan(data) {
         if (data) {
             let equipmentPart = data.split(";");
             history.push("/scan/" + equipmentPart[0] + "/" + equipmentPart[1]);
 
             setValue(data)
         }
-    };
-
-    const previewStyle = {
-    };
+    }
 
     const handleError = err => {
         console.error(err);
@@ -27,9 +23,10 @@ export default function QrScanner() {
     return (
         <div>
             <QrReader
-                onError={handleError}
-                onScan={handleScan}
-                style={previewStyle}
+                legacyMode={process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT'}
+                onImageLoad={() => handleScan}
+                onError={() => handleError}
+                onScan={() => handleScan}
             />
             <p>Value: {value}</p>
         </div>
