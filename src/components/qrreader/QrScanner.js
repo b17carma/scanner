@@ -16,6 +16,9 @@ export default function QrScanner() {
         }
     }
 
+    const previewStyle = {
+    };
+
     const handleError = err => {
         console.error(err);
     };
@@ -27,6 +30,7 @@ export default function QrScanner() {
                 onImageLoad={() => handleScan}
                 onError={() => handleError}
                 onScan={() => handleScan}
+                style={previewStyle}
             />
             <p>Value: {value}</p>
         </div>
