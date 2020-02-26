@@ -26,18 +26,22 @@ class BottomNav extends React.Component {
         })
     }
 
+    activeValue() {
+        return this.props.location.pathname.split("/")[1];
+    }
+
     render() {
         const {classes} = this.props;
 
         return (
-            <BottomNavigation value={this.props.location.pathname} className={classes.root}
+            <BottomNavigation value={"/" + this.activeValue()} className={classes.root}
                               onChange={(event, newValue) => {
                                   this.handleChange(newValue);
                               }}>
 
                 {this.filteredRoutes(routes).map((prop, key) => {
                     return (
-                        <BottomNavigationAction label={prop.sideBarName} value={prop.path} key={key}
+                        <BottomNavigationAction label={prop.barName} value={prop.path} key={key}
                                                 icon={<prop.icon/>}/>
                     )
                 })}
