@@ -36,8 +36,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PartInfo(props) {
-    const [part, setPart] = React.useState([{}]);
-    const [scans, setScans] = React.useState([{}]);
+    const [part, setPart] = React.useState([]);
+    const [scans, setScans] = React.useState([]);
 
     const [loading, setLoading] = React.useState(true);
 
@@ -60,6 +60,22 @@ export default function PartInfo(props) {
 
         console.log("Fetched part & scan data");
     }, [props.match.params.equipmentId, props.match.params.partId]);
+
+    function scanList() {
+        if (scans.length > 0) {
+            return (
+                scans.map((scan, i) => (
+                    <ListItem key={i}>
+                        <ListItemIcon>
+                            {scan.status ? <CheckIcon/> : <ClearIcon/>}
+                        </ListItemIcon>
+                        <ListItemText id={i} primary={format(new Date(scan.time), 'dd/MM/yyyy HH:mm:ss')}/>
+                    </ListItem>
+                ))
+            )
+        }
+        return String.empty;
+    }
 
     const classes = useStyles();
 
@@ -95,14 +111,7 @@ export default function PartInfo(props) {
                         </Typography>
                     </Container>
                     <List className={classes.list}>
-                        {scans.map((scan, i) => (
-                            <ListItem key={i}>
-                                <ListItemIcon>
-                                    {scan.status ? <CheckIcon/> : <ClearIcon/>}
-                                </ListItemIcon>
-                                <ListItemText id={i} primary={format(new Date(scan.time), 'dd/MM/yyyy HH:mm:ss')}/>
-                            </ListItem>
-                        ))}
+                        {scanList()}
                     </List>
                 </Paper>
             </Box>

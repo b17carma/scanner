@@ -25,7 +25,7 @@ export default function ScanResult(props) {
         })
     }
 
-    const [part, setPart] = React.useState([{}]);
+    const [part, setPart] = React.useState([]);
 
     useEffect(() => {
         async function fetchData() {

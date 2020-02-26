@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 export default function Equipment() {
     const classes = useStyles();
 
-    const [equipment, setEquipment] = useState([{}]);
+    const [equipment, setEquipment] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
