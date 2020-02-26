@@ -2,14 +2,34 @@ import React, {useEffect} from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import {useHistory} from "react-router-dom";
 
 export default function ScanResult(props) {
+
+    const history = useHistory();
+
+    function sendResults(status) {
+        fetch(process.env.REACT_APP_API_LOCATION + + '/scan', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                equipmentId: props.match.params.equipmentId,
+                partId: props.match.params.partId,
+                status: status
+            })
+        }).then(() => {
+            history.push("/equipment/"  + props.match.params.equipmentId + "/" + props.match.params.partId)
+        })
+    }
 
     const [part, setPart] = React.useState([{}]);
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("https://api.carlmaier.se/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
             const data = await res.json();
             setPart(data);
         }
@@ -25,9 +45,9 @@ export default function ScanResult(props) {
             <Typography variant="h4" gutterBottom>
                 Is the part functioning normally?
             </Typography>
-            <Button variant="contained">Yes</Button>
-            <Button variant="contained">No</Button>
-            <Button variant="contained">Cancel</Button>
+            <Button variant="contained" onClick={sendResults(true)}>Yes</Button>
+            <Button variant="contained" onClick={sendResults(false)}>No</Button>
+            <Button variant="contained" onClick={history.goBack()}>Cancel</Button>
         </Grid>
     )
 }

@@ -30,7 +30,7 @@ export default function Equipment() {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("https://api.carlmaier.se/equipment");
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/equipment");
 
             res.json().then((res) => {
                 setEquipment(res);

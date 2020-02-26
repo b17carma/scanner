@@ -40,7 +40,7 @@ export default function PartInfo(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch("https://api.carlmaier.se/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
             const data = await res.json();
             setPart(data);
             setLoading(false);
