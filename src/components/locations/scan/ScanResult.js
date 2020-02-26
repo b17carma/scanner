@@ -45,9 +45,9 @@ export default function ScanResult(props) {
             <Typography variant="h4" gutterBottom>
                 Is the part functioning normally?
             </Typography>
-            <Button variant="contained" onClick={sendResults(true)}>Yes</Button>
-            <Button variant="contained" onClick={sendResults(false)}>No</Button>
-            <Button variant="contained" onClick={history.goBack()}>Cancel</Button>
+            <Button variant="contained" onClick={() => sendResults(true)}>Yes</Button>
+            <Button variant="contained" onClick={() => sendResults(false)}>No</Button>
+            <Button variant="contained" onClick={() => history.goBack()}>Cancel</Button>
         </Grid>
     )
 }
