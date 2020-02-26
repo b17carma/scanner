@@ -4,14 +4,19 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {useHistory} from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Paper from "@material-ui/core/Paper";
+import {Box, Container} from "@material-ui/core";
 
 export default function ScanResult(props) {
 
     const history = useHistory();
 
     const useStyles = makeStyles(theme => ({
+        root: {
+            padding: theme.spacing(1)
+        },
         button: {
-            margin: theme.spacing(1)
+            marginRight: theme.spacing(1)
         }
     }));
 
@@ -28,7 +33,7 @@ export default function ScanResult(props) {
                 status: status
             })
         }).then(() => {
-            history.push("/equipment/"  + props.match.params.equipmentId + "/" + props.match.params.partId)
+            history.push("/equipment/" + props.match.params.equipmentId + "/" + props.match.params.partId)
         })
     }
 
@@ -48,14 +53,18 @@ export default function ScanResult(props) {
     const classes = useStyles();
 
     return (
-        <Grid container justify="center">
+        <Box>
             <img src={"/img/" + part.image} alt="Part Preview" height="200px" width="100%"/>
-            <Typography variant="h4" gutterBottom>
-                Is the part functioning normally?
-            </Typography>
-            <Button className={classes.button} variant="contained" onClick={() => sendResults(true)}>Yes</Button>
-            <Button className={classes.button} variant="contained" onClick={() => sendResults(false)}>No</Button>
-            <Button className={classes.button} variant="contained" onClick={() => history.goBack()}>Cancel</Button>
-        </Grid>
+            <Box className={classes.root}>
+                <Typography variant="h5" gutterBottom>
+                    Is the part functioning normally?
+                </Typography>
+            </Box>
+            <Box className={classes.root}>
+                <Button className={classes.button} variant="contained" onClick={() => sendResults(true)}>Yes</Button>
+                <Button className={classes.button} variant="contained" onClick={() => sendResults(false)}>No</Button>
+                <Button className={classes.button} variant="contained" onClick={() => history.push("/")}>Cancel</Button>
+            </Box>
+        </Box>
     )
 }
