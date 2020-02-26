@@ -26,8 +26,8 @@ export default function QrScanner() {
     return (
         <div>
             <QrReader
-                onError={() => handleError}
-                onScan={() => handleScan}
+                onError={handleError}
+                onScan={handleScan}
                 style={previewStyle}
             />
             <p>Value: {value}</p>
