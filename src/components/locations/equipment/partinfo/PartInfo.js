@@ -16,6 +16,7 @@ import Box from "@material-ui/core/Box";
 import {Link} from "react-router-dom";
 import { format } from 'date-fns'
 import {green, red} from "@material-ui/core/colors";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -83,7 +84,7 @@ export default function PartInfo(props) {
     if (loading) {
         return (
             <div>
-                TODO
+                <Skeleton variant="rect" width="100%" height={400} />
             </div>
         )
     } else {

@@ -2,7 +2,7 @@ import React from 'react';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Routes from "../routing/Routes";
-import BottomNav from "../navigation/bottomnav/BottomNav";
+import BottomNav from "../navigation/BottomNav";
 
 function App() {
 
