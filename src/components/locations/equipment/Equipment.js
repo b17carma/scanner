@@ -69,7 +69,6 @@ export default function Equipment() {
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
-
                     </Card>
                 ))}
             </Container>
