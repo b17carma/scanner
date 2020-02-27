@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function PartList(props) {
     const [equipment, setEquipment] = React.useState({});
-    const [scans, setScans] = React.useState([]);
+    const [parts, setParts] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
@@ -41,37 +41,23 @@ export default function PartList(props) {
             setLoading(false);
         }
 
-        async function fetchScanInfo() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.match.params.equipmentId);
+        async function fetchPartList() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.match.params.equipmentId);
             const data = await res.json();
 
-            setScans(data);
+            setParts(data);
+            setLoading(false);
         }
 
         fetchEquipmentInfo();
-        fetchScanInfo();
+        fetchPartList();
 
         console.log("Fetched equipment & part info");
     }, [props.match.params.equipmentId]);
 
     const classes = useStyles();
 
-    function isToday(inputDate) {
-        return new Date(inputDate).setHours(0, 0, 0, 0) === new Date().setHours(0, 0, 0, 0);
-    }
-
-    function scanStatus(part) {
-        const filteredScans = scans.filter(function (scan) {
-            return scan.partId === part._id && isToday(scan.time);
-        });
-
-        if (filteredScans.length === 0)
-            return 2;
-
-        return filteredScans[0].status ? 0 : 1;
-    }
-
-    const PartIcon = (props) => {
+    /*const PartIcon = (props) => {
         const status = scanStatus(props.part);
 
         return (
@@ -79,6 +65,14 @@ export default function PartList(props) {
                 {status === 0 ? <CheckIcon style={{color: green[500]}}/> : status === 1 ?
                     <WarningIcon style={{color: red[500]}}/> : <AlarmIcon/>}
             </ListItemIcon>
+        )
+    };*/
+
+    const PartIcon = (props) => {
+        return (
+            <div>
+                TODO
+            </div>
         )
     };
 
@@ -109,7 +103,7 @@ export default function PartList(props) {
                     </CardContent>
                 </Card>
                 <List className={classes.root}>
-                    {equipment.parts.map((part, i) => (
+                    {parts.map((part, i) => (
                         <ListItem key={i} button component={Link}
                                   to={"/equipment/" + props.match.params.equipmentId + "/" + part._id}>
                             <PartIcon part={part}/>

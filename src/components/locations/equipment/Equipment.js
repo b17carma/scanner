@@ -29,7 +29,7 @@ export default function Equipment() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchEquipmentData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/equipment");
 
             res.json().then((res) => {
@@ -38,8 +38,9 @@ export default function Equipment() {
             }).catch(console.log)
         }
 
-        fetchData();
-        console.log("Fetched data")
+        fetchEquipmentData();
+
+        console.log("Fetched equipment data");
     }, []);
 
     if (loading) {
