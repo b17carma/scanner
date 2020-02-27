@@ -83,7 +83,7 @@ export default function PartList(props) {
                         </Typography>
                     </CardContent>
                 </Paper>
-                <Container className={classes.textContainer}>
+                <Container maxWidth="xl" className={classes.textContainer}>
                     <Typography variant="overline" display="block">
                         Components
                     </Typography>
