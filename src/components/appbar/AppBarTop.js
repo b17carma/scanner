@@ -9,8 +9,10 @@ import {useHistory, withRouter} from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import routes from "../routing/Routes";
 import ProfileButton from "./ProfileButton";
+import {addArticle} from "../../redux/actions";
+import {connect} from "react-redux";
 
-const styles = (theme) => ({
+const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
     },
@@ -20,45 +22,39 @@ const styles = (theme) => ({
     title: {
         flexGrow: 1,
     },
-});
+}));
 
-class AppBarTop extends React.Component {
 
-    activeRoute() {
-        return routes.find(route => route.path === ("/" + this.props.location.pathname.split("/")[1]));
-    }
+function AppBarTop(props) {
+    const activeRoute = routes.find(route => route.path === ("/" + props.location.pathname.split("/")[1]));
+    const classes = useStyles();
 
-    render() {
-        const {classes} = this.props;
-        const activeRoute = this.activeRoute();
+    const RenderBackIcon = () => {
+        if (props.location.pathname.split("/").length > 2) {
+            return (
+                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
+                            onClick={() => props.history.goBack()}>
+                    <BackIcon/>
+                </IconButton>
+            )
+        } else {
+            return null
+        }
+    };
 
-        const RenderBackIcon = () => {
-            if (this.props.location.pathname.split("/").length > 2) {
-                return (
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"
-                                onClick={() => this.props.history.goBack()}>
-                        <BackIcon/>
-                    </IconButton>
-                )
-            } else {
-                return null
-            }
-        };
-
-        return (
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <RenderBackIcon/>
-                        <Typography variant="h6" className={classes.title}>
-                            {activeRoute.barName}
-                        </Typography>
-                        <ProfileButton/>
-                    </Toolbar>
-                </AppBar>
-            </div>
-        );
-    }
+    return (
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                    <RenderBackIcon/>
+                    <Typography variant="h6" className={classes.title}>
+                        {activeRoute.barName}
+                    </Typography>
+                    <ProfileButton/>
+                </Toolbar>
+            </AppBar>
+        </div>
+    );
 }
 
-export default withRouter(withStyles(styles)(AppBarTop));
+export default withRouter(AppBarTop);

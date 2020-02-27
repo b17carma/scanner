@@ -1,6 +1,18 @@
-import {combineReducers} from 'redux';
+import {ADD_TEST} from "../constants/action-types";
 
-const rootReducer = combineReducers({ //TODO
-});
+const initialState = {
+    articles: []
+};
+
+function rootReducer(state = initialState, action) {
+    if (action.type === ADD_TEST) {
+        console.log("oh lawd");
+
+        return Object.assign({}, state, {
+            articles: state.articles.concat(action.payload)
+        });
+    }
+    return state;
+}
 
 export default rootReducer;
