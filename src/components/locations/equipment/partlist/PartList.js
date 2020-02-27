@@ -57,7 +57,14 @@ export default function PartList(props) {
 
     const classes = useStyles();
 
-    /*const PartIcon = (props) => {
+    function scanStatus(part) {
+        if (!part.hasOwnProperty('lastScan'))
+            return 2;
+
+        return part.lastScan.status ? 0 : 1;
+    }
+
+    const PartIcon = (props) => {
         const status = scanStatus(props.part);
 
         return (
@@ -65,14 +72,6 @@ export default function PartList(props) {
                 {status === 0 ? <CheckIcon style={{color: green[500]}}/> : status === 1 ?
                     <WarningIcon style={{color: red[500]}}/> : <AlarmIcon/>}
             </ListItemIcon>
-        )
-    };*/
-
-    const PartIcon = (props) => {
-        return (
-            <div>
-                TODO
-            </div>
         )
     };
 
