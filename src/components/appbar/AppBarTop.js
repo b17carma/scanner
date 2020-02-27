@@ -47,7 +47,7 @@ class AppBarTop extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar position="static">
-                    <Toolbar>
+                    <Toolbar variant="dense">
                         <RenderBackIcon/>
                         <Typography variant="h6" className={classes.title}>
                             {activeRoute.barName}

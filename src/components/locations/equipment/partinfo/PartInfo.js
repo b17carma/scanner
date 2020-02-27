@@ -5,19 +5,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import {Container} from "@material-ui/core";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import CheckIcon from '@material-ui/icons/Check';
-import WarningIcon from '@material-ui/icons/Warning';
-import ListItemText from "@material-ui/core/ListItemText";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import {Link} from "react-router-dom";
-import {format} from 'date-fns'
-import {green, red} from "@material-ui/core/colors";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Card from "@material-ui/core/Card";
+import ScanList from "./ScanList";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -65,20 +59,6 @@ export default function PartInfo(props) {
         console.log("Fetched part & scan data");
     }, [props.match.params.equipmentId, props.match.params.partId]);
 
-    function scanList() {
-        return (
-            scans.slice(0, 5).map((scan, i) => (
-                <ListItem key={i}>
-                    <ListItemIcon>
-                        {scan.status ? <CheckIcon style={{color: green[500]}}/> :
-                            <WarningIcon style={{color: red[500]}}/>}
-                    </ListItemIcon>
-                    <ListItemText id={i} primary={format(new Date(scan.time), 'dd/MM/yyyy HH:mm:ss')}/>
-                </ListItem>
-            ))
-        )
-    }
-
     const classes = useStyles();
 
     if (loading) {
@@ -118,7 +98,7 @@ export default function PartInfo(props) {
                         </Typography>
                     </Container>
                     <List className={classes.list}>
-                        {scanList()}
+                        <ScanList scans={scans}/>
                     </List>
                 </Paper>
             </Box>
