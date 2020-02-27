@@ -4,9 +4,6 @@ import Button from "@material-ui/core/Button";
 import {useHistory} from "react-router-dom";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Box, Container} from "@material-ui/core";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
 
 export default function ScanResult(props) {
 

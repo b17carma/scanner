@@ -6,7 +6,6 @@ import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
 import {Pie, PieChart} from "recharts";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
-import CalendarHeatmap from "react-calendar-heatmap";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -19,9 +18,6 @@ const useStyles = makeStyles(theme => ({
     },
     alert: {
         marginBottom: theme.spacing(1)
-    },
-    heatmap: {
-        height: 250
     }
 }));
 
