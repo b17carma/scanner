@@ -12,15 +12,19 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import ListItemText from "@material-ui/core/ListItemText";
 import PartIcon from "./PartIcon";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
-        margin: 0
     },
     media: {
         height: "200px"
-    }
+    },
+    textContainer: {
+        marginTop: theme.spacing(1)
+    },
 }));
 
 export default function PartList(props) {
@@ -67,7 +71,7 @@ export default function PartList(props) {
     } else {
         return (
             <Box>
-                <Card>
+                <Paper variant="outlined">
                     <CardMedia
                         className={classes.media}
                         image={"/img/" + equipment.image}
@@ -78,7 +82,12 @@ export default function PartList(props) {
                             {equipment.identifier}
                         </Typography>
                     </CardContent>
-                </Card>
+                </Paper>
+                <Container maxWidth="xl" className={classes.textContainer}>
+                    <Typography variant="overline" display="block">
+                        Components
+                    </Typography>
+                </Container>
                 <List className={classes.root}>
                     {parts.map((part, i) => (
                         <ListItem key={i} button component={Link}

@@ -6,6 +6,7 @@ import Home from "../locations/home/Home";
 import PartList from "../locations/equipment/partlist/PartList";
 import PartInfo from "../locations/equipment/partinfo/PartInfo";
 import ScanResult from "../locations/scan/ScanResult";
+import Login from "../auth/login/Login";
 
 const Routes = [
     {
@@ -35,6 +36,12 @@ const Routes = [
         barName: 'Analytics',
         icon: AssessmentIcon,
         component: Analytics
+    },
+    {
+        display: false,
+        path: '/login',
+        barName: 'Login',
+        component: Login
     },
     {
         display: false,

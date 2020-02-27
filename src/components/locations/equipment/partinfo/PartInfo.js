@@ -15,7 +15,6 @@ import ScanList from "./ScanList";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        marginTop: theme.spacing(1),
         marginBottom: theme.spacing(8)
     },
     media: {
@@ -75,7 +74,7 @@ export default function PartInfo(props) {
     } else {
         return (
             <Box className={classes.root}>
-                <Card className={classes.paper} variant="outlined">
+                <Paper className={classes.paper} variant="outlined">
                     <CardMedia
                         className={classes.media}
                         image={"/img/" + part.image}
@@ -90,17 +89,15 @@ export default function PartInfo(props) {
                         </Typography>
                         <Button component={Link} to={"/scan"} variant="contained">Scan now</Button>
                     </CardContent>
-                </Card>
-                <Paper>
-                    <Container>
-                        <Typography variant="h6" component="h1">
-                            Recent scans
-                        </Typography>
-                    </Container>
-                    <List className={classes.list}>
-                        <ScanList scans={scans}/>
-                    </List>
                 </Paper>
+                <Container maxWidth="xl" className={classes.textContainer}>
+                    <Typography variant="overline" display="block">
+                        Recent scans
+                    </Typography>
+                </Container>
+                <List className={classes.list}>
+                    <ScanList scans={scans}/>
+                </List>
             </Box>
         )
     }

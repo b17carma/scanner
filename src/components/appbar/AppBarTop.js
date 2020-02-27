@@ -8,6 +8,7 @@ import BackIcon from '@material-ui/icons/ArrowBack';
 import {useHistory, withRouter} from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import routes from "../routing/Routes";
+import ProfileButton from "./ProfileButton";
 
 const styles = (theme) => ({
     root: {
@@ -47,11 +48,12 @@ class AppBarTop extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar position="static">
-                    <Toolbar variant="dense">
+                    <Toolbar>
                         <RenderBackIcon/>
                         <Typography variant="h6" className={classes.title}>
                             {activeRoute.barName}
                         </Typography>
+                        <ProfileButton/>
                     </Toolbar>
                 </AppBar>
             </div>
