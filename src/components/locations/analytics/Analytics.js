@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -18,12 +18,26 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const data = [
-    {name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-    {name: 'Group C', value: 300}, {name: 'Group D', value: 200},
-];
+export default function Analytics(props) {
+    const [scans, setScans] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
 
-export default function Analytics() {
+    useEffect(() => {
+        async function fetchScanData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/scans");
+            const data = await res.json();
+            setScans(data);
+            setLoading(false);
+        }
+        fetchScanData();
+
+        console.log("Fetched scan data");
+    }, []);
+
+    const chartData = {
+
+    };
+
     const classes = useStyles();
 
     return (
@@ -40,7 +54,7 @@ export default function Analytics() {
                     <div style={{width: '100%', height: 300}}>
                         <ResponsiveContainer>
                             <PieChart>
-                                <Pie dataKey="value" data={data} fill="#8884d8" label/>
+                                <Pie dataKey="value" data={scans} fill="#8884d8" label/>
                             </PieChart>
                         </ResponsiveContainer>
                     </div>
