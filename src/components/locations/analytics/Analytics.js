@@ -4,11 +4,13 @@ import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import ResponsivePie from "nivo/lib/components/charts/pie/ResponsivePie";
 import {green, red} from "@material-ui/core/colors";
+import moment from "moment";
+import {ResponsiveCalendar} from "nivo";
 
 const useStyles = makeStyles(theme => ({
     root: {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(8)
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(8)
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -16,25 +18,35 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         height: 300,
+        marginBottom: theme.spacing(1)
     },
     chart: {
         margin: theme.spacing(1)
     }
 }));
 
+
 export default function Analytics(props) {
     const [overall, setOverall] = React.useState([]);
+    const [calendar, setCalendar] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchScanData() {
+        async function fetchStatData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/stats");
             const data = await res.json();
             setOverall(data);
             setLoading(false);
         }
 
-        fetchScanData();
+        async function fetchCalendarData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/calendar");
+            const data = await res.json();
+            setCalendar(data);
+        }
+
+        fetchStatData();
+        fetchCalendarData();
 
         console.log("Fetched scan data");
     }, []);
@@ -75,6 +87,9 @@ export default function Analytics(props) {
                         "left": 40
                     }}
                 />
+            </Paper>
+            <Paper className={classes.paper}>
+                {calendar}
             </Paper>
         </Container>
     );
