@@ -23,7 +23,6 @@ export default function QrScanner() {
 
     function handleScan(data) {
         if (data) {
-            console.log()
             if (!data.includes(";")) {
                 setError(true);
                 return;

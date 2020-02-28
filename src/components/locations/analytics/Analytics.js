@@ -3,6 +3,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import ResponsivePie from "nivo/lib/components/charts/pie/ResponsivePie";
+import {green, red} from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -43,13 +44,13 @@ export default function Analytics(props) {
             id: 'Normal',
             label: 'Normal',
             value: overall.successCount,
-            color: 'hsl(121,74%,49%)'
+            color: green[500]
         },
         {
             id: 'Faults',
             label: 'Faults',
             value: overall.failureCount,
-            color: 'hsl(359,72%,50%)'
+            color: red[500]
         }
     ];
 
@@ -66,11 +67,12 @@ export default function Analytics(props) {
                 <ResponsivePie
                     data={data}
                     animate={true}
+                    colorBy={d => d.color}
                     margin={{
-                        "top": 20,
-                        "right": 20,
-                        "bottom": 20,
-                        "left": 20
+                        "top": 40,
+                        "right": 40,
+                        "bottom": 40,
+                        "left": 40
                     }}
                 />
             </Paper>
