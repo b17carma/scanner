@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function QrScanner() {
     const history = useHistory();
-    const [error, setError] = useState(true);
+    const [error, setError] = useState(false);
 
     function handleScan(data) {
         if (data) {
