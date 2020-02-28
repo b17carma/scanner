@@ -15,7 +15,7 @@ const ScanList = (props) => {
                     {scan.status ? <CheckIcon style={{color: green[500]}}/> :
                         <WarningIcon style={{color: red[500]}}/>}
                 </ListItemIcon>
-                <ListItemText id={i} primary={moment(scan.time).format('dd/MM/yyyy HH:mm:ss')}/>
+                <ListItemText id={i} primary={moment(scan.time).format('DD/MM/YYYY HH:mm:ss')}/>
             </ListItem>
         ))
     )

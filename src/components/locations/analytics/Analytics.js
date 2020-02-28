@@ -43,6 +43,7 @@ export default function Analytics(props) {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/calendar");
             const data = await res.json();
             setCalendar(data);
+            console.log(data)
         }
 
         fetchStatData();
@@ -89,7 +90,7 @@ export default function Analytics(props) {
                 />
             </Paper>
             <Paper className={classes.paper}>
-                {calendar}
+                {}
             </Paper>
         </Container>
     );
