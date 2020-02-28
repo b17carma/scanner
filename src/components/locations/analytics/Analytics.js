@@ -69,7 +69,7 @@ export default function Analytics(props) {
 
     const classes = useStyles();
 
-    if (loading)
+    if (loading || calendar.length === 0)
         return (
             <div/>
         );
@@ -90,7 +90,29 @@ export default function Analytics(props) {
                 />
             </Paper>
             <Paper className={classes.paper}>
-                {}
+                <ResponsiveCalendar
+                    data={calendar}
+                    from={moment().startOf('month').format('YYYY-MM-DD')}
+                    to={moment().endOf('month').format('YYYY-MM-DD')}
+                    emptyColor="#eeeeee"
+                    margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+                    yearSpacing={40}
+                    monthBorderColor="#ffffff"
+                    dayBorderWidth={2}
+                    dayBorderColor="#ffffff"
+                    legends={[
+                        {
+                            anchor: 'bottom-right',
+                            direction: 'row',
+                            translateY: 36,
+                            itemCount: 4,
+                            itemWidth: 42,
+                            itemHeight: 36,
+                            itemsSpacing: 14,
+                            itemDirection: 'right-to-left'
+                        }
+                    ]}
+                />
             </Paper>
         </Container>
     );

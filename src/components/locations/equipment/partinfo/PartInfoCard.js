@@ -23,7 +23,6 @@ export default function PartInfoCard(props) {
 
     return (
         <Card className={classes.paper} variant="outlined">
-            <CardActionArea>
                 <CardMedia
                     className={classes.media}
                     image={"/img/" + props.part.image}
@@ -37,7 +36,6 @@ export default function PartInfoCard(props) {
                         {props.part.description}
                     </Typography>
                 </CardContent>
-            </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary" component={Link} to={"/scan"}>Scan now</Button>
             </CardActions>
