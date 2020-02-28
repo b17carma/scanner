@@ -14,13 +14,12 @@ import ListItemText from "@material-ui/core/ListItemText";
 import PartIcon from "./PartIcon";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
+import PartListSkeleton from "./PartListSkeleton";
+import EquipmentInfoPaper from "./EquipmentInfoPaper";
 
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
-    },
-    media: {
-        height: "200px"
     },
     textContainer: {
         marginTop: theme.spacing(1)
@@ -59,30 +58,12 @@ export default function PartList(props) {
 
     if (loading) {
         return (
-            [...new Array(3)].map((item, index) => (
-                    <ListItem key={index} button>
-                        <ListItemAvatar>
-                            <Skeleton variant="circle" width={40} height={40}/>
-                        </ListItemAvatar>
-                        <Skeleton variant="text" width={100}/>
-                    </ListItem>
-                )
-            ));
+            <PartListSkeleton/>
+        );
     } else {
         return (
             <Box>
-                <Paper variant="outlined">
-                    <CardMedia
-                        className={classes.media}
-                        image={"/img/" + equipment.image}
-                        title="Equipment Overview"
-                    />
-                    <CardContent>
-                        <Typography variant="h5" component="h2">
-                            {equipment.identifier}
-                        </Typography>
-                    </CardContent>
-                </Paper>
+                <EquipmentInfoPaper equipment={equipment}/>
                 <Container maxWidth="xl" className={classes.textContainer}>
                     <Typography variant="overline" display="block">
                         Components

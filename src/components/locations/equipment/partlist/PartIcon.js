@@ -6,7 +6,7 @@ import AlarmIcon from "@material-ui/icons/Alarm";
 import React from "react";
 
 function scanStatus(part) {
-    if (!part.hasOwnProperty('lastScan'))
+    if (!part.hasOwnProperty('lastScan') || !part.lastScanToday)
         return 2;
 
     return part.lastScan.status ? 0 : 1;
