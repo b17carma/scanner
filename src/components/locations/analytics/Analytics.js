@@ -66,14 +66,13 @@ export default function Analytics(props) {
     return (
         <Container className={classes.root}>
             <Paper>
+
+            </Paper>
+            <Paper>
                 <div style={{ width: '100%', height: 300 }}>
                     <ResponsiveContainer>
                         <PieChart>
-                            <Pie
-                                data={data}
-                                fill="#8884d8"
-                                dataKey="value"
-                            >
+                            <Pie data={data} fill="#8884d8" dataKey="value" label>
                                 {
                                     data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
                                 }
