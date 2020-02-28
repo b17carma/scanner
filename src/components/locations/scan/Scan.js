@@ -1,8 +1,10 @@
-import React from 'react';
-import Paper from "@material-ui/core/Paper";
+import React, {useState} from "react";
+import QrReader from "react-qr-reader";
+import {useHistory} from "react-router-dom";
+import {Paper} from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import QrScanner from "../../qrreader/QrScanner";
 import Container from "@material-ui/core/Container";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -14,14 +16,43 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Scan() {
+export default function QrScanner() {
+
+    const history = useHistory();
+    const [error, setError] = useState(String.empty);
+
+    function handleScan(data) {
+        if (data) {
+            if (!data.contains(";")) {
+                setError("Unknown QR Code format");
+                return;
+            }
+
+            let equipmentPart = data.split(";");
+            history.push("/scan/" + equipmentPart[0] + "/" + equipmentPart[1]);
+        }
+    }
+
+    const previewStyle = {
+    };
+
+    const handleError = err => {
+        console.error(err);
+    };
+
     const classes = useStyles();
 
     return (
         <Container className={classes.root}>
+            {error ? <Alert severity="error">Error reading QR-Code, please try again.</Alert> : null}
             <Paper className={classes.paper}>
-                <QrScanner/>
+                <QrReader
+                    onError={handleError}
+                    onScan={handleScan}
+                    style={previewStyle}
+                />
             </Paper>
         </Container>
-    );
+
+    )
 }
