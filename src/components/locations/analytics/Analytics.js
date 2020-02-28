@@ -1,17 +1,9 @@
 import React, {useEffect} from "react";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import Typography from "@material-ui/core/Typography";
-import {ExpandMore as ExpandMoreIcon} from "@material-ui/icons"
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import {
-    PieChart, Pie, Sector, Cell, AreaChart,
-} from 'recharts';
-import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
-import {green, red} from "@material-ui/core/colors";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
+import ResponsivePie from "nivo/lib/components/charts/pie/ResponsivePie";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -22,6 +14,12 @@ const useStyles = makeStyles(theme => ({
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
     },
+    paper: {
+        height: 300,
+    },
+    chart: {
+        margin: theme.spacing(1)
+    }
 }));
 
 export default function Analytics(props) {
@@ -41,45 +39,41 @@ export default function Analytics(props) {
         console.log("Fetched scan data");
     }, []);
 
-    const COLORS = [green[500], red[500]];
-
-    const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent, index,}) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-        return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        );
-    };
-
     const data = [
-        {name: 'Normal Recorded', value: overall.successCount},
-        {name: 'Faults Recorded', value: overall.failureCount},
+        {
+            id: 'Normal',
+            label: 'Normal',
+            value: overall.successCount,
+            color: 'hsl(121,74%,49%)'
+        },
+        {
+            id: 'Faults',
+            label: 'Faults',
+            value: overall.failureCount,
+            color: 'hsl(359,72%,50%)'
+        }
     ];
 
     const classes = useStyles();
 
+    if (loading)
+        return (
+            <div/>
+        );
+
     return (
         <Container className={classes.root}>
-            <Paper>
-
-            </Paper>
-            <Paper>
-                <div style={{ width: '100%', height: 300 }}>
-                    <ResponsiveContainer>
-                        <PieChart>
-                            <Pie data={data} fill="#8884d8" dataKey="value" label>
-                                {
-                                    data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-                                }
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
+            <Paper className={classes.paper}>
+                <ResponsivePie
+                    data={data}
+                    animate={true}
+                    margin={{
+                        "top": 20,
+                        "right": 20,
+                        "bottom": 20,
+                        "left": 20
+                    }}
+                />
             </Paper>
         </Container>
     );

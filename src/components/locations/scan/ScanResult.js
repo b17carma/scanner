@@ -54,7 +54,7 @@ export default function ScanResult(props) {
 
     return (
         <Box className={classes.root}>
-            <img src={"/img/" + part.image} alt="Part Preview" height="200px" width="100%"/>
+            <img src={"img/" + part.image} alt="Part Preview" height="200px" width="100%"/>
             <Box>
                 <Typography variant="h5">
                     Is this component functioning normally?

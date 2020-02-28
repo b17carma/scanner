@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: theme.spacing(8)
     },
     media: {
-        height: "200px"
+        height: 200
     },
     paper: {
         marginBottom: theme.spacing(1)

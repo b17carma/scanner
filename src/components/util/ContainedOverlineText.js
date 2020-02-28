@@ -13,7 +13,7 @@ export default function ContainedOverlineText(props) {
     const classes = useStyles();
 
     return (
-        <Container maxWidth="xl" className={classes}>
+        <Container maxWidth="xl" className={classes.textContainer}>
             <Typography variant="overline" display="block">
                {props.text}
             </Typography>

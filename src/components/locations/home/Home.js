@@ -1,9 +1,6 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
-import {Pie, PieChart} from "recharts";
 import Alert from "@material-ui/lab/Alert";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 
@@ -35,15 +32,6 @@ export default function Home() {
                 <AlertTitle>Notice</AlertTitle>
                 Not all equipment has been scanned yet today
             </Alert>
-            <Paper className={classes.paper}>
-                <div style={{width: '100%', height: 300}}>
-                    <ResponsiveContainer>
-                        <PieChart>
-                            <Pie dataKey="value" data={data} fill="#8884d8" label/>
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div>
-            </Paper>
         </Container>
     )
 }
