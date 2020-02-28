@@ -19,12 +19,12 @@ const useStyles = makeStyles(theme => ({
 export default function QrScanner() {
 
     const history = useHistory();
-    const [error, setError] = useState(String.empty);
+    const [error, setError] = useState(false);
 
     function handleScan(data) {
         if (data) {
             if (!data.contains(";")) {
-                setError("Unknown QR Code format");
+                setError(true);
                 return;
             }
 
