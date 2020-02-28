@@ -9,9 +9,15 @@ import {
     PieChart, Pie, Sector, Cell, AreaChart,
 } from 'recharts';
 import ResponsiveContainer from "recharts/lib/component/ResponsiveContainer";
+import {green, red} from "@material-ui/core/colors";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
-    root: {},
+    root: {
+      marginTop: theme.spacing(1),
+      marginBottom: theme.spacing(8)
+    },
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontWeight: theme.typography.fontWeightRegular,
@@ -19,62 +25,63 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Analytics(props) {
-    const [scans, setScans] = React.useState([]);
+    const [overall, setOverall] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
         async function fetchScanData() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/scans");
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/stats");
             const data = await res.json();
-            setScans(data);
+            setOverall(data);
             setLoading(false);
         }
+
         fetchScanData();
 
         console.log("Fetched scan data");
     }, []);
 
-    const chartData = {
+    const COLORS = [green[500], red[500]];
 
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, percent, index,}) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+        return (
+            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+                {`${(percent * 100).toFixed(0)}%`}
+            </text>
+        );
     };
+
+    const data = [
+        {name: 'Normal Recorded', value: overall.successCount},
+        {name: 'Faults Recorded', value: overall.failureCount},
+    ];
 
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <ExpansionPanel>
-                <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon/>}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                >
-                    <Typography className={classes.heading}>24/02/2020</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <div style={{width: '100%', height: 300}}>
-                        <ResponsiveContainer>
-                            <PieChart>
-                                <Pie dataKey="value" data={scans} fill="#8884d8" label/>
-                            </PieChart>
-                        </ResponsiveContainer>
-                    </div>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-            <ExpansionPanel>
-                <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon/>}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                >
-                    <Typography className={classes.heading}>23/02/2020</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                        sit amet blandit leo lobortis eget.
-                    </Typography>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-        </div>
+        <Container className={classes.root}>
+            <Paper>
+                <div style={{ width: '100%', height: 300 }}>
+                    <ResponsiveContainer>
+                        <PieChart>
+                            <Pie
+                                data={data}
+                                fill="#8884d8"
+                                dataKey="value"
+                            >
+                                {
+                                    data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+                                }
+                            </Pie>
+                        </PieChart>
+                    </ResponsiveContainer>
+                </div>
+            </Paper>
+        </Container>
     );
 }

@@ -8,9 +8,9 @@ import BackIcon from '@material-ui/icons/ArrowBack';
 import {useHistory, withRouter} from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import routes from "../routing/Routes";
-import ProfileButton from "./ProfileButton";
 import {addArticle} from "../../redux/actions";
 import {connect} from "react-redux";
+import ProfileButton from "./ProfileButton";
 
 const useStyles = makeStyles(theme => ({
     root: {

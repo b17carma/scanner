@@ -56,8 +56,8 @@ export default function ScanResult(props) {
         <Box className={classes.root}>
             <img src={"/img/" + part.image} alt="Part Preview" height="200px" width="100%"/>
             <Box>
-                <Typography variant="h5" gutterBottom>
-                    Is this part functioning normally?
+                <Typography variant="h5">
+                    Is this component functioning normally?
                 </Typography>
                 <Button className={classes.button} variant="contained" onClick={() => sendResults(true)}>Yes</Button>
                 <Button className={classes.button} variant="contained" onClick={() => sendResults(false)}>No</Button>

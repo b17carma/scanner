@@ -6,7 +6,6 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
     if (action.type === ADD_TEST) {
-        console.log("oh lawd");
 
         return Object.assign({}, state, {
             articles: state.articles.concat(action.payload)

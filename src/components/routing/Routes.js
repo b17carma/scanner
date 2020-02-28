@@ -1,4 +1,10 @@
-import {Assessment as AssessmentIcon, Scanner as ScannerIcon, Build as BuildIcon, House as HomeIcon} from "@material-ui/icons";
+import {
+    Assessment as AssessmentIcon,
+    Scanner as ScannerIcon,
+    Build as BuildIcon,
+    House as HomeIcon,
+    Person as PersonIcon
+} from "@material-ui/icons";
 import Equipment from "../locations/equipment/Equipment";
 import Scan from "../locations/scan/Scan";
 import Analytics from "../locations/analytics/Analytics";
@@ -7,6 +13,7 @@ import PartList from "../locations/equipment/partlist/PartList";
 import PartInfo from "../locations/equipment/partinfo/PartInfo";
 import ScanResult from "../locations/scan/ScanResult";
 import Login from "../auth/login/Login";
+import Profile from "../locations/profile/profile";
 
 const Routes = [
     {
@@ -22,6 +29,13 @@ const Routes = [
         barName: 'Equipment',
         icon: BuildIcon,
         component: Equipment
+    },
+    {
+        display: false,
+        path: '/profile',
+        barName: 'Profile',
+        icon: PersonIcon,
+        component: Profile
     },
     {
         display: true,
