@@ -12,18 +12,19 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         padding: theme.spacing(1),
+        marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1)
     }
 }));
 
 export default function QrScanner() {
-
     const history = useHistory();
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(true);
 
     function handleScan(data) {
         if (data) {
-            if (!data.contains(";")) {
+            console.log()
+            if (!data.includes(";")) {
                 setError(true);
                 return;
             }
@@ -32,9 +33,6 @@ export default function QrScanner() {
             history.push("/scan/" + equipmentPart[0] + "/" + equipmentPart[1]);
         }
     }
-
-    const previewStyle = {
-    };
 
     const handleError = err => {
         console.error(err);
@@ -46,11 +44,7 @@ export default function QrScanner() {
         <Container className={classes.root}>
             {error ? <Alert severity="error">Error reading QR-Code, please try again.</Alert> : null}
             <Paper className={classes.paper}>
-                <QrReader
-                    onError={handleError}
-                    onScan={handleScan}
-                    style={previewStyle}
-                />
+                <QrReader onError={handleError} onScan={handleScan}/>
             </Paper>
         </Container>
 
