@@ -20,6 +20,10 @@ const useStyles = makeStyles(theme => ({
         height: 300,
         marginBottom: theme.spacing(1)
     },
+    longPaper: {
+        height: 1200,
+        marginBottom: theme.spacing(1)
+    },
     chart: {
         margin: theme.spacing(1)
     }
@@ -89,12 +93,13 @@ export default function Analytics(props) {
                     }}
                 />
             </Paper>
-            <Paper className={classes.paper}>
+            <Paper className={classes.longPaper}>
                 <ResponsiveCalendar
                     data={calendar}
                     from={moment().startOf('month').format('YYYY-MM-DD')}
                     to={moment().endOf('month').format('YYYY-MM-DD')}
                     emptyColor="#eeeeee"
+                    direction="vertical"
                     margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
                     yearSpacing={40}
                     monthBorderColor="#ffffff"
