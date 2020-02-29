@@ -6,6 +6,7 @@ import ResponsivePie from "nivo/lib/components/charts/pie/ResponsivePie";
 import {green, red} from "@material-ui/core/colors";
 import moment from "moment";
 import {ResponsiveCalendar} from "nivo";
+import Calendar from "nivo/lib/components/charts/calendar/Calendar";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -18,11 +19,13 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         height: 300,
-        marginBottom: theme.spacing(1)
+        marginBottom: theme.spacing(1),
     },
-    longPaper: {
-        height: 1200,
-        marginBottom: theme.spacing(1)
+    calendarPaper: {
+        height: 250,
+        marginBottom: theme.spacing(1),
+        overflow: 'auto',
+        overflowY: 'hidden'
     },
     chart: {
         margin: theme.spacing(1)
@@ -86,37 +89,26 @@ export default function Analytics(props) {
                     animate={true}
                     colorBy={d => d.color}
                     margin={{
-                        "top": 40,
-                        "right": 40,
-                        "bottom": 40,
-                        "left": 40
+                        "top": 45,
+                        "right": 45,
+                        "bottom": 45,
+                        "left": 45
                     }}
                 />
             </Paper>
-            <Paper className={classes.longPaper}>
+            <Paper className={classes.calendarPaper}>
                 <ResponsiveCalendar
                     data={calendar}
                     from={moment().startOf('month').format('YYYY-MM-DD')}
                     to={moment().endOf('month').format('YYYY-MM-DD')}
                     emptyColor="#eeeeee"
-                    direction="vertical"
-                    margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
+                    width={1200}
+                    margin={{top: 50, right: 50, left: 50}}
                     yearSpacing={40}
                     monthBorderColor="#ffffff"
                     dayBorderWidth={2}
                     dayBorderColor="#ffffff"
-                    legends={[
-                        {
-                            anchor: 'bottom-right',
-                            direction: 'row',
-                            translateY: 36,
-                            itemCount: 4,
-                            itemWidth: 42,
-                            itemHeight: 36,
-                            itemsSpacing: 14,
-                            itemDirection: 'right-to-left'
-                        }
-                    ]}
+
                 />
             </Paper>
         </Container>
