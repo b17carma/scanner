@@ -57,7 +57,7 @@ export default function EquipmentAnalytics() {
                         <CardActionArea component={Link} to={"/analytics/equipment/" + equipment._id}>
                             <CardMedia
                                 className={classes.media}
-                                image={"img/" + equipment.image}
+                                image={"/img/" + equipment.image}
                                 title="Equipment Preview"
                             />
                             <CardContent>
