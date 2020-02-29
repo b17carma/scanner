@@ -1,5 +1,5 @@
-import { ADD_TEST } from "../constants/action-types";
+import { SET_CURRENT_EQUIPMENT } from "../constants/action-types";
 
-export function addTest(payload) {
-    return { type: ADD_TEST, payload };
+export function setCurrentEquipment(payload) {
+    return { type: SET_CURRENT_EQUIPMENT, payload };
 }

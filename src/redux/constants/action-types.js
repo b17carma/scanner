@@ -1,1 +1,1 @@
-export const ADD_TEST = "ADD_TEST";
+export const SET_CURRENT_EQUIPMENT = "SET_CURRENT_EQUIPMENT";

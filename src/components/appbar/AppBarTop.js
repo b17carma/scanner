@@ -5,11 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import BackIcon from '@material-ui/icons/ArrowBack';
-import {useHistory, withRouter} from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
+import {withRouter} from "react-router-dom";
 import routes from "../routing/Routes";
-import {addArticle} from "../../redux/actions";
-import {connect} from "react-redux";
 import ProfileButton from "./ProfileButton";
 
 const useStyles = makeStyles(theme => ({
