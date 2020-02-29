@@ -2,9 +2,11 @@ import React from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
 import ResponsivePie from "nivo/lib/components/charts/pie/ResponsivePie";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
-    paper: {
+    root: {
+        backgroundColor: theme.palette.background.paper,
         height: 300,
         marginBottom: theme.spacing(1),
     },
@@ -17,7 +19,7 @@ export default function PieView(props) {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.paper}>
+        <Box className={classes.root}>
             <ResponsivePie
                 data={props.data}
                 animate={true}
@@ -29,6 +31,6 @@ export default function PieView(props) {
                     "left": 45
                 }}
             />
-        </Paper>
+        </Box>
     )
 }

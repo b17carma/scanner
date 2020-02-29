@@ -2,10 +2,11 @@ import React from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {ResponsiveCalendar} from "nivo";
 import moment from "moment";
-import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
-    paper: {
+    root: {
+        backgroundColor: theme.palette.background.paper,
         height: 250,
         padding: theme.spacing(1),
         marginBottom: theme.spacing(1),
@@ -20,7 +21,7 @@ export default function CalendarView(props) {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.paper}>
+        <Box className={classes.root}>
             <ResponsiveCalendar
                 data={props.calendar}
                 from={moment().startOf('month').format('YYYY-MM-DD')}
@@ -34,6 +35,6 @@ export default function CalendarView(props) {
                 dayBorderColor="#ffffff"
 
             />
-        </Paper>
+        </Box>
     )
 }

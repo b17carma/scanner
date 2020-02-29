@@ -1,9 +1,10 @@
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Container from "@material-ui/core/Container";
 import {green, red} from "@material-ui/core/colors";
 import CalendarView from "./CalendarView";
 import PieView from "./PieView";
+import ContainedOverlineText from "../../../util/ContainedOverlineText";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -12,8 +13,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
-export default function OverallAnalytics(props) {
+export default function OverallAnalytics() {
     const [overall, setOverall] = React.useState([]);
     const [calendar, setCalendar] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
@@ -62,9 +62,11 @@ export default function OverallAnalytics(props) {
         );
 
     return (
-        <Container className={classes.root}>
+        <Box className={classes.root}>
+            <ContainedOverlineText text="Total scans"/>
             <PieView data={data}/>
+            <ContainedOverlineText text="Scan density"/>
             <CalendarView calendar={calendar}/>
-        </Container>
+        </Box>
     );
 }

@@ -83,6 +83,11 @@ const Routes = [
         display: false,
         path: '/analytics/equipment',
         component: EquipmentList
+    },
+    {
+        display: false,
+        path: '/analytics/equipment/:equipmentId',
+        component: EquipmentList
     }
 ];
 
