@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
     },
     calendarPaper: {
         height: 250,
+        padding: theme.spacing(1),
         marginBottom: theme.spacing(1),
         overflow: 'auto',
-        overflowY: 'hidden'
     },
     chart: {
         margin: theme.spacing(1)
@@ -103,7 +103,7 @@ export default function Analytics(props) {
                     to={moment().endOf('month').format('YYYY-MM-DD')}
                     emptyColor="#eeeeee"
                     width={1200}
-                    margin={{top: 50, right: 50, left: 50}}
+                    margin={{top: 45, right: 45, left: 45}}
                     yearSpacing={40}
                     monthBorderColor="#ffffff"
                     dayBorderWidth={2}
