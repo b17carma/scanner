@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function EquipmentAnalytics() {
+export default function EquipmentList() {
     const classes = useStyles();
 
     const [equipment, setEquipment] = useState([]);
