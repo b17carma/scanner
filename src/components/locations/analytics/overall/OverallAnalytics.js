@@ -63,9 +63,9 @@ export default function OverallAnalytics() {
 
     return (
         <Box className={classes.root}>
-            <ContainedOverlineText text="Total scans"/>
+            <ContainedOverlineText text="Total Scans"/>
             <PieView data={data}/>
-            <ContainedOverlineText text="Scan density"/>
+            <ContainedOverlineText text="Scan History"/>
             <CalendarView calendar={calendar}/>
         </Box>
     );

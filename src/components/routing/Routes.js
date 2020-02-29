@@ -16,6 +16,7 @@ import Login from "../auth/login/Login";
 import Profile from "../locations/profile/profile";
 import EquipmentList from "../locations/analytics/equipment/EquipmentList";
 import OverallAnalytics from "../locations/analytics/overall/OverallAnalytics";
+import EquipmentAnalytics from "../locations/analytics/equipment/EquipmentAnalytics";
 
 const Routes = [
     {
@@ -87,7 +88,7 @@ const Routes = [
     {
         display: false,
         path: '/analytics/equipment/:equipmentId',
-        component: EquipmentList
+        component: EquipmentAnalytics
     }
 ];
 
