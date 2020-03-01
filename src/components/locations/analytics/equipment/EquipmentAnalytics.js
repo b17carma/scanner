@@ -15,11 +15,11 @@ import Box from "@material-ui/core/Box";
 import ResponsiveLine from "nivo/lib/components/charts/line/ResponsiveLine";
 
 const useStyles = makeStyles(theme => ({
-    button: {
-        marginBottom: theme.spacing(1)
+    root: {
+        marginBottom: theme.spacing(8)
     },
     box: {
-        height: 400
+        height: 430
     }
 }));
 
@@ -47,8 +47,12 @@ export default function EquipmentAnalytics(props) {
         console.log("Fetched chart data");
     }, [props.match.params.equipmentId, startDate, endDate]);
 
-    const handleDateChange = date => {
-        console.log(date)
+    const handleStartDateChange = date => {
+        setStartDate(date);
+    };
+
+    const handleEndDateChange = date => {
+        setEndDate(date)
     };
 
     const classes = useStyles();
@@ -60,45 +64,65 @@ export default function EquipmentAnalytics(props) {
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Container>
-                <div>
-                    <KeyboardDatePicker
-                        margin="normal"
-                        id="start-date-picker"
-                        label="Start date"
-                        value={startDate}
-                        format="MM/dd/yyyy"
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
+            <Box className={classes.root}>
+                <Container>
+                    <div>
+                        <KeyboardDatePicker
+                            margin="normal"
+                            id="start-date-picker"
+                            label="Start date"
+                            value={startDate}
+                            format="MM/dd/yyyy"
+                            onChange={handleStartDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                    </div>
+                    <div>
+                        <KeyboardDatePicker
+                            margin="normal"
+                            id="end-date-picker"
+                            label="End date"
+                            value={endDate}
+                            format="MM/dd/yyyy"
+                            onChange={handleEndDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                    </div>
+                    <Divider/>
+                </Container>
+                <ContainedOverlineText text="Faulty scans by week"/>
+                <Box className={classes.box}>
+                    <ResponsiveLine
+                        data={[chartData]}
+                        margin={{ top: 5, right: 30, bottom: 50, left: 50 }}
+                        xScale={{ type: 'point' }}
+                        yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
+                        axisBottom={{
+                            orient: 'bottom',
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            legend: 'week',
+                            legendOffset: 36,
+                            legendPosition: 'center'
+                        }}
+                        axisLeft={{
+                            orient: 'left',
+                            tickSize: 5,
+                            tickPadding: 5,
+                            tickRotation: 0,
+                            legend: 'faults',
+                            legendOffset: -30,
+                            legendPosition: 'center'
                         }}
                     />
-                </div>
-                <div>
-                    <KeyboardDatePicker
-                        margin="normal"
-                        id="end-date-picker"
-                        label="End date"
-                        value={endDate}
-                        format="MM/dd/yyyy"
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
-                </div>
-                <Button className={classes.button} variant="outlined" color="primary">Search</Button>
-                <Divider/>
-            </Container>
-            <ContainedOverlineText text="Faulty scans by week"/>
-            <Box className={classes.box}>
-                <ResponsiveLine
-                    data={[chartData]}
-                    margin={{ top: 50, right: 10, bottom: 50, left: 60 }}
-                    xScale={{ type: 'point' }}
-                    yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-                />
+                </Box>
             </Box>
+
         </MuiPickersUtilsProvider>
     )
 }
