@@ -5,7 +5,7 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
-import DateFnsUtils from "@date-io/date-fns";
+import MomentUtils from "@date-io/moment";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -33,15 +33,17 @@ export default function EquipmentAnalytics(props) {
     const [chartData, setChartData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
 
-    async function fetchChartData() {
-        const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/scans/" + props.match.params.equipmentId + "/" + moment(startDate).format() + "/" + moment(endDate).format());
-        const data = await res.json();
 
-        setChartData(data);
-        setLoading(false);
-    }
 
     useEffect(() => {
+        async function fetchChartData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/scans/" + props.match.params.equipmentId + "/" + moment(startDate).format() + "/" + moment(endDate).format());
+            const data = await res.json();
+
+            setChartData(data);
+            setLoading(false);
+        }
+
         fetchChartData();
 
         console.log("Fetched chart data");
@@ -63,7 +65,7 @@ export default function EquipmentAnalytics(props) {
         );
 
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
             <Box className={classes.root}>
                 <Container>
                     <div>
@@ -72,7 +74,7 @@ export default function EquipmentAnalytics(props) {
                             id="start-date-picker"
                             label="Start date"
                             value={startDate}
-                            format="MM/dd/yyyy"
+                            format="MM/DD/YYYY"
                             onChange={handleStartDateChange}
                             KeyboardButtonProps={{
                                 'aria-label': 'change date',
@@ -85,7 +87,7 @@ export default function EquipmentAnalytics(props) {
                             id="end-date-picker"
                             label="End date"
                             value={endDate}
-                            format="MM/dd/yyyy"
+                            format="MM/DD/YYYY"
                             onChange={handleEndDateChange}
                             KeyboardButtonProps={{
                                 'aria-label': 'change date',
