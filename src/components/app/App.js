@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Routes from "../routing/Routes";
 import BottomNav from "../navigation/BottomNav";
 import AppBarTop from "../appbar/AppBarTop";
+import Error404 from "../locations/error/Error404";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
                         <Route exact path={prop.path} component={prop.component} key={key}/>
                     )
                 })}
+                <Route component={Error404} />
             </Switch>
             <BottomNav/>
         </BrowserRouter>

@@ -45,7 +45,7 @@ function AppBarTop(props) {
                 <Toolbar>
                     <RenderBackIcon/>
                     <Typography variant="h6" className={classes.title}>
-                        {activeRoute.barName}
+                        {activeRoute== null ? "Equipment Scanner" : activeRoute.barName}
                     </Typography>
                     <ProfileButton/>
                 </Toolbar>
