@@ -92,8 +92,8 @@ export default function ScanResult(props) {
                         Is this component functioning properly?
                     </Typography>
                     <Button variant="outlined" color="primary" className={classes.button} onClick={() => sendResults(true)}>Yes</Button>
-                    <Button variant="outlined" color="primary" className={classes.button} onClick={() => sendResults(false)}>No</Button>
-                    <Button variant="outlined" color="primary" className={classes.button} onClick={() => history.push("/")}>Cancel</Button>
+                    <Button variant="outlined" color="secondary" className={classes.button} onClick={() => sendResults(false)}>No</Button>
+                    <Button variant="outlined" className={classes.button} onClick={() => history.push("/")}>Cancel</Button>
                 </CardContent>
             </Card>
         </Box>
