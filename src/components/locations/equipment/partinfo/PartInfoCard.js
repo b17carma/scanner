@@ -28,7 +28,7 @@ export default function PartInfoCard(props) {
                     title="Part Overview"
                 />
                 <CardContent>
-                    <Typography variant="h5" component="h2">
+                    <Typography variant="h5" component="h2" gutterBottom >
                         {props.part.equipment.identifier} - {props.part.identifier}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
@@ -36,7 +36,9 @@ export default function PartInfoCard(props) {
                     </Typography>
                 </CardContent>
             <CardActions>
-                <Button size="small" color="primary" component={Link} to={"/scan"}>Scan now</Button>
+                <Button size="small" color="primary">
+                    Scan Now
+                </Button>
             </CardActions>
         </Card>
     )

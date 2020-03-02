@@ -8,11 +8,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import EquipmentCardSkeleton from "../../../skeleton/EquipmentCardSkeleton";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(8)
+        marginBottom: theme.spacing(8),
+        padding: theme.spacing(1)
     },
     card: {
         marginBottom: theme.spacing(1),
@@ -51,9 +52,9 @@ export default function EquipmentList() {
             ))
     } else {
         return (
-            <Container className={classes.root}>
+            <Box className={classes.root}>
                 {equipment.map((equipment, i) => (
-                    <Card className={classes.card} key={i}>
+                    <Card className={classes.card} key={i} variant="outlined">
                         <CardActionArea component={Link} to={"/analytics/equipment/" + equipment._id}>
                             <CardMedia
                                 className={classes.media}
@@ -71,7 +72,7 @@ export default function EquipmentList() {
                         </CardActionArea>
                     </Card>
                 ))}
-            </Container>
+            </Box>
         )
     }
 }
