@@ -3,16 +3,15 @@ import QrReader from "react-qr-reader";
 import {useHistory} from "react-router-dom";
 import {Paper} from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        marginTop: theme.spacing(1)
+        padding: theme.spacing(1)
     },
     paper: {
         padding: theme.spacing(1),
-        marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1)
     }
 }));
@@ -40,12 +39,12 @@ export default function QrScanner() {
     const classes = useStyles();
 
     return (
-        <Container className={classes.root}>
+        <Box className={classes.root}>
             {error ? <Alert severity="error">Error reading QR-Code, please try again.</Alert> : null}
             <Paper className={classes.paper}>
                 <QrReader onError={handleError} onScan={handleScan}/>
             </Paper>
-        </Container>
+        </Box>
 
     )
 }
