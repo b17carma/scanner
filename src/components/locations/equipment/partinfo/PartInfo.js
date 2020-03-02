@@ -28,6 +28,8 @@ export default function PartInfo(props) {
 
     const [loading, setLoading] = React.useState(true);
 
+    const scanLimit = 5;
+
     useEffect(() => {
         async function fetchPartData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
@@ -37,7 +39,7 @@ export default function PartInfo(props) {
         }
 
         async function fetchScanData() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.match.params.equipmentId + "/" + props.match.params.partId);
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.match.params.equipmentId + "/" + props.match.params.partId + "/" + scanLimit);
             const data = await res.json();
             setScans(data);
         }

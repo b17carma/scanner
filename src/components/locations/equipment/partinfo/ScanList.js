@@ -9,7 +9,7 @@ import moment from "moment";
 
 const ScanList = (props) => {
     return (
-        props.scans.slice(0, 5).map((scan, i) => (
+        props.scans.map((scan, i) => (
             <ListItem key={i}>
                 <ListItemIcon>
                     {scan.status ? <CheckIcon style={{color: green[500]}}/> :
