@@ -42,7 +42,7 @@ export default function ScanResult(props) {
 
     return (
         <Box className={classes.root}>
-            <ScanResultEquipment props={part}/>
+            <ScanResultEquipment part={part}/>
             <ScanResultSteps classes={classes} part={part}/>
             <ScanResultOptions/>
         </Box>
