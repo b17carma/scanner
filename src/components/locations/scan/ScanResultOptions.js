@@ -47,7 +47,7 @@ export default function ScanResultOptions(props) {
                 <Button variant="outlined" color="secondary" className={classes.button}
                         onClick={() => sendResults(false)}>No</Button>
                 <Button variant="outlined" className={classes.button}
-                        onClick={() => props.history.push("/equipment/" + props.match.params.equipmentId)}>Cancel</Button>
+                        onClick={() => history.push("/equipment/" + props.match.params.equipmentId)}>Cancel</Button>
             </CardContent>
         </Card>
     )
