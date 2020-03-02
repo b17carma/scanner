@@ -29,7 +29,7 @@ export default function PartInfoCard(props) {
                 />
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                        {props.part.identifier}
+                        {props.part.equipment.identifier} - {props.part.identifier}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {props.part.description}
