@@ -21,7 +21,7 @@ export default function PartInfoCard(props) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.paper} variant="outlined">
+        <Card elevation={0} className={classes.paper}>
                 <CardMedia
                     className={classes.media}
                     image={"/img/" + props.part.image}

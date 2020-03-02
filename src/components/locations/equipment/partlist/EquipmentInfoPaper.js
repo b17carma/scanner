@@ -15,7 +15,7 @@ export default function EquipmentInfoPaper(props) {
     const classes = useStyles();
 
     return (
-        <Paper variant="outlined">
+        <Paper elevation={0}>
             <CardMedia
                 className={classes.media}
                 image={"/img/" + props.equipment.image}
