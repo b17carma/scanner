@@ -36,7 +36,7 @@ export default function PartInfoCard(props) {
                     </Typography>
                 </CardContent>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" component={Link} to="/scan">
                     Scan Now
                 </Button>
             </CardActions>
