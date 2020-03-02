@@ -43,7 +43,7 @@ export default function ScanResultSteps(props) {
     return (
         <Card className={classes.paper} variant="outlined">
             {steps.map((step, i) => (
-                <ExpansionPanel>
+                <ExpansionPanel key={i}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
                         <Typography>{step.identifier}</Typography>
                     </ExpansionPanelSummary>
