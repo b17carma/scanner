@@ -1,10 +1,6 @@
 import React, {useEffect} from "react";
-import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Box} from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
 import ScanResultSteps from "./ScanResultSteps";
 import ScanResultOptions from "./ScanResultOptions";
 import ScanResultEquipment from "./ScanResultEquipment";
@@ -43,8 +39,8 @@ export default function ScanResult(props) {
     return (
         <Box className={classes.root}>
             <ScanResultEquipment part={part}/>
-            <ScanResultSteps classes={classes} part={part}/>
-            <ScanResultOptions/>
+            <ScanResultSteps part={part}/>
+            <ScanResultOptions part={part}/>
         </Box>
     )
 }

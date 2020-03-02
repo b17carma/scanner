@@ -27,12 +27,12 @@ export default function ScanResultOptions(props) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                equipmentId: props.match.params.equipmentId,
-                partId: props.match.params.partId,
+                equipmentId: props.part.equipment._id,
+                partId: props.part._id,
                 status: status
             })
         }).then(() => {
-            history.push("/equipment/" + props.match.params.equipmentId)
+            history.push("/equipment/" + props.part.equipment._id)
         })
     }
 
@@ -47,7 +47,7 @@ export default function ScanResultOptions(props) {
                 <Button variant="outlined" color="secondary" className={classes.button}
                         onClick={() => sendResults(false)}>No</Button>
                 <Button variant="outlined" className={classes.button}
-                        onClick={() => history.push("/equipment/" + props.match.params.equipmentId)}>Cancel</Button>
+                        onClick={() => history.push("/equipment/" + props.part.equipment._id)}>Cancel</Button>
             </CardContent>
         </Card>
     )
