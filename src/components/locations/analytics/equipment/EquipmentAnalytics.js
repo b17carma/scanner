@@ -33,8 +33,6 @@ export default function EquipmentAnalytics(props) {
     const [chartData, setChartData] = React.useState({});
     const [loading, setLoading] = React.useState(true);
 
-
-
     useEffect(() => {
         async function fetchChartData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/scans/" + props.match.params.equipmentId + "/" + moment(startDate).format() + "/" + moment(endDate).format());
@@ -99,7 +97,7 @@ export default function EquipmentAnalytics(props) {
                 <ContainedOverlineText text="Faulty scans by week"/>
                 <Box className={classes.box}>
                     <ResponsiveLine
-                        data={[chartData]}
+                        data={chartData}
                         margin={{ top: 5, right: 30, bottom: 50, left: 50 }}
                         xScale={{ type: 'point' }}
                         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
