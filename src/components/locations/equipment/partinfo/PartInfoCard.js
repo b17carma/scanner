@@ -20,21 +20,28 @@ const useStyles = makeStyles(theme => ({
 export default function PartInfoCard(props) {
     const classes = useStyles();
 
+    function translate(frequencyType) {
+        return frequencyType === 0 ? 'day' : frequencyType === 1 ? 'week' : frequencyType === 2 ? 'month' : 'year';
+    }
+
     return (
         <Card elevation={0} className={classes.paper}>
-                <CardMedia
-                    className={classes.media}
-                    image={"/img/" + props.part.image}
-                    title="Part Overview"
-                />
-                <CardContent>
-                    <Typography variant="h5" component="h2" gutterBottom >
-                        {props.part.equipment.identifier} - {props.part.identifier}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {props.part.description}
-                    </Typography>
-                </CardContent>
+            <CardMedia
+                className={classes.media}
+                image={"/img/" + props.part.image}
+                title="Part Overview"
+            />
+            <CardContent>
+                <Typography variant="h5" component="h2" gutterBottom>
+                    {props.part.equipment.identifier} - {props.part.identifier}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {props.part.description}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                    {props.part.frequency} time(s) / {translate(props.part.frequencyType)} / {props.part.hasOwnProperty('frequencyDays') ? props.part.frequencyDays.toString() : 'any day'}
+                </Typography>
+            </CardContent>
             <CardActions>
                 <Button size="small" color="primary" component={Link} to="/scan">
                     Scan Now

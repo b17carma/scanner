@@ -1,11 +1,9 @@
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import List from "@material-ui/core/List";
 import Box from "@material-ui/core/Box";
 import ScanList from "./ScanList";
 import PartInfoCard from "./PartInfoCard";
 import PartInfoSkeleton from "./PartInfoSkeleton";
-import ContainedOverlineText from "../../../util/ContainedOverlineText";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,9 +14,6 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         marginBottom: theme.spacing(1)
-    },
-    list: {
-        backgroundColor: theme.palette.background.paper,
     }
 }));
 
@@ -60,10 +55,7 @@ export default function PartInfo(props) {
         return (
             <Box className={classes.root}>
                 <PartInfoCard part={part}/>
-                <ContainedOverlineText text="Recent scans"/>
-                <List className={classes.list}>
-                    <ScanList scans={scans}/>
-                </List>
+                <ScanList scans={scans}/>
             </Box>
         )
     }

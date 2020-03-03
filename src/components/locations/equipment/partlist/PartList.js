@@ -14,6 +14,7 @@ import ContainedOverlineText from "../../../util/ContainedOverlineText";
 import AlarmIcon from "@material-ui/icons/Alarm";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ActionRequiredList from "./ActionRequiredList";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -71,18 +72,7 @@ export default function PartList(props) {
         return (
             <Box>
                 <EquipmentInfoPaper equipment={equipment}/>
-                <ContainedOverlineText text="Action Required"/>
-                <List className={classes.root}>
-                    {requiredParts.map((part, i) => (
-                        <ListItem key={i} button component={Link}
-                                  to={"/equipment/" + props.match.params.equipmentId + "/" + part._id}>
-                            <ListItemIcon>
-                                <AlarmIcon/>
-                            </ListItemIcon>
-                            <ListItemText id={i} primary={part.identifier}/>
-                        </ListItem>
-                    ))}
-                </List>
+                <ActionRequiredList requiredParts={requiredParts}/>
                 <ContainedOverlineText text="All Components"/>
                 <List className={classes.root}>
                     {parts.map((part, i) => (
