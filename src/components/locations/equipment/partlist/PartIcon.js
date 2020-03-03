@@ -6,10 +6,7 @@ import AlarmIcon from "@material-ui/icons/Alarm";
 import React from "react";
 
 function scanStatus(part) {
-    if (!part.lastScanToday)
-        return 2;
-
-    return part.lastScan.status ? 0 : 1;
+    return part.lastScan === undefined ? 2 : part.lastScan.status ? 0 : 1;
 }
 
 const PartIcon = (props) => {
@@ -17,8 +14,7 @@ const PartIcon = (props) => {
 
     return (
         <ListItemIcon>
-            {status === 0 ? <CheckIcon style={{color: green[500]}}/> : status === 1 ?
-                <WarningIcon style={{color: red[500]}}/> : <AlarmIcon/>}
+            {status === 0 ? <CheckIcon style={{color: green[500]}}/> : status === 1 ? <WarningIcon style={{color: red[500]}}/> : null}
         </ListItemIcon>
     )
 };

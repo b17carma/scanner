@@ -21,7 +21,7 @@ export default function ScanResultSteps(props) {
 
     useEffect(() => {
         async function fetchStepData() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.part.equipment._id + "/" + props.part._id + "/steps");
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.part.equipment._id + "/" + props.part._id + "/steps");
 
             res.json().then((res) => {
                 setSteps(res);

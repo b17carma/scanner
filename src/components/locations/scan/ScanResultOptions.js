@@ -28,7 +28,7 @@ export default function ScanResultOptions(props) {
             },
             body: JSON.stringify({
                 equipmentId: props.part.equipment._id,
-                partId: props.part._id,
+                componentId: props.part._id,
                 status: status
             })
         }).then(() => {

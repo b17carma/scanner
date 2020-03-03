@@ -32,14 +32,14 @@ export default function PartInfo(props) {
 
     useEffect(() => {
         async function fetchPartData() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.match.params.equipmentId + "/" + props.match.params.componentId);
             const data = await res.json();
             setPart(data);
             setLoading(false);
         }
 
         async function fetchScanData() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.match.params.equipmentId + "/" + props.match.params.partId + "/" + scanLimit);
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.match.params.equipmentId + "/" + props.match.params.componentId + "/" + scanLimit);
             const data = await res.json();
             setScans(data);
         }
@@ -48,7 +48,7 @@ export default function PartInfo(props) {
         fetchScanData();
 
         console.log("Fetched part & scan data");
-    }, [props.match.params.equipmentId, props.match.params.partId]);
+    }, [props.match.params.equipmentId, props.match.params.componentId]);
 
     const classes = useStyles();
 

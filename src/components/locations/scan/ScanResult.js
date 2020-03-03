@@ -19,7 +19,7 @@ export default function ScanResult(props) {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/parts/" + props.match.params.equipmentId + "/" + props.match.params.partId);
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.match.params.equipmentId + "/" + props.match.params.componentId);
             const data = await res.json();
             setPart(data);
             setLoading(false);
@@ -27,7 +27,7 @@ export default function ScanResult(props) {
 
         fetchData();
         console.log("Fetched scan data");
-    }, [props.match.params.equipmentId, props.match.params.partId]);
+    }, [props.match.params.equipmentId, props.match.params.componentId]);
 
     const classes = useStyles();
 

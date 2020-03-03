@@ -67,12 +67,12 @@ const Routes = [
     },
     {
         display: false,
-        path: '/equipment/:equipmentId/:partId',
+        path: '/equipment/:equipmentId/:componentId',
         component: PartInfo
     },
     {
         display: false,
-        path: '/scan/:equipmentId/:partId',
+        path: '/scan/:equipmentId/:componentId',
         component: ScanResult
     },
     {
