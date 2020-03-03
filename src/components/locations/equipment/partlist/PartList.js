@@ -72,7 +72,7 @@ export default function PartList(props) {
         return (
             <Box>
                 <EquipmentInfoPaper equipment={equipment}/>
-                <ActionRequiredList requiredParts={requiredParts}/>
+                <ActionRequiredList requiredParts={requiredParts} match={props.match}/>
                 <ContainedOverlineText text="All Components"/>
                 <List className={classes.root}>
                     {parts.map((part, i) => (
