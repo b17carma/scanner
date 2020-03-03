@@ -94,7 +94,7 @@ export default function EquipmentAnalytics(props) {
                     </div>
                     <Divider/>
                 </Container>
-                <ContainedOverlineText text="Faulty scans by week"/>
+                <ContainedOverlineText text="Scans by week"/>
                 <Box className={classes.box}>
                     <ResponsiveLine
                         data={chartData}
