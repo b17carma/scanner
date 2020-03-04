@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import PartInfoSkeleton from "./PartInfoSkeleton";
+import ComponentInformationSkeleton from "./ComponentInformationSkeleton";
 
 const useStyles = makeStyles(theme => ({
     media: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function PartInfoCard(props) {
+export default function ComponentInformationCard(props) {
     const [part, setPart] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
@@ -42,7 +42,7 @@ export default function PartInfoCard(props) {
     }
 
     if (loading) {
-        return <PartInfoSkeleton/>
+        return <ComponentInformationSkeleton/>
     }
 
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Box from "@material-ui/core/Box";
 import ScanList from "./ScanList";
-import PartInfoCard from "./PartInfoCard";
+import ComponentInformationCard from "./ComponentInformationCard";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -10,12 +10,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function PartInfo(props) {
+export default function ComponentInformation(props) {
     const classes = useStyles();
 
     return (
         <Box className={classes.root}>
-            <PartInfoCard equipmentId={props.match.params.equipmentId} componentId={props.match.params.componentId}/>
+            <ComponentInformationCard equipmentId={props.match.params.equipmentId} componentId={props.match.params.componentId}/>
             <ScanList equipmentId={props.match.params.equipmentId} componentId={props.match.params.componentId}/>
         </Box>
     )

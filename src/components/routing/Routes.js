@@ -9,7 +9,7 @@ import Scan from "../locations/scan/Scan";
 import Analytics from "../locations/analytics/Analytics";
 import Home from "../locations/home/Home";
 import ComponentList from "../locations/equipment/partinfo/partlist/ComponentList";
-import PartInfo from "../locations/equipment/partinfo/PartInfo";
+import ComponentInformation from "../locations/equipment/partinfo/ComponentInformation";
 import ScanResult from "../locations/scan/ScanResult";
 import EquipmentList from "../locations/analytics/equipment/EquipmentList";
 import OverallAnalytics from "../locations/analytics/overall/OverallAnalytics";
@@ -52,7 +52,7 @@ const Routes = [
     {
         display: false,
         path: '/equipment/:equipmentId/:componentId',
-        component: PartInfo
+        component: ComponentInformation
     },
     {
         display: false,
