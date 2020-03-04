@@ -11,7 +11,6 @@ import Home from "../locations/home/Home";
 import ComponentList from "../locations/equipment/component/componentlist/ComponentList";
 import ComponentInformation from "../locations/equipment/component/ComponentInformation";
 import ScanResult from "../locations/scan/result/ScanResult";
-import EquipmentList from "../locations/analytics/equipment/EquipmentList";
 import OverallAnalytics from "../locations/analytics/overall/OverallAnalytics";
 import EquipmentAnalytics from "../locations/analytics/equipment/EquipmentAnalytics";
 
@@ -67,7 +66,7 @@ const Routes = [
     {
         display: false,
         path: '/analytics/equipment',
-        component: EquipmentList
+        component: Equipment
     },
     {
         display: false,

@@ -22,11 +22,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Equipment() {
+export default function Equipment(props) {
     const classes = useStyles();
 
     const [equipment, setEquipment] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const analytics = props.location.pathname === '/analytics/equipment';
 
     useEffect(() => {
         async function fetchEquipmentData() {
@@ -54,7 +56,7 @@ export default function Equipment() {
             <Box className={classes.root}>
                 {equipment.map((equipment, i) => (
                     <Card variant="outlined" className={classes.card} key={i}>
-                        <CardActionArea component={Link} to={"/equipment/" + equipment._id}>
+                        <CardActionArea component={Link} to={(analytics ? "/analytics/equipment/" : "/equipment/") + equipment._id}>
                             <CardMedia
                                 className={classes.media}
                                 image={"/img/" + equipment.image}
