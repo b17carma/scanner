@@ -9,7 +9,7 @@ function scanStatus(part) {
     return part.lastScan === undefined ? 2 : part.lastScan.status ? 0 : 1;
 }
 
-const PartIcon = (props) => {
+const ComponentIcon = (props) => {
     const status = scanStatus(props.part);
 
     return (
@@ -19,4 +19,4 @@ const PartIcon = (props) => {
     )
 };
 
-export default PartIcon;
+export default ComponentIcon;

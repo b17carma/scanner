@@ -1,56 +1,53 @@
-import ContainedOverlineText from "../../../util/ContainedOverlineText";
+import ContainedOverlineText from "../../../../util/ContainedOverlineText";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {Link} from "react-router-dom";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import AlarmIcon from "@material-ui/icons/Alarm";
+import ComponentIcon from "./ComponentIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import PartListSkeleton from "../../../../skeleton/PartListSkeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
         backgroundColor: theme.palette.background.paper,
-    }
+    },
+    textContainer: {
+        marginTop: theme.spacing(1)
+    },
 }));
 
-export default function ActionRequiredList(props) {
-    const [requiredParts, setRequiredParts] = React.useState([]);
+export default function ComponentListItems(props) {
+    const [parts, setParts] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchRequiredParts() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/required/" + props.equipmentId);
+        async function fetchPartList() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.equipmentId);
             const data = await res.json();
-
-            setRequiredParts(data);
             setLoading(false);
+            setParts(data);
         }
 
-        fetchRequiredParts();
+        fetchPartList();
 
-        console.log("Fetched equipment & part info");
+        console.log("Fetched part list");
     }, [props.equipmentId]);
 
     const classes = useStyles();
 
     if (loading) {
-        return <div/>; //TODO
+        return <PartListSkeleton/>
     }
-
-    if (requiredParts.length === 0)
-        return null;
 
     return (
         <div>
-            <ContainedOverlineText text="Action Required"/>
+            <ContainedOverlineText text="All Components"/>
             <List className={classes.root}>
-                {requiredParts.map((part, i) => (
+                {parts.map((part, i) => (
                     <ListItem key={i} button component={Link}
                               to={"/equipment/" + props.equipmentId + "/" + part._id}>
-                        <ListItemIcon>
-                            <AlarmIcon/>
-                        </ListItemIcon>
+                        <ComponentIcon part={part}/>
                         <ListItemText id={i} primary={part.identifier}/>
                     </ListItem>
                 ))}

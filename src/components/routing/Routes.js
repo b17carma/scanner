@@ -1,19 +1,16 @@
 import {
     Assessment as AssessmentIcon,
-    Scanner as ScannerIcon,
     Build as BuildIcon,
     House as HomeIcon,
-    Person as PersonIcon
+    Scanner as ScannerIcon
 } from "@material-ui/icons";
 import Equipment from "../locations/equipment/Equipment";
 import Scan from "../locations/scan/Scan";
 import Analytics from "../locations/analytics/Analytics";
 import Home from "../locations/home/Home";
-import PartList from "../locations/equipment/partlist/PartList";
+import ComponentList from "../locations/equipment/partinfo/partlist/ComponentList";
 import PartInfo from "../locations/equipment/partinfo/PartInfo";
 import ScanResult from "../locations/scan/ScanResult";
-import Login from "../auth/login/Login";
-import Profile from "../locations/profile/profile";
 import EquipmentList from "../locations/analytics/equipment/EquipmentList";
 import OverallAnalytics from "../locations/analytics/overall/OverallAnalytics";
 import EquipmentAnalytics from "../locations/analytics/equipment/EquipmentAnalytics";
@@ -34,13 +31,6 @@ const Routes = [
         component: Equipment
     },
     {
-        display: false,
-        path: '/profile',
-        barName: 'Profile',
-        icon: PersonIcon,
-        component: Profile
-    },
-    {
         display: true,
         path: '/scan',
         barName: 'Scan',
@@ -56,14 +46,8 @@ const Routes = [
     },
     {
         display: false,
-        path: '/login',
-        barName: 'Login',
-        component: Login
-    },
-    {
-        display: false,
         path: '/equipment/:equipmentId',
-        component: PartList
+        component: ComponentList
     },
     {
         display: false,

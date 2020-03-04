@@ -1,9 +1,9 @@
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import React, {useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
 
 const useStyles = makeStyles(theme => ({
     media: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function EquipmentInfoPaper(props) {
+export default function EquipmentInfoCard(props) {
     const [equipment, setEquipment] = React.useState({});
     const [loading, setLoading] = React.useState(true);
 
@@ -35,7 +35,7 @@ export default function EquipmentInfoPaper(props) {
     }
 
     return (
-        <Paper elevation={0}>
+        <Card elevation={0}>
             <CardMedia
                 className={classes.media}
                 image={"/img/" + equipment.image}
@@ -46,6 +46,6 @@ export default function EquipmentInfoPaper(props) {
                     {equipment.identifier}
                 </Typography>
             </CardContent>
-        </Paper>
+        </Card>
     )
 }
