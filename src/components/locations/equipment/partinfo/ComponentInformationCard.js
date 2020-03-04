@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import ComponentInformationSkeleton from "./ComponentInformationSkeleton";
+import ComponentInformationSkeleton from "../../../skeleton/ComponentInformationSkeleton";
 
 const useStyles = makeStyles(theme => ({
     media: {

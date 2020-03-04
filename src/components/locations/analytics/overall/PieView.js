@@ -1,6 +1,5 @@
 import React from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Paper from "@material-ui/core/Paper";
 import ResponsivePie from "nivo/lib/components/charts/pie/ResponsivePie";
 import Box from "@material-ui/core/Box";
 
