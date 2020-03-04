@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import {withRouter} from "react-router-dom";
 import routes from "../routing/Routes";
-import ProfileButton from "./ProfileButton";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,7 +46,6 @@ function AppBarTop(props) {
                     <Typography variant="h6" className={classes.title}>
                         {activeRoute== null ? "Equipment Scanner" : activeRoute.barName}
                     </Typography>
-                    <ProfileButton/>
                 </Toolbar>
             </AppBar>
         </div>
