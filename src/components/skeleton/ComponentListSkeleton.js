@@ -3,7 +3,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 
-export default function PartListSkeleton() {
+export default function ComponentListSkeleton() {
     return (
         [...new Array(3)].map((item, index) => (
                 <ListItem key={index} button>

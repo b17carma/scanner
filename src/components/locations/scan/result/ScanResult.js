@@ -14,19 +14,20 @@ export default function ScanResult(props) {
         }
     }));
 
-    const [part, setPart] = React.useState({});
+    const [component, setComponent] = React.useState({});
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchComponentData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.match.params.equipmentId + "/" + props.match.params.componentId);
-            const data = await res.json();
-            setPart(data);
+            const component = await res.json();
+            setComponent(component);
             setLoading(false);
         }
 
-        fetchData();
-        console.log("Fetched scan data");
+        fetchComponentData();
+
+        console.log("Fetched component data");
     }, [props.match.params.equipmentId, props.match.params.componentId]);
 
     const classes = useStyles();
@@ -38,9 +39,9 @@ export default function ScanResult(props) {
 
     return (
         <Box className={classes.root}>
-            <ScanResultEquipment part={part}/>
-            <ScanResultSteps part={part}/>
-            <ScanResultOptions part={part}/>
+            <ScanResultEquipment component={component}/>
+            <ScanResultSteps component={component}/>
+            <ScanResultOptions component={component}/>
         </Box>
     )
 }

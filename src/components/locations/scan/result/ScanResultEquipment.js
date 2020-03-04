@@ -21,15 +21,15 @@ export default function ScanResultEquipment(props) {
         <Card className={classes.paper} variant="outlined">
             <CardMedia
                 className={classes.media}
-                image={"/img/" + props.part.image}
-                title="Part Overview"
+                image={"/img/" + props.component.image}
+                title="Component Overview"
             />
             <CardContent>
                 <Typography variant="h5" component="h2" gutterBottom>
-                    {props.part.equipment.identifier} - {props.part.identifier}
+                    {props.component.equipment.identifier} - {props.component.identifier}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {props.part.description}
+                    {props.component.description}
                 </Typography>
             </CardContent>
         </Card>

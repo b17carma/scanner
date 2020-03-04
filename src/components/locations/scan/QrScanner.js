@@ -27,8 +27,11 @@ export default function QrScanner() {
                 return;
             }
 
-            let equipmentPart = data.split(";");
-            history.push("/scan/" + equipmentPart[0] + "/" + equipmentPart[1]);
+            let split = data.split(";");
+            let equipment = split[0];
+            let component = split[1];
+
+            history.push("/scan/" + equipment + "/" + component);
         }
     }
 

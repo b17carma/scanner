@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
-import Container from "@material-ui/core/Container";
-import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
+import {MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import MomentUtils from "@date-io/moment";
-import Divider from "@material-ui/core/Divider";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import moment from "moment";
 import ContainedOverlineText from "../../../util/ContainedOverlineText";
 import Box from "@material-ui/core/Box";
 import ResponsiveLine from "nivo/lib/components/charts/line/ResponsiveLine";
+import DatePickerView from "./DatePickerView";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -60,35 +59,7 @@ export default function EquipmentAnalytics(props) {
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <Box className={classes.root}>
-                <Container>
-                    <div>
-                        <KeyboardDatePicker
-                            margin="normal"
-                            id="start-date-picker"
-                            label="Start date"
-                            value={startDate}
-                            format="MM/DD/YYYY"
-                            onChange={handleStartDateChange}
-                            KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                            }}
-                        />
-                    </div>
-                    <div>
-                        <KeyboardDatePicker
-                            margin="normal"
-                            id="end-date-picker"
-                            label="End date"
-                            value={endDate}
-                            format="MM/DD/YYYY"
-                            onChange={handleEndDateChange}
-                            KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                            }}
-                        />
-                    </div>
-                    <Divider/>
-                </Container>
+                <DatePickerView startDate={startDate} endDate={endDate} handleStartDateChange={handleStartDateChange} handleEndDateChange={handleEndDateChange}/>
                 <ContainedOverlineText text="Scans by week"/>
                 <Box className={classes.box}>
                     <ResponsiveLine

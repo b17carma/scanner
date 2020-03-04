@@ -6,7 +6,7 @@ import ComponentIcon from "./ComponentIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import ComponentListSkeleton from "../../../../skeleton/PartListSkeleton";
+import ComponentListSkeleton from "../../../../skeleton/ComponentListSkeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -22,14 +22,14 @@ export default function ComponentListItems(props) {
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchPartList() {
+        async function fetchComponentList() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.equipmentId);
             const components = await res.json();
             setLoading(false);
             setComponents(components);
         }
 
-        fetchPartList();
+        fetchComponentList();
 
         console.log("Fetched component list");
     }, [props.equipmentId]);

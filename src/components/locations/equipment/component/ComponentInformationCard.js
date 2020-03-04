@@ -19,20 +19,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ComponentInformationCard(props) {
-    const [part, setPart] = React.useState([]);
+    const [component, setComponent] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchPartData() {
+        async function fetchComponentData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.equipmentId + "/" + props.componentId);
-            const data = await res.json();
-            setPart(data);
+            const component = await res.json();
+            setComponent(component);
             setLoading(false);
         }
 
-        fetchPartData();
+        fetchComponentData();
 
-        console.log("Fetched part & scan data");
+        console.log("Fetched component data");
     }, [props.equipmentId, props.componentId]);
 
     const classes = useStyles();
@@ -49,19 +49,19 @@ export default function ComponentInformationCard(props) {
         <Card elevation={0} className={classes.paper}>
             <CardMedia
                 className={classes.media}
-                image={"/img/" + part.image}
-                title="Part Overview"
+                image={"/img/" + component.image}
+                title="Component Overview"
             />
             <CardContent>
                 <Typography variant="h5" component="h2" gutterBottom>
-                    {part.equipment.identifier} - {part.identifier}
+                    {component.equipment.identifier} - {component.identifier}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {part.description}
+                    {component.description}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {part.frequency} time(s)
-                    / {translate(part.frequencyType)} / {part.hasOwnProperty('frequencyDays') ? part.frequencyDays.toString() : 'any day'}
+                    {component.frequency} time(s)
+                    / {translate(component.frequencyType)} / {component.hasOwnProperty('frequencyDays') ? component.frequencyDays.toString() : 'any day'}
                 </Typography>
             </CardContent>
             <CardActions>

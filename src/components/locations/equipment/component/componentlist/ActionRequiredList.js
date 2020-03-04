@@ -29,7 +29,7 @@ export default function ActionRequiredList(props) {
 
         fetchRequiredComponents();
 
-        console.log("Fetched equipment & part info");
+        console.log("Fetched required components");
     }, [props.equipmentId]);
 
     const classes = useStyles();

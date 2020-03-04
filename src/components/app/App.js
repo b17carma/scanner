@@ -7,7 +7,6 @@ import AppBarTop from "../appbar/AppBarTop";
 import Error404 from "../locations/error/Error404";
 
 function App() {
-
     return (
         <BrowserRouter>
             <CssBaseline/>

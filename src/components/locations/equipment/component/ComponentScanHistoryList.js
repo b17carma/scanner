@@ -31,7 +31,7 @@ const ComponentScanHistoryList = (props) => {
 
         fetchScanData();
 
-        console.log("Fetched part & scan data");
+        console.log("Fetched scan data");
     }, [props.equipmentId, props.componentId]);
 
     const classes = useStyles();
