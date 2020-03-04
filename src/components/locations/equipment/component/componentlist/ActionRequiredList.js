@@ -15,19 +15,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ActionRequiredList(props) {
-    const [requiredParts, setRequiredParts] = React.useState([]);
+    const [requiredComponents, setRequiredComponents] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchRequiredParts() {
+        async function fetchRequiredComponents() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/required/" + props.equipmentId);
-            const data = await res.json();
+            const components = await res.json();
 
-            setRequiredParts(data);
+            setRequiredComponents(components);
             setLoading(false);
         }
 
-        fetchRequiredParts();
+        fetchRequiredComponents();
 
         console.log("Fetched equipment & part info");
     }, [props.equipmentId]);
@@ -38,20 +38,20 @@ export default function ActionRequiredList(props) {
         return <div/>; //TODO
     }
 
-    if (requiredParts.length === 0)
+    if (requiredComponents.length === 0)
         return null;
 
     return (
         <div>
             <ContainedOverlineText text="Action Required"/>
             <List className={classes.root}>
-                {requiredParts.map((part, i) => (
+                {requiredComponents.map((component, i) => (
                     <ListItem key={i} button component={Link}
-                              to={"/equipment/" + props.equipmentId + "/" + part._id}>
+                              to={"/equipment/" + props.equipmentId + "/" + component._id}>
                         <ListItemIcon>
                             <AlarmIcon/>
                         </ListItemIcon>
-                        <ListItemText id={i} primary={part.identifier}/>
+                        <ListItemText id={i} primary={component.identifier}/>
                     </ListItem>
                 ))}
             </List>

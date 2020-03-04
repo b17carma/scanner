@@ -6,7 +6,7 @@ import ComponentIcon from "./ComponentIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import PartListSkeleton from "../../../../skeleton/PartListSkeleton";
+import ComponentListSkeleton from "../../../../skeleton/PartListSkeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -18,37 +18,37 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ComponentListItems(props) {
-    const [parts, setParts] = React.useState([]);
+    const [components, setComponents] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
         async function fetchPartList() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.equipmentId);
-            const data = await res.json();
+            const components = await res.json();
             setLoading(false);
-            setParts(data);
+            setComponents(components);
         }
 
         fetchPartList();
 
-        console.log("Fetched part list");
+        console.log("Fetched component list");
     }, [props.equipmentId]);
 
     const classes = useStyles();
 
     if (loading) {
-        return <PartListSkeleton/>
+        return <ComponentListSkeleton/>
     }
 
     return (
         <div>
             <ContainedOverlineText text="All Components"/>
             <List className={classes.root}>
-                {parts.map((part, i) => (
+                {components.map((component, i) => (
                     <ListItem key={i} button component={Link}
-                              to={"/equipment/" + props.equipmentId + "/" + part._id}>
-                        <ComponentIcon part={part}/>
-                        <ListItemText id={i} primary={part.identifier}/>
+                              to={"/equipment/" + props.equipmentId + "/" + component._id}>
+                        <ComponentIcon component={component}/>
+                        <ListItemText id={i} primary={component.identifier}/>
                     </ListItem>
                 ))}
             </List>

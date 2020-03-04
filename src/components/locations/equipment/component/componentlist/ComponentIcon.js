@@ -5,12 +5,12 @@ import WarningIcon from "@material-ui/icons/Warning";
 import HistoryIcon from "@material-ui/icons/History";
 import React from "react";
 
-function scanStatus(part) {
-    return part.lastScan === undefined ? 2 : part.lastScan.status ? 0 : 1;
+function scanStatus(component) {
+    return component.lastScan === undefined ? 2 : component.lastScan.status ? 0 : 1;
 }
 
 const ComponentIcon = (props) => {
-    const status = scanStatus(props.part);
+    const status = scanStatus(props.component);
 
     return (
         <ListItemIcon>

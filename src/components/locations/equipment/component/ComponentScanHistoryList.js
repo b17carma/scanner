@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const ScanList = (props) => {
+const ComponentScanHistoryList = (props) => {
     const [scans, setScans] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const scanLimit = 5;
@@ -58,4 +58,4 @@ const ScanList = (props) => {
     )
 };
 
-export default ScanList;
+export default ComponentScanHistoryList;
