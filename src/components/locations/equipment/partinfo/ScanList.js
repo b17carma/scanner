@@ -4,7 +4,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import {green, red} from "@material-ui/core/colors";
 import WarningIcon from "@material-ui/icons/Warning";
 import ListItemText from "@material-ui/core/ListItemText";
-import React from "react";
+import React, {useEffect} from "react";
 import moment from "moment";
 import ContainedOverlineText from "../../../util/ContainedOverlineText";
 import List from "@material-ui/core/List";
@@ -17,13 +17,34 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ScanList = (props) => {
+    const [scans, setScans] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+    const scanLimit = 5;
+
+    useEffect(() => {
+        async function fetchScanData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.equipmentId + "/" + props.componentId + "/" + scanLimit);
+            const data = await res.json();
+            setScans(data);
+            setLoading(false);
+        }
+
+        fetchScanData();
+
+        console.log("Fetched part & scan data");
+    }, [props.equipmentId, props.componentId]);
+
     const classes = useStyles();
+
+    if (loading) {
+        return <div/> //TODO
+    }
 
     return (
         <div>
             <ContainedOverlineText text="Recent scans"/>
             <List className={classes.list}>
-                {props.scans.map((scan, i) => (
+                {scans.map((scan, i) => (
                     <ListItem key={i}>
                         <ListItemIcon>
                             {scan.status ? <CheckIcon style={{color: green[500]}}/> :

@@ -5,8 +5,9 @@ import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 import Card from "@material-ui/core/Card";
-import React from "react";
+import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import PartInfoSkeleton from "./PartInfoSkeleton";
 
 const useStyles = makeStyles(theme => ({
     media: {
@@ -18,28 +19,49 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PartInfoCard(props) {
+    const [part, setPart] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+
+    useEffect(() => {
+        async function fetchPartData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.equipmentId + "/" + props.componentId);
+            const data = await res.json();
+            setPart(data);
+            setLoading(false);
+        }
+
+        fetchPartData();
+
+        console.log("Fetched part & scan data");
+    }, [props.equipmentId, props.componentId]);
+
     const classes = useStyles();
 
     function translate(frequencyType) {
         return frequencyType === 0 ? 'day' : frequencyType === 1 ? 'week' : frequencyType === 2 ? 'month' : 'year';
     }
 
+    if (loading) {
+        return <PartInfoSkeleton/>
+    }
+
     return (
         <Card elevation={0} className={classes.paper}>
             <CardMedia
                 className={classes.media}
-                image={"/img/" + props.part.image}
+                image={"/img/" + part.image}
                 title="Part Overview"
             />
             <CardContent>
                 <Typography variant="h5" component="h2" gutterBottom>
-                    {props.part.equipment.identifier} - {props.part.identifier}
+                    {part.equipment.identifier} - {part.identifier}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {props.part.description}
+                    {part.description}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {props.part.frequency} time(s) / {translate(props.part.frequencyType)} / {props.part.hasOwnProperty('frequencyDays') ? props.part.frequencyDays.toString() : 'any day'}
+                    {part.frequency} time(s)
+                    / {translate(part.frequencyType)} / {part.hasOwnProperty('frequencyDays') ? part.frequencyDays.toString() : 'any day'}
                 </Typography>
             </CardContent>
             <CardActions>
