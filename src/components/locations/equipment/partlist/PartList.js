@@ -26,20 +26,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function PartList(props) {
-    const [equipment, setEquipment] = React.useState({});
     const [parts, setParts] = React.useState([]);
     const [requiredParts, setRequiredParts] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
-        async function fetchEquipmentInfo() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/equipment/" + props.match.params.equipmentId);
-            const data = await res.json();
-
-            setEquipment(data);
-            setLoading(false);
-        }
-
         async function fetchPartList() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.match.params.equipmentId);
             const data = await res.json();
@@ -55,7 +46,6 @@ export default function PartList(props) {
             setLoading(false);
         }
 
-        fetchEquipmentInfo();
         fetchPartList();
         fetchRequiredParts();
 
@@ -71,7 +61,7 @@ export default function PartList(props) {
     } else {
         return (
             <Box>
-                <EquipmentInfoPaper equipment={equipment}/>
+                <EquipmentInfoPaper equipmentId={props.match.params.equipmentId}/>
                 <ActionRequiredList requiredParts={requiredParts} match={props.match}/>
                 <ContainedOverlineText text="All Components"/>
                 <List className={classes.root}>
