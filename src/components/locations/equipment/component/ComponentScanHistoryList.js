@@ -40,6 +40,9 @@ const ComponentScanHistoryList = (props) => {
         return <div/> //TODO
     }
 
+    if (scans.length === 0)
+        return null;
+
     return (
         <div>
             <ContainedOverlineText text="Recent scans"/>
