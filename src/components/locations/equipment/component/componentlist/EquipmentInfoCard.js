@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import React, {useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import EquipmentInfoCardSkeleton from "../../../../skeleton/EquipmentInfoCardSkeleton";
 
 const useStyles = makeStyles(theme => ({
     media: {
@@ -31,7 +32,7 @@ export default function EquipmentInfoCard(props) {
     const classes = useStyles();
 
     if (loading) {
-        return <div/>; //TODO
+        return <EquipmentInfoCardSkeleton/>;
     }
 
     return (

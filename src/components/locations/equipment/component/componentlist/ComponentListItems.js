@@ -6,7 +6,7 @@ import ComponentIcon from "./ComponentIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import ComponentListSkeleton from "../../../../skeleton/ComponentListSkeleton";
+import ComponentListItemsSkeleton from "../../../../skeleton/ComponentListItemsSkeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -37,7 +37,7 @@ export default function ComponentListItems(props) {
     const classes = useStyles();
 
     if (loading) {
-        return <ComponentListSkeleton/>
+        return <ComponentListItemsSkeleton classes={classes}/>
     }
 
     return (

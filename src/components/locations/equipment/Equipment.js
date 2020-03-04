@@ -12,7 +12,7 @@ import {Box} from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
     root: {
         marginBottom: theme.spacing(8),
-        padding:theme.spacing(1)
+        padding: theme.spacing(1)
     },
     card: {
         marginBottom: theme.spacing(1),
@@ -47,16 +47,19 @@ export default function Equipment(props) {
 
     if (loading) {
         return (
-            [...new Array(3)].map((item, index) => (
+            <Box className={classes.root}>
+                {[...new Array(3)].map((item, index) => (
                     <EquipmentCardSkeleton classes={classes} key={index}/>
-                )
-            ))
+                ))}
+            </Box>
+        )
     } else {
         return (
             <Box className={classes.root}>
                 {equipment.map((equipment, i) => (
                     <Card variant="outlined" className={classes.card} key={i}>
-                        <CardActionArea component={Link} to={(analytics ? "/analytics/equipment/" : "/equipment/") + equipment._id}>
+                        <CardActionArea component={Link}
+                                        to={(analytics ? "/analytics/equipment/" : "/equipment/") + equipment._id}>
                             <CardMedia
                                 className={classes.media}
                                 image={"/img/" + equipment.image}
