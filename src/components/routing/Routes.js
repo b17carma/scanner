@@ -5,7 +5,7 @@ import {
     Scanner as ScannerIcon
 } from "@material-ui/icons";
 import Equipment from "../locations/equipment/Equipment";
-import Scan from "../locations/scan/Scan";
+import Scan from "../locations/scan/QrScanner";
 import Analytics from "../locations/analytics/Analytics";
 import Home from "../locations/home/Home";
 import ComponentList from "../locations/equipment/component/componentlist/ComponentList";
