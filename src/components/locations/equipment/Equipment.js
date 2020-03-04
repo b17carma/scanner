@@ -28,7 +28,7 @@ export default function Equipment(props) {
     const [equipment, setEquipment] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const analytics = props.location.pathname === '/analytics/equipment';
+    const analytics = props.location.pathname === '/analytics/equipment' || props.location.pathname === '/analytics/equipment/';
 
     useEffect(() => {
         async function fetchEquipmentData() {
