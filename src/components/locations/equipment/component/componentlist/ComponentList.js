@@ -1,24 +1,57 @@
-import React from "react";
-import {Box} from "@material-ui/core";
-import EquipmentInfoCard from "./EquipmentInfoCard";
-import ActionRequiredList from "./ActionRequiredList";
-import ComponentListItems from "./ComponentListItems";
+import ContainedOverlineText from "../../../../util/ContainedOverlineText";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import {Link} from "react-router-dom";
+import ComponentIcon from "./ComponentIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import ComponentListItemsSkeleton from "../../../../skeleton/ComponentListItemsSkeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        marginBottom: theme.spacing(8)
-    }
+        backgroundColor: theme.palette.background.paper,
+    },
+    textContainer: {
+        marginTop: theme.spacing(1)
+    },
 }));
 
 export default function ComponentList(props) {
+    const [components, setComponents] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+
+    useEffect(() => {
+        async function fetchComponentList() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.equipmentId);
+            const components = await res.json();
+            setLoading(false);
+            setComponents(components);
+        }
+
+        fetchComponentList();
+
+        console.log("Fetched component list");
+    }, [props.equipmentId]);
+
     const classes = useStyles();
 
+    if (loading) {
+        return <ComponentListItemsSkeleton classes={classes}/>
+    }
+
     return (
-        <Box className={classes.root}>
-            <EquipmentInfoCard equipmentId={props.match.params.equipmentId}/>
-            <ActionRequiredList equipmentId={props.match.params.equipmentId}/>
-            <ComponentListItems equipmentId={props.match.params.equipmentId}/>
-        </Box>
+        <div>
+            <ContainedOverlineText text="All Components"/>
+            <List className={classes.root}>
+                {components.map((component, i) => (
+                    <ListItem key={i} button component={Link}
+                              to={"/equipment/" + props.equipmentId + "/" + component._id}>
+                        <ComponentIcon component={component}/>
+                        <ListItemText id={i} primary={component.identifier}/>
+                    </ListItem>
+                ))}
+            </List>
+        </div>
     )
 }

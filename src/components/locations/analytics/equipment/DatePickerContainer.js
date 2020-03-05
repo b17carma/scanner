@@ -3,7 +3,7 @@ import {KeyboardDatePicker} from "@material-ui/pickers";
 import Divider from "@material-ui/core/Divider";
 import React from "react";
 
-export default function DatePickerView(props) {
+export default function DatePickerContainer(props) {
     return (
         <Container>
             <div>

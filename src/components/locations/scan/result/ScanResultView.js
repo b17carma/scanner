@@ -5,7 +5,7 @@ import ScanResultSteps from "./ScanResultSteps";
 import ScanResultOptions from "./ScanResultOptions";
 import ScanResultEquipment from "./ScanResultEquipment";
 
-export default function ScanResult(props) {
+export default function ScanResultView(props) {
 
     const useStyles = makeStyles(theme => ({
         root: {

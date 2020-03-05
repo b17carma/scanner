@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ResponsivePie from "nivo/lib/components/charts/pie/ResponsivePie";
 import Box from "@material-ui/core/Box";
@@ -8,19 +8,34 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.background.paper,
         height: 300,
         marginBottom: theme.spacing(1),
-    },
-    chart: {
-        margin: theme.spacing(1)
     }
 }));
 
-export default function PieView(props) {
+export default function OverallPieChart() {
+    const [overallData, setOverallData] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
     const classes = useStyles();
+
+    useEffect(() => {
+        async function fetchStatData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/stats");
+            const data = await res.json();
+            setOverallData(data);
+            setLoading(false);
+        }
+        fetchStatData();
+
+        console.log("Fetched stat data");
+    }, []);
+
+    if (loading) {
+        return <div/> //TODO
+    }
 
     return (
         <Box className={classes.root}>
             <ResponsivePie
-                data={props.data}
+                data={overallData}
                 animate={true}
                 colorBy={d => d.color}
                 margin={{

@@ -6,13 +6,13 @@ import {
 } from "@material-ui/icons";
 import EquipmentView from "../locations/equipment/EquipmentView";
 import Scan from "../locations/scan/QrScanner";
-import Analytics from "../locations/analytics/Analytics";
-import Home from "../locations/home/Home";
-import ComponentList from "../locations/equipment/component/componentlist/ComponentList";
+import AnalyticsView from "../locations/analytics/AnalyticsView";
+import HomeView from "../locations/home/HomeView";
+import ComponentListView from "../locations/equipment/component/componentlist/ComponentListView";
 import ComponentInformationView from "../locations/equipment/component/ComponentInformationView";
-import ScanResult from "../locations/scan/result/ScanResult";
-import OverallAnalytics from "../locations/analytics/overall/OverallAnalytics";
-import EquipmentAnalytics from "../locations/analytics/equipment/EquipmentAnalytics";
+import ScanResultView from "../locations/scan/result/ScanResultView";
+import OverallAnalyticsView from "../locations/analytics/overall/OverallAnalyticsView";
+import EquipmentAnalyticsView from "../locations/analytics/equipment/EquipmentAnalyticsView";
 
 const Routes = [
     {
@@ -20,7 +20,7 @@ const Routes = [
         path: '/',
         barName: 'Home',
         icon: HomeIcon,
-        component: Home
+        component: HomeView
     },
     {
         display: true,
@@ -41,12 +41,12 @@ const Routes = [
         path: '/analytics',
         barName: 'Analytics',
         icon: AssessmentIcon,
-        component: Analytics
+        component: AnalyticsView
     },
     {
         display: false,
         path: '/equipment/:equipmentId',
-        component: ComponentList
+        component: ComponentListView
     },
     {
         display: false,
@@ -56,12 +56,12 @@ const Routes = [
     {
         display: false,
         path: '/scan/:equipmentId/:componentId',
-        component: ScanResult
+        component: ScanResultView
     },
     {
         display: false,
         path: '/analytics/overall',
-        component: OverallAnalytics
+        component: OverallAnalyticsView
     },
     {
         display: false,
@@ -71,7 +71,7 @@ const Routes = [
     {
         display: false,
         path: '/analytics/equipment/:equipmentId',
-        component: EquipmentAnalytics
+        component: EquipmentAnalyticsView
     }
 ];
 

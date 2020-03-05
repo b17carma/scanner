@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {ResponsiveCalendar} from "nivo";
 import moment from "moment";
@@ -17,13 +17,33 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function CalendarView(props) {
+export default function OverallCalendarChart() {
     const classes = useStyles();
+    const [calendar, setCalendar] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
+
+    useEffect(() => {
+        async function fetchCalendarData() {
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/calendar");
+            const data = await res.json();
+            setCalendar(data);
+            setLoading(false);
+            console.log(data)
+        }
+
+        fetchCalendarData();
+
+        console.log("Fetched calendar data");
+    }, []);
+
+    if (loading) {
+        return <div/> //TODO
+    }
 
     return (
         <Box className={classes.root}>
             <ResponsiveCalendar
-                data={props.calendar}
+                data={calendar}
                 from={moment().startOf('month').format('YYYY-MM-DD')}
                 to={moment().endOf('month').format('YYYY-MM-DD')}
                 emptyColor="#eeeeee"

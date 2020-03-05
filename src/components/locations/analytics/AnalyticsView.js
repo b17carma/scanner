@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Analytics() {
+export default function AnalyticsView() {
     const classes = useStyles();
 
     return (
