@@ -4,12 +4,12 @@ import {
     House as HomeIcon,
     Scanner as ScannerIcon
 } from "@material-ui/icons";
-import Equipment from "../locations/equipment/Equipment";
+import EquipmentView from "../locations/equipment/EquipmentView";
 import Scan from "../locations/scan/QrScanner";
 import Analytics from "../locations/analytics/Analytics";
 import Home from "../locations/home/Home";
 import ComponentList from "../locations/equipment/component/componentlist/ComponentList";
-import ComponentInformation from "../locations/equipment/component/ComponentInformation";
+import ComponentInformationView from "../locations/equipment/component/ComponentInformationView";
 import ScanResult from "../locations/scan/result/ScanResult";
 import OverallAnalytics from "../locations/analytics/overall/OverallAnalytics";
 import EquipmentAnalytics from "../locations/analytics/equipment/EquipmentAnalytics";
@@ -27,7 +27,7 @@ const Routes = [
         path: '/equipment',
         barName: 'Equipment',
         icon: BuildIcon,
-        component: Equipment
+        component: EquipmentView
     },
     {
         display: true,
@@ -51,7 +51,7 @@ const Routes = [
     {
         display: false,
         path: '/equipment/:equipmentId/:componentId',
-        component: ComponentInformation
+        component: ComponentInformationView
     },
     {
         display: false,
@@ -66,7 +66,7 @@ const Routes = [
     {
         display: false,
         path: '/analytics/equipment',
-        component: Equipment
+        component: EquipmentView
     },
     {
         display: false,
