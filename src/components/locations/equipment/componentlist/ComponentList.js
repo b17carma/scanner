@@ -1,4 +1,4 @@
-import ContainedOverlineText from "../../../../util/ContainedOverlineText";
+import ContainedOverlineText from "../../../util/ContainedOverlineText";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {Link} from "react-router-dom";
@@ -6,7 +6,7 @@ import ComponentIcon from "./ComponentIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import ComponentListItemsSkeleton from "../../../../skeleton/ComponentListItemsSkeleton";
+import ComponentListItemsSkeleton from "../../../skeleton/ComponentListItemsSkeleton";
 
 const useStyles = makeStyles(theme => ({
     root: {

@@ -9,6 +9,7 @@ import WarningIcon from "@material-ui/icons/Warning";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import HomeOverviewListItemsSkeleton from "../../skeleton/HomeOverviewListItemsSkeleton";
 
 const useStyles = makeStyles(theme => ({
     alert: {
@@ -49,7 +50,7 @@ export default function HomeOverviewList() {
 
     if (loading) {
         return (
-            <div/>
+            <HomeOverviewListItemsSkeleton/>
         );
     }
 

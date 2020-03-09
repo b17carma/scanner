@@ -5,11 +5,11 @@ import {
     Scanner as ScannerIcon
 } from "@material-ui/icons";
 import EquipmentView from "../locations/equipment/EquipmentView";
-import Scan from "../locations/scan/QrScanner";
+import Scan from "../locations/scan/QrReaderView";
 import AnalyticsView from "../locations/analytics/AnalyticsView";
 import HomeView from "../locations/home/HomeView";
-import ComponentListView from "../locations/equipment/component/componentlist/ComponentListView";
-import ComponentInformationView from "../locations/equipment/component/ComponentInformationView";
+import ComponentListView from "../locations/equipment/componentlist/ComponentListView";
+import ComponentInformationView from "../locations/equipment/componentlist/componentinformation/ComponentInformationView";
 import ScanResultView from "../locations/scan/result/ScanResultView";
 import OverallAnalyticsView from "../locations/analytics/overall/OverallAnalyticsView";
 import EquipmentAnalyticsView from "../locations/analytics/equipment/EquipmentAnalyticsView";

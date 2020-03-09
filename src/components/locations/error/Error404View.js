@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Error404() {
+export default function Error404View() {
     const classes = useStyles();
 
     return (

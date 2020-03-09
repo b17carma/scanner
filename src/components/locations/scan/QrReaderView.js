@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function QrScanner() {
+export default function QrReaderView() {
     const history = useHistory();
     const [error, setError] = useState(false);
 

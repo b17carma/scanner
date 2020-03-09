@@ -1,4 +1,4 @@
-import ContainedOverlineText from "../../../../util/ContainedOverlineText";
+import ContainedOverlineText from "../../../util/ContainedOverlineText";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import {Link} from "react-router-dom";

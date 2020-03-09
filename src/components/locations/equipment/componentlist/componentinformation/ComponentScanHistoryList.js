@@ -6,7 +6,7 @@ import WarningIcon from "@material-ui/icons/Warning";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect} from "react";
 import moment from "moment";
-import ContainedOverlineText from "../../../util/ContainedOverlineText";
+import ContainedOverlineText from "../../../../util/ContainedOverlineText";
 import List from "@material-ui/core/List";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 

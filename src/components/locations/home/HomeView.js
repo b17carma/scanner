@@ -3,6 +3,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import List from "@material-ui/core/List";
 import Box from "@material-ui/core/Box";
 import HomeOverviewList from "./HomeOverviewList";
+import ContainedOverlineText from "../../util/ContainedOverlineText";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -19,6 +20,7 @@ export default function HomeView() {
 
     return (
         <Box className={classes.root}>
+            <ContainedOverlineText text="Scan Overview"/>
             <List className={classes.list}>
                 <HomeOverviewList/>
             </List>
