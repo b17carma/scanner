@@ -19,7 +19,7 @@ export default function ComponentActions() {
     const classes = useStyles();
 
     return (
-        <Card className={classes.paper} variant="outlined">
+        <Card className={classes.paper} elevation={0}>
             <CardActions>
                 <Button variant="outlined" color="primary" className={classes.button} component={Link} to="/scan">Scan Now</Button>
             </CardActions>
