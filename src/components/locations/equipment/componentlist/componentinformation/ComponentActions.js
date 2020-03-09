@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Link} from "react-router-dom";
+import {CardActions} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -19,9 +20,9 @@ export default function ComponentActions() {
 
     return (
         <Card className={classes.paper} variant="outlined">
-            <CardContent>
+            <CardActions>
                 <Button variant="outlined" color="primary" className={classes.button} component={Link} to="/scan">Scan Now</Button>
-            </CardContent>
+            </CardActions>
         </Card>
     )
 }
