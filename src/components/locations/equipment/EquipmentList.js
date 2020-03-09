@@ -40,7 +40,7 @@ export default function EquipmentList(props) {
 
     if (loading) {
         return (
-            <EquipmentListSkeleton classes={classes} key={index}/>
+            <EquipmentListSkeleton classes={classes}/>
         )
     }
 
