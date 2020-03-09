@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import EquipmentCardSkeleton from "../../skeleton/EquipmentCardSkeleton";
+import EquipmentListSkeleton from "../../skeleton/EquipmentListSkeleton";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import {Link} from "react-router-dom";
@@ -40,9 +40,7 @@ export default function EquipmentList(props) {
 
     if (loading) {
         return (
-            [...new Array(3)].map((item, index) => (
-                <EquipmentCardSkeleton classes={classes} key={index}/>
-            ))
+            <EquipmentListSkeleton classes={classes} key={index}/>
         )
     }
 
