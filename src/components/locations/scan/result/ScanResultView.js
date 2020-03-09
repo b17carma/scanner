@@ -18,9 +18,15 @@ export default function ScanResultView(props) {
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchComponentData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.match.params.equipmentId + "/" + props.match.params.componentId);
             const component = await res.json();
+
+            if (unmounted)
+                return;
+
             setComponent(component);
             setLoading(false);
         }
@@ -28,6 +34,7 @@ export default function ScanResultView(props) {
         fetchComponentData();
 
         console.log("Fetched component data");
+        return () => {unmounted = true}
     }, [props.match.params.equipmentId, props.match.params.componentId]);
 
     const classes = useStyles();

@@ -24,10 +24,15 @@ export default function EquipmentList(props) {
     const classes = useStyles();
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchEquipmentData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/equipment");
 
             res.json().then((res) => {
+                if (unmounted)
+                    return;
+
                 setEquipment(res);
                 setLoading(false)
             }).catch(console.log)
@@ -36,6 +41,7 @@ export default function EquipmentList(props) {
         fetchEquipmentData();
 
         console.log("Fetched equipment data");
+        return () => {unmounted = true}
     }, []);
 
     if (loading) {

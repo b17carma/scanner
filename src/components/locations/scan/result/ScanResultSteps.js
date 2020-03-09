@@ -20,10 +20,15 @@ export default function ScanResultSteps(props) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchStepData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.component.equipment._id + "/" + props.component._id + "/steps");
 
             res.json().then((res) => {
+                if (unmounted)
+                    return;
+
                 setSteps(res);
                 setLoading(false)
             }).catch(console.log)
@@ -32,6 +37,7 @@ export default function ScanResultSteps(props) {
         fetchStepData();
 
         console.log("Fetched step data");
+        return () => {unmounted = true}
     }, [props.component.equipment, props.component._id]);
 
     if (loading || steps.length === 0) {

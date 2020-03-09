@@ -19,9 +19,14 @@ export default function ActionRequiredList(props) {
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchRequiredComponents() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/required/" + props.equipmentId);
             const components = await res.json();
+
+            if (unmounted)
+                return;
 
             setRequiredComponents(components);
             setLoading(false);
@@ -30,6 +35,7 @@ export default function ActionRequiredList(props) {
         fetchRequiredComponents();
 
         console.log("Fetched required components");
+        return () => {unmounted = true}
     }, [props.equipmentId]);
 
     const classes = useStyles();

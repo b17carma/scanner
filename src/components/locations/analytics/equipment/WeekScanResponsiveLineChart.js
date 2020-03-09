@@ -16,9 +16,14 @@ export default function WeekScanResponsiveLineChart(props) {
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchChartData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/scans/" + props.equipmentId + "/" + moment(props.startDate).format() + "/" + moment(props.endDate).format());
             const data = await res.json();
+
+            if (unmounted)
+                return;
 
             setChartData(data);
             setLoading(false);
@@ -27,6 +32,7 @@ export default function WeekScanResponsiveLineChart(props) {
         fetchChartData();
 
         console.log("Fetched chart data");
+        return () => {unmounted = true}
     }, [props.equipmentId, props.startDate, props.endDate]);
 
     const classes = useStyles();

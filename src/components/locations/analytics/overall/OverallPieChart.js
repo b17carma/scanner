@@ -17,15 +17,22 @@ export default function OverallPieChart() {
     const classes = useStyles();
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchStatData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/stats");
             const data = await res.json();
+
+            if (unmounted)
+                return;
+
             setOverallData(data);
             setLoading(false);
         }
         fetchStatData();
 
         console.log("Fetched stat data");
+        return () => {unmounted = true}
     }, []);
 
     if (loading) {

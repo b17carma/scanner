@@ -34,10 +34,15 @@ export default function HomeOverviewList() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchOverviewData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/overview");
 
             res.json().then((data) => {
+                if (unmounted)
+                    return;
+
                 setOverview(data);
                 setLoading(false)
             }).catch(console.log)
@@ -46,6 +51,7 @@ export default function HomeOverviewList() {
         fetchOverviewData();
 
         console.log("Fetched overview data");
+        return () => {unmounted = true}
     }, []);
 
     if (loading) {

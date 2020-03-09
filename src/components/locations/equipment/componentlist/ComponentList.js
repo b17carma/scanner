@@ -22,9 +22,15 @@ export default function ComponentList(props) {
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchComponentList() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/components/" + props.equipmentId);
             const components = await res.json();
+
+            if (unmounted)
+                return;
+
             setLoading(false);
             setComponents(components);
         }
@@ -32,6 +38,7 @@ export default function ComponentList(props) {
         fetchComponentList();
 
         console.log("Fetched component list");
+        return () => {unmounted = true}
     }, [props.equipmentId]);
 
     const classes = useStyles();

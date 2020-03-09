@@ -17,9 +17,14 @@ export default function EquipmentInfoCard(props) {
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchEquipmentInfo() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/equipment/" + props.equipmentId);
             const data = await res.json();
+
+            if (unmounted)
+                return;
 
             setEquipment(data);
             setLoading(false);
@@ -27,6 +32,7 @@ export default function EquipmentInfoCard(props) {
 
         fetchEquipmentInfo();
         console.log("Fetched equipment info");
+        return () => {unmounted = true}
     }, [props.equipmentId]);
 
     const classes = useStyles();

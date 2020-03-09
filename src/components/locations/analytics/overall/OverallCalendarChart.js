@@ -23,9 +23,15 @@ export default function OverallCalendarChart() {
     const [loading, setLoading] = React.useState(true);
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchCalendarData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/calendar");
             const data = await res.json();
+
+            if (unmounted)
+                return;
+
             setCalendar(data);
             setLoading(false);
             console.log(data)
@@ -34,6 +40,7 @@ export default function OverallCalendarChart() {
         fetchCalendarData();
 
         console.log("Fetched calendar data");
+        return () => {unmounted = true}
     }, []);
 
     if (loading) {

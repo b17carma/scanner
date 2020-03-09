@@ -23,9 +23,15 @@ const ComponentScanHistoryList = (props) => {
     const scanLimit = 5;
 
     useEffect(() => {
+        let unmounted = false;
+
         async function fetchScanData() {
             const res = await fetch(process.env.REACT_APP_API_LOCATION + "/scan/" + props.equipmentId + "/" + props.componentId + "/" + scanLimit);
             const data = await res.json();
+
+            if (unmounted)
+                return;
+
             setScans(data);
             setLoading(false);
         }
@@ -33,6 +39,7 @@ const ComponentScanHistoryList = (props) => {
         fetchScanData();
 
         console.log("Fetched scan data");
+        return () => {unmounted = true}
     }, [props.equipmentId, props.componentId]);
 
     const classes = useStyles();
