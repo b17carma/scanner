@@ -9,6 +9,7 @@ import moment from "moment";
 import ContainedOverlineText from "../../../../util/ContainedOverlineText";
 import List from "@material-ui/core/List";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import ComponentScanHistoryListSkeleton from "../../../../skeleton/ComponentScanHistoryListSkeleton";
 
 const useStyles = makeStyles(theme => ({
     list: {
@@ -37,7 +38,7 @@ const ComponentScanHistoryList = (props) => {
     const classes = useStyles();
 
     if (loading) {
-        return <div/> //TODO
+        return <ComponentScanHistoryListSkeleton classes={classes}/>
     }
 
     if (scans.length === 0)
