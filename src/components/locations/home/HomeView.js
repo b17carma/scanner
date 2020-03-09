@@ -20,7 +20,7 @@ export default function HomeView() {
 
     return (
         <Box className={classes.root}>
-            <ContainedOverlineText text="Scan Overview"/>
+            <ContainedOverlineText text="Monthly Overview"/>
             <List className={classes.list}>
                 <HomeOverviewList/>
             </List>
