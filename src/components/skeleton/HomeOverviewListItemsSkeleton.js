@@ -28,7 +28,7 @@ export default function HomeOverviewListItemsSkeleton() {
                     {[...new Array(4)].map((item, i) => (
                         <ListItem key={"item" + i}>
                             <ListItemIcon>
-                                <Skeleton variant="circle" width={35} height={35}/>
+                                <Skeleton variant="circle" width={30} height={30}/>
                             </ListItemIcon>
                             <Skeleton variant="text" width={200} height={30}/>
                         </ListItem>
