@@ -2,7 +2,6 @@ import {Box, Grid} from "@material-ui/core";
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Paper from "@material-ui/core/Paper";
-import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,7 +27,7 @@ export default function ComponentFrequency(props) {
         if (days.length === 0)
             return "Any week day";
 
-        days.map(function(day, i) {
+        days.forEach(function(day, i) {
             if (day === 1)
                 text += 'Mon';
             else if (day === 2)
