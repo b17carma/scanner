@@ -63,7 +63,6 @@ export default function HomeOverviewList() {
     return (
         overview.map((intervalData, index) => (
             <li key={`overview-${index}`} className={classes.listSection}>
-                <ul className={classes.ul}>
                     <ListSubheader>{intervalData.date}</ListSubheader>
                     {intervalData.data.map((component, i) => (
                         <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id}>
@@ -73,7 +72,6 @@ export default function HomeOverviewList() {
                             <ListItemText primary={`${component.equipment.identifier} - ${component.identifier}`}/>
                         </ListItem>
                     ))}
-                </ul>
             </li>
         ))
     )
