@@ -34,6 +34,16 @@ export default function MonthOverviewList(props) {
     const [overview, setOverview] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const ListIcon = (props) => {
+        if (!props.component.hasOwnProperty('scanStatus')) {
+            return <BlockIcon/>;
+        } else if (props.component.scanStatus) {
+            return <CheckIcon style={{color: green[500]}}/>
+        } else {
+            return <WarningIcon style={{color: red[500]}}/>
+        }
+    };
+
     useEffect(() => {
         let unmounted = false;
 
@@ -55,7 +65,9 @@ export default function MonthOverviewList(props) {
         fetchOverviewData();
 
         console.log("Fetched overview data");
-        return () => {unmounted = true}
+        return () => {
+            unmounted = true
+        }
     }, [props, props.startDate, props.endDate]);
 
     if (loading) {
@@ -72,7 +84,7 @@ export default function MonthOverviewList(props) {
                     {intervalData.data.map((component, i) => (
                         <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id}>
                             <ListItemIcon>
-                                {!component.hasOwnProperty('scanStatus') ? <BlockIcon/> : component.scanStatus ? <CheckIcon style={{color: green[500]}}/> : <WarningIcon style={{color: red[500]}}/>}
+                                <ListIcon component={component}/>
                             </ListItemIcon>
                             <ListItemText primary={`${component.equipment.identifier} - ${component.identifier}`}/>
                         </ListItem>
