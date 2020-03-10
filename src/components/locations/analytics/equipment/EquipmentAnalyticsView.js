@@ -21,11 +21,13 @@ export default function EquipmentAnalyticsView(props) {
     const [endDate, setEndDate] = React.useState(endMonthDate);
 
     const handleStartDateChange = date => {
-        setStartDate(date);
+        if (date < endDate)
+            setStartDate(date);
     };
 
     const handleEndDateChange = date => {
-        setEndDate(date)
+        if (date > startDate)
+            setEndDate(date)
     };
 
     const classes = useStyles();
@@ -33,8 +35,11 @@ export default function EquipmentAnalyticsView(props) {
     return (
         <MuiPickersUtilsProvider utils={MomentUtils}>
             <Box className={classes.root}>
-                <DatePickerContainer startDate={startDate} endDate={endDate} handleStartDateChange={handleStartDateChange} handleEndDateChange={handleEndDateChange}/>
-                <WeekScanResponsiveLineChart equipmentId={props.match.params.equipmentId} startDate={startDate} endDate={endDate} />
+                <DatePickerContainer startDate={startDate} endDate={endDate}
+                                     handleStartDateChange={handleStartDateChange}
+                                     handleEndDateChange={handleEndDateChange}/>
+                <WeekScanResponsiveLineChart equipmentId={props.match.params.equipmentId} startDate={startDate}
+                                             endDate={endDate}/>
             </Box>
 
         </MuiPickersUtilsProvider>

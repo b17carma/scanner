@@ -27,11 +27,13 @@ export default function HistoryView() {
     const [endDate, setEndDate] = React.useState(endMonthDate);
 
     const handleStartDateChange = date => {
-        setStartDate(date);
+        if (date < endDate)
+            setStartDate(date);
     };
 
     const handleEndDateChange = date => {
-        setEndDate(date)
+        if (date > startDate)
+            setEndDate(date)
     };
 
     return (
