@@ -13,6 +13,7 @@ import ComponentInformationView from "../locations/equipment/componentlist/compo
 import ScanResultView from "../locations/scan/result/ScanResultView";
 import OverallAnalyticsView from "../locations/analytics/overall/OverallAnalyticsView";
 import EquipmentAnalyticsView from "../locations/analytics/equipment/EquipmentAnalyticsView";
+import HistoryView from "../locations/analytics/history/HistoryView";
 
 const Routes = [
     {
@@ -72,7 +73,12 @@ const Routes = [
         display: false,
         path: '/analytics/equipment/:equipmentId',
         component: EquipmentAnalyticsView
-    }
+    },
+    {
+        display: false,
+        path: '/analytics/history',
+        component: HistoryView
+    },
 ];
 
 export default Routes;

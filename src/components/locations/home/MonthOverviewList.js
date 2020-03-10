@@ -9,7 +9,8 @@ import WarningIcon from "@material-ui/icons/Warning";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import HomeOverviewListItemsSkeleton from "../../skeleton/HomeOverviewListItemsSkeleton";
+import MonthOverviewListItemsSkeleton from "../../skeleton/MonthOverviewListItemsSkeleton";
+import moment from "moment";
 
 const useStyles = makeStyles(theme => ({
     alert: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function HomeOverviewList() {
+export default function MonthOverviewList(props) {
     const classes = useStyles();
 
     const [overview, setOverview] = useState([]);
@@ -36,8 +37,11 @@ export default function HomeOverviewList() {
     useEffect(() => {
         let unmounted = false;
 
+        let startDate = moment(props.startDate);
+        let endDate = moment(props.endDate);
+
         async function fetchOverviewData() {
-            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/overview");
+            const res = await fetch(process.env.REACT_APP_API_LOCATION + "/analytics/overview/" + startDate.format() + "/" + endDate.format());
 
             res.json().then((data) => {
                 if (unmounted)
@@ -52,11 +56,11 @@ export default function HomeOverviewList() {
 
         console.log("Fetched overview data");
         return () => {unmounted = true}
-    }, []);
+    }, [props, props.startDate, props.endDate]);
 
     if (loading) {
         return (
-            <HomeOverviewListItemsSkeleton/>
+            <MonthOverviewListItemsSkeleton/>
         );
     }
 

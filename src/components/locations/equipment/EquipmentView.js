@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
 export default function EquipmentView(props) {
     const classes = useStyles();
 
-
     return (
         <Box className={classes.root}>
             <EquipmentList location={props.location}/>

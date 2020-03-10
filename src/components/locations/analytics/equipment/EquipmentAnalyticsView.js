@@ -4,7 +4,7 @@ import MomentUtils from "@date-io/moment";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import moment from "moment";
 import Box from "@material-ui/core/Box";
-import DatePickerContainer from "./DatePickerContainer";
+import DatePickerContainer from "../../../util/DatePickerContainer";
 import WeekScanResponsiveLineChart from "./WeekScanResponsiveLineChart";
 
 const useStyles = makeStyles(theme => ({

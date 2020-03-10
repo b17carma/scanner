@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function HomeOverviewListItemsSkeleton() {
+export default function MonthOverviewListItemsSkeleton() {
     const classes = useStyles();
 
     return (

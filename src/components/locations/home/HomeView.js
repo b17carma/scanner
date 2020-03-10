@@ -2,8 +2,9 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import List from "@material-ui/core/List";
 import Box from "@material-ui/core/Box";
-import HomeOverviewList from "./HomeOverviewList";
+import MonthOverviewList from "./MonthOverviewList";
 import ContainedOverlineText from "../../util/ContainedOverlineText";
+import moment from "moment";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -14,15 +15,14 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function HomeView() {
+export default function HomeView(props) {
     const classes = useStyles();
-
 
     return (
         <Box className={classes.root}>
             <ContainedOverlineText text="Monthly Overview"/>
             <List className={classes.list}>
-                <HomeOverviewList/>
+                <MonthOverviewList startDate={moment().startOf('month')} endDate={moment().endOf('month')}/>
             </List>
         </Box>
     )
