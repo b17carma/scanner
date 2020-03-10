@@ -80,7 +80,7 @@ export default function MonthOverviewList(props) {
         overview.map((intervalData, index) => (
             <li key={`overview-${index}`} className={classes.listSection}>
                 <ul className={classes.ul}>
-                    <ListSubheader>{intervalData.date}</ListSubheader>
+                    <ListSubheader>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
                     {intervalData.data.map((component, i) => (
                         <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id}>
                             <ListItemIcon>

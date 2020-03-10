@@ -22,7 +22,7 @@ export default function HomeView(props) {
         <Box className={classes.root}>
             <ContainedOverlineText text="Weekly Overview"/>
             <List className={classes.list}>
-                <MonthOverviewList startDate={moment().startOf('week')} endDate={moment().endOf('week')}/>
+                <MonthOverviewList startDate={moment().startOf('isoWeek')} endDate={moment().endOf('isoWeek')}/>
             </List>
         </Box>
     )
