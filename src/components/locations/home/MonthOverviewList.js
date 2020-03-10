@@ -2,7 +2,7 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItem from "@material-ui/core/ListItem";
 import {Link} from "react-router-dom";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import HistoryIcon from "@material-ui/icons/History";
+import BlockIcon from '@material-ui/icons/Block';
 import CheckIcon from "@material-ui/icons/Check";
 import {green, red} from "@material-ui/core/colors";
 import WarningIcon from "@material-ui/icons/Warning";
@@ -72,7 +72,7 @@ export default function MonthOverviewList(props) {
                     {intervalData.data.map((component, i) => (
                         <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id}>
                             <ListItemIcon>
-                                {!component.hasOwnProperty('scanStatus') ? <HistoryIcon/> : component.scanStatus ? <CheckIcon style={{color: green[500]}}/> : <WarningIcon style={{color: red[500]}}/>}
+                                {!component.hasOwnProperty('scanStatus') ? <BlockIcon/> : component.scanStatus ? <CheckIcon style={{color: green[500]}}/> : <WarningIcon style={{color: red[500]}}/>}
                             </ListItemIcon>
                             <ListItemText primary={`${component.equipment.identifier} - ${component.identifier}`}/>
                         </ListItem>
