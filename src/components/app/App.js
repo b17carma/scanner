@@ -2,7 +2,7 @@ import React from 'react';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Routes from "../routing/Routes";
-import BottomNav from "../navigation/BottomNav";
+import BottomNavigation from "../navigation/BottomNavigation";
 import AppBarTop from "../appbar/AppBarTop";
 import Error404View from "../locations/error/Error404View";
 
@@ -19,7 +19,7 @@ function App() {
                 })}
                 <Route component={Error404View} />
             </Switch>
-            <BottomNav/>
+            <BottomNavigation/>
         </BrowserRouter>
     );
 }

@@ -14,8 +14,7 @@ const styles = () => ({
     },
 });
 
-class BottomNav extends React.Component {
-
+class BottomNavigation extends React.Component {
     handleChange(newValue) {
         this.props.history.push(newValue)
     }
@@ -50,4 +49,4 @@ class BottomNav extends React.Component {
     }
 }
 
-export default withRouter(withStyles(styles)(BottomNav));
+export default withRouter(withStyles(styles)(BottomNavigation));
