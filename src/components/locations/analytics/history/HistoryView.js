@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import {MuiPickersUtilsProvider} from "@material-ui/pickers";
-import MonthOverviewList from "../../home/MonthOverviewList";
+import ScanOverviewList from "../../home/ScanOverviewList";
 import List from "@material-ui/core/List";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
@@ -43,7 +43,7 @@ export default function HistoryView() {
                                      handleStartDateChange={handleStartDateChange}
                                      handleEndDateChange={handleEndDateChange}/>
                 <List className={classes.list}>
-                    <MonthOverviewList startDate={startDate} endDate={endDate}/>
+                    <ScanOverviewList startDate={startDate} endDate={endDate}/>
                 </List>
 
             </Box>

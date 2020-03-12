@@ -9,7 +9,7 @@ import WarningIcon from "@material-ui/icons/Warning";
 import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import MonthOverviewListItemsSkeleton from "../../skeleton/MonthOverviewListItemsSkeleton";
+import ScanOverviewListItemsSkeleton from "../../skeleton/ScanOverviewListItemsSkeleton";
 import moment from "moment";
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function MonthOverviewList(props) {
+export default function ScanOverviewList(props) {
     const classes = useStyles();
 
     const [overview, setOverview] = useState([]);
@@ -72,7 +72,7 @@ export default function MonthOverviewList(props) {
 
     if (loading) {
         return (
-            <MonthOverviewListItemsSkeleton/>
+            <ScanOverviewListItemsSkeleton/>
         );
     }
 
@@ -82,11 +82,11 @@ export default function MonthOverviewList(props) {
                 <ul className={classes.ul}>
                     <ListSubheader>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
                     {intervalData.data.map((component, i) => (
-                        <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id}>
+                        <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id} divider>
                             <ListItemIcon>
                                 <ListIcon component={component}/>
                             </ListItemIcon>
-                            <ListItemText primary={`${component.equipment.identifier} - ${component.identifier}`}/>
+                            <ListItemText primary={component.identifier} secondary={component.equipment.identifier}/>
                         </ListItem>
                     ))}
                 </ul>
