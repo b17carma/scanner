@@ -1,5 +1,5 @@
 import React from "react";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNav from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import routes from "../routing/Routes";
 import {withRouter} from "react-router-dom";
@@ -33,7 +33,7 @@ class BottomNavigation extends React.Component {
         const {classes} = this.props;
 
         return (
-            <BottomNavigation value={this.activeValue()} className={classes.root}
+            <BottomNav value={this.activeValue()} className={classes.root}
                               onChange={(event, newValue) => {
                                   this.handleChange(newValue);
                               }}>
@@ -44,7 +44,7 @@ class BottomNavigation extends React.Component {
                                                 icon={<prop.icon/>}/>
                     )
                 })}
-            </BottomNavigation>
+            </BottomNav>
         )
     }
 }

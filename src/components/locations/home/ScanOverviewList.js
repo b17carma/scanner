@@ -82,7 +82,7 @@ export default function ScanOverviewList(props) {
                 <ul className={classes.ul}>
                     <ListSubheader>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
                     {intervalData.data.map((component, i) => (
-                        <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id} divider>
+                        <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id}>
                             <ListItemIcon>
                                 <ListIcon component={component}/>
                             </ListItemIcon>
