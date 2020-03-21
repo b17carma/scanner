@@ -26,7 +26,11 @@ class BottomNavigation extends React.Component {
     }
 
     activeValue() {
-        return "/" + this.props.location.pathname.split("/")[1];
+        let split = this.props.location.pathname.split("/")[1];
+        if (split === 'home')
+            split = '';
+
+        return "/" + split;
     }
 
     render() {

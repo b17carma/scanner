@@ -43,7 +43,7 @@ export default function HistoryView() {
                                      handleStartDateChange={handleStartDateChange}
                                      handleEndDateChange={handleEndDateChange}/>
                 <List className={classes.list}>
-                    <ScanOverviewList startDate={startDate} endDate={endDate}/>
+                    <ScanOverviewList startDate={startDate} endDate={endDate} location={1}/>
                 </List>
 
             </Box>

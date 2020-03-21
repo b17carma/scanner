@@ -44,6 +44,15 @@ export default function ScanOverviewList(props) {
         }
     };
 
+    function location() {
+        if (props.location === 0)
+            return "/home/";
+        else if (props.location === 1)
+            return "/analytics/history/";
+        else
+            return "/home/"
+    }
+
     useEffect(() => {
         let unmounted = false;
 
@@ -82,7 +91,7 @@ export default function ScanOverviewList(props) {
                 <ul className={classes.ul}>
                     <ListSubheader>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
                     {intervalData.data.map((component, i) => (
-                        <ListItem button key={`item-${i}`} component={Link} to={"/equipment/" + component.equipment._id + "/" + component._id}>
+                        <ListItem button key={`item-${i}`} component={Link} to={location() + component.equipment._id + "/" + component._id}>
                             <ListItemIcon>
                                 <ListIcon component={component}/>
                             </ListItemIcon>

@@ -56,6 +56,16 @@ const Routes = [
     },
     {
         display: false,
+        path: '/home/:equipmentId/:componentId',
+        component: ComponentInformationView
+    },
+    {
+        display: false,
+        path: '/analytics/history/:equipmentId/:componentId',
+        component: ComponentInformationView
+    },
+    {
+        display: false,
         path: '/scan/:equipmentId/:componentId',
         component: ScanResultView
     },

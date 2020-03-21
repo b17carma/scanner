@@ -22,7 +22,11 @@ const useStyles = makeStyles(theme => ({
 
 
 function AppBarTop(props) {
-    const activeRoute = routes.find(route => route.path === ("/" + props.location.pathname.split("/")[1]));
+    let split = props.location.pathname.split("/")[1];
+    if (split === 'home')
+        split = '';
+
+    const activeRoute = routes.find(route => route.path === ("/" + split));
     const classes = useStyles();
 
     const RenderBackIcon = () => {
