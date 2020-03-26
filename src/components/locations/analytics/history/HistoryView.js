@@ -42,9 +42,7 @@ export default function HistoryView() {
                 <DatePickerContainer startDate={startDate} endDate={endDate}
                                      handleStartDateChange={handleStartDateChange}
                                      handleEndDateChange={handleEndDateChange}/>
-                <List className={classes.list}>
-                    <ScanOverviewList startDate={startDate} endDate={endDate} location={1}/>
-                </List>
+                <ScanOverviewList startDate={startDate} endDate={endDate} location={1}/>
 
             </Box>
         </MuiPickersUtilsProvider>

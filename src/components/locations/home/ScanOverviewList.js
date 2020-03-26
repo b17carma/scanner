@@ -11,6 +11,7 @@ import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ScanOverviewListItemsSkeleton from "../../skeleton/ScanOverviewListItemsSkeleton";
 import moment from "moment";
+import List from "@material-ui/core/List";
 
 const useStyles = makeStyles(theme => ({
     alert: {
@@ -86,20 +87,25 @@ export default function ScanOverviewList(props) {
     }
 
     return (
-        overview.map((intervalData, index) => (
-            <li key={`overview-${index}`} className={classes.listSection}>
-                <ul className={classes.ul}>
-                    <ListSubheader>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
-                    {intervalData.data.map((component, i) => (
-                        <ListItem button key={`item-${i}`} component={Link} to={location() + component.equipment._id + "/" + component._id}>
-                            <ListItemIcon>
-                                <ListIcon component={component}/>
-                            </ListItemIcon>
-                            <ListItemText primary={component.identifier} secondary={component.equipment.identifier}/>
-                        </ListItem>
-                    ))}
-                </ul>
-            </li>
-        ))
+        <List className={classes.list}>
+            {overview.map((intervalData, index) => (
+                <li key={`overview-${index}`} className={classes.listSection}>
+                    <ul className={classes.ul}>
+                        <ListSubheader>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
+                        {intervalData.data.map((component, i) => (
+                            <ListItem button key={`item-${i}`} component={Link}
+                                      to={location() + component.equipment._id + "/" + component._id}>
+                                <ListItemIcon>
+                                    <ListIcon component={component}/>
+                                </ListItemIcon>
+                                <ListItemText primary={component.identifier}
+                                              secondary={component.equipment.identifier}/>
+                            </ListItem>
+                        ))}
+                    </ul>
+                </li>
+            ))
+            }
+        </List>
     )
 }
