@@ -7,6 +7,9 @@ import Card from "@material-ui/core/Card";
 import EquipmentInfoCardSkeleton from "../../../skeleton/EquipmentInfoCardSkeleton";
 
 const useStyles = makeStyles(theme => ({
+    card: {
+        borderRadius: 0
+    },
     media: {
         height: 200
     }
@@ -42,7 +45,7 @@ export default function EquipmentInfoCard(props) {
     }
 
     return (
-        <Card elevation={0}>
+        <Card elevation={0} className={classes.card}>
             <CardMedia
                 className={classes.media}
                 image={"/img/" + equipment.image}
