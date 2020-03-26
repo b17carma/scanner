@@ -9,8 +9,9 @@ const useStyles = makeStyles(theme => ({
     media: {
         height: 200
     },
-    paper: {
-        marginBottom: theme.spacing(1)
+    card: {
+        marginBottom: theme.spacing(1),
+        borderRadius: 0
     }
 }));
 
@@ -18,7 +19,7 @@ export default function ComponentInformationCard(props) {
     const classes = useStyles();
 
     return (
-        <Card elevation={0} className={classes.paper}>
+        <Card elevation={0} className={classes.card}>
             <CardMedia
                 className={classes.media}
                 image={"/img/" + props.component.image}
