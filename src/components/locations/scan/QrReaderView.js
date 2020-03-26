@@ -6,12 +6,12 @@ import Box from "@material-ui/core/Box";
 
 export default function QrReaderView() {
     const history = useHistory();
-    const [error, setError] = useState(false);
+    const [error, setError] = useState('');
 
     function handleScan(data) {
         if (data) {
             if (!data.includes(";")) {
-                setError(true);
+                setError('');
                 return;
             }
 
@@ -24,13 +24,13 @@ export default function QrReaderView() {
     }
 
     const handleError = err => {
-        console.error(err);
+        setError(err.message);
     };
 
     return (
         <Box>
-            {error ? <Alert severity="error">Error reading QR-Code, please try again.</Alert> : null}
-                <QrReader onError={handleError} onScan={handleScan}/>
+            {error !== '' ? <Alert severity="error">{error}</Alert> : null}
+            <QrReader onError={handleError} onScan={handleScan}/>
         </Box>
 
     )
