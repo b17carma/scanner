@@ -5,7 +5,6 @@ import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import {MuiPickersUtilsProvider} from "@material-ui/pickers";
 import ScanOverviewList from "../../home/ScanOverviewList";
-import List from "@material-ui/core/List";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles(theme => ({
