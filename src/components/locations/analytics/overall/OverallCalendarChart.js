@@ -43,7 +43,7 @@ export default function OverallCalendarChart() {
         return () => {unmounted = true}
     }, []);
 
-    if (loading) {
+    if (loading || calendar.length === 0) {
         return <div/> //TODO
     }
 
