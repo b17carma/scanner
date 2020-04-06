@@ -44,7 +44,7 @@ function AppBarTop(props) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
                     <RenderBackIcon/>
                     <Typography variant="h6" className={classes.title}>
@@ -52,6 +52,7 @@ function AppBarTop(props) {
                     </Typography>
                 </Toolbar>
             </AppBar>
+            <Toolbar />
         </div>
     );
 }
