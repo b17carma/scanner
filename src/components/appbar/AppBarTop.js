@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     title: {
         flexGrow: 1,
     },
+    offset: theme.mixins.toolbar,
 }));
 
 
@@ -52,7 +53,7 @@ function AppBarTop(props) {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Toolbar />
+            <div className={classes.offset}/>
         </div>
     );
 }

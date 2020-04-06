@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     ul: {
         backgroundColor: 'inherit',
         padding: 0,
+    },
+    subHeader: {
+        top: theme.spacing(7)
     }
 }));
 
@@ -91,7 +94,8 @@ export default function ScanOverviewList(props) {
             {overview.map((intervalData, index) => (
                 <li key={`overview-${index}`} className={classes.listSection}>
                     <ul className={classes.ul}>
-                        <ListSubheader>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
+                        <ListSubheader
+                            className={classes.subHeader}>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
                         {intervalData.data.map((component, i) => (
                             <ListItem button key={`item-${i}`} component={Link}
                                       to={location() + component.equipment._id + "/" + component._id}>
