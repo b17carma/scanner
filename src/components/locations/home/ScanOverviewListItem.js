@@ -10,9 +10,10 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import {green} from "@material-ui/core/colors";
 import CheckCircle from "@material-ui/icons/CheckCircle";
 import {ErrorOutline} from "@material-ui/icons";
+import moment from "moment";
 
 export default function ScanOverviewListItem(props) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(props.equipment.progress !== 100 && moment(props.date).isSame(moment(), 'day'));
 
     const handleClick = () => {
         setOpen(!open);

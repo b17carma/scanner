@@ -11,7 +11,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
     nestedItem: {
-        paddingLeft: theme.spacing(4),
+        paddingLeft: theme.spacing(5),
     },
 }));
 
