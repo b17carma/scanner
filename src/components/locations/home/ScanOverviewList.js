@@ -1,17 +1,14 @@
 import ListSubheader from "@material-ui/core/ListSubheader";
-import ListItem from "@material-ui/core/ListItem";
-import {Link} from "react-router-dom";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import BlockIcon from '@material-ui/icons/Block';
 import CheckIcon from "@material-ui/icons/Check";
 import {green, red} from "@material-ui/core/colors";
 import WarningIcon from "@material-ui/icons/Warning";
-import ListItemText from "@material-ui/core/ListItemText";
 import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ScanOverviewListItemsSkeleton from "../../skeleton/ScanOverviewListItemsSkeleton";
 import moment from "moment";
 import List from "@material-ui/core/List";
+import ScanOverviewListItem from "./ScanOverviewListItem";
 
 const useStyles = makeStyles(theme => ({
     alert: {
@@ -37,25 +34,6 @@ export default function ScanOverviewList(props) {
 
     const [overview, setOverview] = useState([]);
     const [loading, setLoading] = useState(true);
-
-    const ListIcon = (props) => {
-        if (!props.component.hasOwnProperty('scanStatus')) {
-            return <BlockIcon/>;
-        } else if (props.component.scanStatus) {
-            return <CheckIcon style={{color: green[500]}}/>
-        } else {
-            return <WarningIcon style={{color: red[500]}}/>
-        }
-    };
-
-    function location() {
-        if (props.location === 0)
-            return "/home/";
-        else if (props.location === 1)
-            return "/analytics/history/";
-        else
-            return "/home/"
-    }
 
     useEffect(() => {
         let unmounted = false;
@@ -94,22 +72,13 @@ export default function ScanOverviewList(props) {
             {overview.map((intervalData, index) => (
                 <li key={`overview-${index}`} className={classes.listSection}>
                     <ul className={classes.ul}>
-                        <ListSubheader
-                            className={classes.subHeader}>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
-                        {intervalData.data.map((component, i) => (
-                            <ListItem button key={`item-${i}`} component={Link}
-                                      to={location() + component.equipment._id + "/" + component._id}>
-                                <ListItemIcon>
-                                    <ListIcon component={component}/>
-                                </ListItemIcon>
-                                <ListItemText primary={component.identifier}
-                                              secondary={component.equipment.identifier}/>
-                            </ListItem>
+                        <ListSubheader className={classes.subHeader}>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
+                        {intervalData.equipment.map((equipment, i) => (
+                            <ScanOverviewListItem equipment={equipment} index={i} location={props.location}/>
                         ))}
                     </ul>
                 </li>
-            ))
-            }
+            ))}
         </List>
     )
 }
