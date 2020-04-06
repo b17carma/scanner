@@ -1,8 +1,4 @@
 import ListSubheader from "@material-ui/core/ListSubheader";
-import BlockIcon from '@material-ui/icons/Block';
-import CheckIcon from "@material-ui/icons/Check";
-import {green, red} from "@material-ui/core/colors";
-import WarningIcon from "@material-ui/icons/Warning";
 import React, {useEffect, useState} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ScanOverviewListItemsSkeleton from "../../skeleton/ScanOverviewListItemsSkeleton";
@@ -74,7 +70,7 @@ export default function ScanOverviewList(props) {
                     <ul className={classes.ul}>
                         <ListSubheader className={classes.subHeader}>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
                         {intervalData.equipment.map((equipment, i) => (
-                            <ScanOverviewListItem equipment={equipment} index={i} location={props.location}/>
+                            <ScanOverviewListItem equipment={equipment} key={i} location={props.location}/>
                         ))}
                     </ul>
                 </li>

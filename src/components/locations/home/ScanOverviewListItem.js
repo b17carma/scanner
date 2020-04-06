@@ -1,28 +1,40 @@
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import {Assignment} from "@material-ui/icons";
 import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
 import ScanOverviewListSubItems from "./ScanOverviewListSubItems";
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import CircularProgress from "@material-ui/core/CircularProgress";
+import {green} from "@material-ui/core/colors";
+import CheckCircle from "@material-ui/icons/CheckCircle";
+import {ErrorOutline} from "@material-ui/icons";
 
 export default function ScanOverviewListItem(props) {
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
 
     const handleClick = () => {
         setOpen(!open);
     };
 
     const equipment = props.equipment;
-    const index = props.index;
+
+    const ListIcon = function () {
+        if (equipment.progress === 0) {
+            return <ErrorOutline/>;
+        } else if (equipment.progress === 100) {
+            return <CheckCircle style={{color: green[500]}}/>
+        } else {
+            return <CircularProgress variant="static" value={equipment.progress} size={22}/>
+        }
+    };
 
     return (
         <div>
-            <ListItem button id={"listitem_" + equipment.equipment._id + "_" + index} onClick={handleClick}>
+            <ListItem button onClick={handleClick}>
                 <ListItemIcon>
-                    <Assignment/>
+                    <ListIcon progress={equipment.progress}/>
                 </ListItemIcon>
                 <ListItemText primary={equipment.equipment.identifier}/>
                 {open ? <ExpandLess/> : <ExpandMore/>}
