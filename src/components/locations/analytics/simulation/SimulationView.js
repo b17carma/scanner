@@ -28,7 +28,7 @@ export default function SimulationView() {
 
     async function simulatePosts(equipmentId, componentId, status) {
         setEnd(0);
-        setStart(new Date().getTime());
+        setStart(performance.now());
 
         let lastTime = 0;
         let newText = "";
@@ -48,14 +48,16 @@ export default function SimulationView() {
             });
             await response.json();
 
+            let timeNow = performance.now();
+
             if (lastTime !== 0) {
-               newText = newText + (new Date().getTime() - lastTime) + "\n";
+               newText = newText + (timeNow - lastTime) + "\n";
             }
 
-            lastTime = new Date().getTime();
+            lastTime = timeNow;
         }
         setAreaText(newText);
-        setEnd(new Date().getTime());
+        setEnd(performance.now());
     }
 
     const classes = useStyles();
