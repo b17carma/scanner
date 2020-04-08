@@ -70,7 +70,7 @@ export default function ScanOverviewList(props) {
                     <ul className={classes.ul}>
                         <ListSubheader className={classes.subHeader}>{moment(intervalData.title).format('DD/MM/YY - dddd')}</ListSubheader>
                         {intervalData.data.map((equipment, i) => (
-                            <ScanOverviewListItem date={intervalData.date} equipment={equipment} key={i} location={props.location}/>
+                            <ScanOverviewListItem date={intervalData.title} equipment={equipment} key={i} location={props.location}/>
                         ))}
                     </ul>
                 </li>
