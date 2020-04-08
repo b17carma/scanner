@@ -68,8 +68,8 @@ export default function ScanOverviewList(props) {
             {overview.map((intervalData, index) => (
                 <li key={`overview-${index}`} className={classes.listSection}>
                     <ul className={classes.ul}>
-                        <ListSubheader className={classes.subHeader}>{moment(intervalData.date).format('DD/MM/YY - dddd')}</ListSubheader>
-                        {intervalData.equipment.map((equipment, i) => (
+                        <ListSubheader className={classes.subHeader}>{moment(intervalData.title).format('DD/MM/YY - dddd')}</ListSubheader>
+                        {intervalData.data.map((equipment, i) => (
                             <ScanOverviewListItem date={intervalData.date} equipment={equipment} key={i} location={props.location}/>
                         ))}
                     </ul>
