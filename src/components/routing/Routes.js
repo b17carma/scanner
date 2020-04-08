@@ -14,6 +14,7 @@ import ScanResultView from "../locations/scan/result/ScanResultView";
 import OverallAnalyticsView from "../locations/analytics/overall/OverallAnalyticsView";
 import EquipmentAnalyticsView from "../locations/analytics/equipment/EquipmentAnalyticsView";
 import HistoryView from "../locations/analytics/history/HistoryView";
+import SimulationView from "../locations/analytics/simulation/SimulationView";
 
 const Routes = [
     {
@@ -89,6 +90,11 @@ const Routes = [
         path: '/analytics/history',
         component: HistoryView
     },
+    {
+        display: false,
+        path: '/analytics/simulation',
+        component: SimulationView
+    }
 ];
 
 export default Routes;
