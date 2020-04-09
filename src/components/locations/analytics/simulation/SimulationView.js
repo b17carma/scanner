@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Container, Paper, TextField} from "@material-ui/core";
+import {Container, Paper, TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -26,6 +26,15 @@ export default function SimulationView() {
     const [areaText, setAreaText] = React.useState("");
     const [end, setEnd] = React.useState(0);
 
+    function downloadFile() {
+        const element = document.createElement("a");
+        const file = new Blob([areaText], {type: 'text/plain'});
+        element.href = URL.createObjectURL(file);
+        element.download = "results.txt";
+        document.body.appendChild(element);
+        element.click();
+    }
+
     async function simulatePosts(equipmentId, componentId, status) {
         setEnd(0);
         setStart(performance.now());
@@ -33,7 +42,7 @@ export default function SimulationView() {
         let lastTime = 0;
         let newText = "";
 
-        for (let i=0;i<1000;i++) {
+        for (let i = 0; i < 100; i++) {
             const response = await fetch(process.env.REACT_APP_API_LOCATION + '/scan', {
                 method: 'POST',
                 headers: {
@@ -51,7 +60,7 @@ export default function SimulationView() {
             let timeNow = performance.now();
 
             if (lastTime !== 0) {
-               newText = newText + (timeNow - lastTime) + "\n";
+                newText += (timeNow - lastTime) + "\n";
             }
 
             lastTime = timeNow;
@@ -74,13 +83,12 @@ export default function SimulationView() {
                 <Typography variant="body1" gutterBottom>
                     Diff: {end === 0 ? null : end - start}
                 </Typography>
-                </Paper>
-            <Box className={classes.box}>
-                <Button variant="contained" onClick={() => simulatePosts('5e53f1c36c7df42438366bde', '5e53f1c36c7df42438366be0', true)}>Start Simulation</Button>
-            </Box>
-            <Box>
-                <TextField multiline label="Results" variant="outlined" rows={10} fullWidth value={areaText}/>
-            </Box>
+            </Paper>
+            <Button className={classes.box} variant="contained"
+                    onClick={() => simulatePosts('5e53f1c36c7df42438366bde', '5e53f1c36c7df42438366be0', true)}>Start
+                Simulation</Button>
+            <TextField className={classes.box} multiline label="Results" variant="outlined" rows={10} fullWidth value={areaText}/>
+            <Button variant="contained" onClick={() => downloadFile()}>Save results</Button>
         </Container>
     )
 }
