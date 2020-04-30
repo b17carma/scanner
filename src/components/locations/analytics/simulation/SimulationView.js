@@ -39,10 +39,11 @@ export default function SimulationView() {
         setEnd(0);
         setStart(performance.now());
 
-        let lastTime = 0;
         let newText = "";
 
         for (let i = 0; i < 5000; i++) {
+            let startTime = performance.now();
+
             const response = await fetch(process.env.REACT_APP_API_LOCATION + '/scan', {
                 method: 'POST',
                 headers: {
@@ -60,10 +61,8 @@ export default function SimulationView() {
             let timeNow = performance.now();
 
             if (lastTime !== 0) {
-                newText += (timeNow - lastTime) + "\n";
+                newText += (timeNow - startTime) + "\n";
             }
-
-            lastTime = timeNow;
         }
         setAreaText(newText);
         setEnd(performance.now());
