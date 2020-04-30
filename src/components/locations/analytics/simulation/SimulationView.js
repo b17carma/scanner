@@ -59,10 +59,7 @@ export default function SimulationView() {
             await response.json();
 
             let timeNow = performance.now();
-
-            if (lastTime !== 0) {
-                newText += (timeNow - startTime) + "\n";
-            }
+            newText += (timeNow - startTime) + "\n";
         }
         setAreaText(newText);
         setEnd(performance.now());
